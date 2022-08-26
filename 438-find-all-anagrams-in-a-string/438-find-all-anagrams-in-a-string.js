@@ -5,6 +5,7 @@
  */
 
 var findAnagrams = function(s, p) {
+    if (p.length > s.length) return [];
     let pCount = new Array(26).fill(0);
     let sCount = new Array(26).fill(0);
     const aCode = 'a'.charCodeAt(0);
