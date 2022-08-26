@@ -1,27 +1,21 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        if len(p) > len(s):
-            return []
-        pCount = [0 for i in range(26)]
+        if len(p) > len(s): return []
+        pCount, sCount = {}, {}
         # print(pCount)
         for i in range(len(p)):
-            pCount[ord(p[i]) - ord('a')] += 1
+            pCount[p[i]] = 1 + pCount.get(p[i], 0)
+            sCount[s[i]] = 1 + sCount.get(s[i], 0)
         # print(pCount)
-        ans = []
-        sCount = [0 for i in range(26)]
-        start, end = 0, len(p)
-        for i in range(start, end):
-            print(s[i], ord(s[i]) - ord('a'))
-            sCount[ord(s[i]) - ord('a')] += 1
-        # print(sCount)
-        while end <= len(s):
-            if pCount == sCount:
-                ans.append(start)
-            sCount[ord(s[start]) - ord('a')] -= 1
-            if end < len(s):
-                sCount[ord(s[end]) - ord('a')] += 1
-            # print(sCount)
-            start += 1
-            end += 1
+        ans = [0] if sCount == pCount else []
+        l = 0
+        for r in range(len(p), len(s)):
+            sCount[s[r]] = 1 + sCount.get(s[r], 0)
+            sCount[s[l]] -= 1
+            
+            if sCount[s[l]] == 0:
+                del sCount[s[l]]
+            l += 1
+            if sCount == pCount:
+                ans.append(l)
         return ans
-                
