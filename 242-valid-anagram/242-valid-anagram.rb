@@ -3,5 +3,10 @@
 # @return {Boolean}
 def is_anagram(s, t)
     return false if s.length != t.length
-    return s.chars.sort.join == t.chars.sort.join
+    counts = Array.new(26, 0)
+    (0...s.length).each do |i|
+        counts[s[i].ord - 'a'.ord] += 1
+        counts[t[i].ord - 'a'.ord] -= 1
+    end
+    return counts.all? { |n| n == 0 }
 end
