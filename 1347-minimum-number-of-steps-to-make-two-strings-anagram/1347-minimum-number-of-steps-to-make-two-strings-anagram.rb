@@ -2,10 +2,10 @@
 # @param {String} t
 # @return {Integer}
 def min_steps(s, t)
-    counts = Hash.new(0)
+    counts = Array.new(26, 0)
     (0...s.length).each do |i|
-        counts[s[i]] += 1
-        counts[t[i]] -= 1
+        counts[s[i].ord - 'a'.ord] += 1
+        counts[t[i].ord - 'a'.ord] -= 1
     end
-    return counts.values.sum { |n| n.abs } / 2
+    return counts.sum { |n| n.abs } / 2
 end
