@@ -1,18 +1,11 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t): return False
-        counts = {}
+        counts = [0 for i in range(26)]
         for i in range(len(s)):
-            counts[s[i]] = counts.get(s[i], 0) + 1
-            
-        for i in range(len(t)):
-            if t[i] not in counts:
-                return False
-            elif counts[t[i]] == 1:
-                del counts[t[i]]
-            else:
-                counts[t[i]] -= 1
-                
-        return counts == {}
+            counts[ord(s[i]) - ord('a')] += 1
+            counts[ord(t[i]) - ord('a')] -= 1
+                            
+        return counts == [0 for i in range(26)]
                 
         
