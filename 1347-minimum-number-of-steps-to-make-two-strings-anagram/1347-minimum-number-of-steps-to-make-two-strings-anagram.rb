@@ -3,9 +3,14 @@
 # @return {Integer}
 def min_steps(s, t)
     counts = Hash.new(0)
-    (0...s.length).each do |i|
-        counts[s[i]] += 1
-        counts[t[i]] -= 1
+    ans = 0
+    s.each_char { |ch| counts[ch] += 1 }
+    t.each_char do |ch|
+        if counts.key? ch and counts[ch] > 0
+            counts[ch] -= 1
+        else
+            ans += 1
+        end
     end
-    return counts.values.sum { |n| n.abs } / 2
+    return ans
 end
