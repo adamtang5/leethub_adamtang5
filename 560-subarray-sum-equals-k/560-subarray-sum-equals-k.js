@@ -13,12 +13,9 @@ var subarraySum = function(nums, k) {
     const prefixSums = { 0: 1 };
     nums.forEach(num => {
         prefixSum += num;
-        if (prefixSums[prefixSum - k] !== undefined) {
-            ans += prefixSums[prefixSum - k];
-        }
+        ans += prefixSums[prefixSum - k] || 0;
         prefixSums[prefixSum] = prefixSums[prefixSum] || 0;
         prefixSums[prefixSum]++;
-        // console.log(prefixSum, prefixSums);
     });
     return ans;
 };
