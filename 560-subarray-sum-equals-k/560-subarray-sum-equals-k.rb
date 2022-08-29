@@ -4,7 +4,7 @@
 def subarray_sum(nums, k)
     ans, currSum = 0, 0
     prefixSums = Hash.new(0)
-    prefixSums[0] = 1
+    prefixSums[0] += 1
     nums.each do |n|
         currSum += n
         diff = currSum - k
