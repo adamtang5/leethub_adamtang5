@@ -10,8 +10,7 @@ data structure: object with key being prefix sums and values being counts of pre
 
 var subarraySum = function(nums, k) {
     let [ans, prefixSum] = [0, 0];
-    const prefixSums = {};
-    prefixSums[0] = 1;
+    const prefixSums = { 0: 1 };
     nums.forEach(num => {
         prefixSum += num;
         if (prefixSums[prefixSum - k] !== undefined) {
