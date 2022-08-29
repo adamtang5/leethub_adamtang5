@@ -1,5 +1,3 @@
-import json
-
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
