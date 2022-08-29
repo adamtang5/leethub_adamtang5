@@ -1,5 +1,7 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) == 3:
+            return [nums] if sum(nums) == 0 else []
         nums.sort()
         ans = []
         i = 0
