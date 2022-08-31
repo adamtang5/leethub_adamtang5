@@ -25,7 +25,4 @@ class Solution:
                             
                 d1_combos = list(LOOKUP[int(lead_ch)])
                 ans = [combo + ch for combo in ans for ch in d1_combos]
-
-                # print(ans)
-
             return ans
