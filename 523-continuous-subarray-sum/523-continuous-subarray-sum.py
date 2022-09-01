@@ -10,7 +10,6 @@ class Solution:
             currMod += nums[i]
             currMod %= k
             if currMod in prefixMods and any([idx < (i-1) for idx in prefixMods[currMod]]):
-            # if currMod in prefixMods:
                 return True
             prefixMods[currMod] = prefixMods.get(currMod, [])
             prefixMods[currMod].append(i)
