@@ -13,15 +13,15 @@ var getDistances = function(arr) {
     Object.keys(buckets).forEach(el => {
         const indices = buckets[el];
         let [l, r, total] = [0, indices.length - 1, 0];
-        indices.forEach(i => total += i - indices[0]);
+        indices.forEach(i => total += i - indices[0]);  // right sum - left sum + curr i * weight
         ans[indices[0]] = total;
         
-        for (let i = 0; i < indices.length - 1; i++) {
+        for (let i = 1; i < indices.length; i++) {
+            let weight = l - r + 1;
+            total += (indices[i] - indices[i - 1]) * weight;
             l++;
-            const delta = indices[i + 1] - indices[i];
-            total += delta * l - delta * r;
             r--;
-            ans[indices[i + 1]] = total;
+            ans[indices[i]] = total;
         }
     })
     return ans;
