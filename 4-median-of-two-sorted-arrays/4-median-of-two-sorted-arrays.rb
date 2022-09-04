@@ -26,10 +26,8 @@ def find_median_sorted_arrays(nums1, nums2)
             if total % 2 != 0
                 return aRight < bRight ? aRight : bRight
             else
-                p 'partition correct, even total'
                 leftMax = (aLeft >= bLeft ? aLeft : bLeft)
                 rightMin = (aRight <= bRight ? aRight : bRight)
-                p leftMax, rightMin
                 return (leftMax + rightMin) / 2.0
             end
         # partition needs to be adjusted
