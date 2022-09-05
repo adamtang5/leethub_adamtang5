@@ -3,7 +3,7 @@
 def group_anagrams(strs)
     groups = Hash.new { |h, k| h[k] = [] }
     strs.each do |s|
-        keyStr = s.bytes
+        keyStr = s.split('')
         keyStr.sort!
         keyStr = keyStr.inspect
         groups[keyStr] << s
