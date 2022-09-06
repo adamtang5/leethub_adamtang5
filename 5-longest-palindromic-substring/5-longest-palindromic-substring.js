@@ -4,31 +4,41 @@
  */
 
 /*
-Manacher's Algorithm: O(n)
+Ask the question: what's the longest palindromic substring with i as the middle or i, i+1 as the middle
 */
 
 var longestPalindrome = function(s) {
     if (s.length < 2) return s;
     
-    s = `$${s}@`;
-    s = s.split('').join('#');
-    const p_ext = new Array(s.length).fill(0);
+    let maxLength = 1;
+    let maxSub = s[0];
+    let ub = s.length % 2 ? s.length : s.length - 1;
+    let l, r;
     
-    let [center, r] = [0, 0];
-    for (let i = 0; i < s.length - 1; i++) {
-        const mirror = 2 * center - i;
-        if (i < r) {
-            p_ext[i] = Math.min(r - i, p_ext[mirror]);
+    for (let i = 0; i < ub; i++) {
+        // odd
+        [l, r] = [i, i];
+        while (l >= 0 && r < s.length && s[l] === s[r]) {
+            if (r - l + 1 > maxLength) {
+                maxLength = r - l + 1;
+                maxSub = s.slice(l, r + 1);
+            }
+            l--;
+            r++;
         }
-        while (s[i - 1 - p_ext[i]] === s[i + 1 + p_ext[i]]) {
-            p_ext[i]++;
+
+        // even
+        [l, r] = [i, i + 1];
+        while (l >= 0 && r < s.length && s[l] === s[r]) {
+            if (r - l + 1 > maxLength) {
+                maxLength = r - l + 1;
+                maxSub = s.slice(l, r + 1);
+            }
+            l--;
+            r++;
         }
-        if (p_ext[i] + 1 > r) {
-            center = i;
-            r = p_ext[i] + 1;
-        }
+
     }
-    let max_ext = Math.max(...p_ext);
-    center = p_ext.indexOf(max_ext);
-    return s.slice(center - max_ext, center + max_ext + 1).replaceAll('#', '');
+    
+    return maxSub;
 };
