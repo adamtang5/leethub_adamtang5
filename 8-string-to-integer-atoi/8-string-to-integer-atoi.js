@@ -20,9 +20,7 @@ var myAtoi = function(s) {
     }
     
     // check for digit
-    const digits = new Set();
-    '0123456789'.split('').forEach(d => digits.add(d));
-    while (i < s.length && digits.has(s[i])) {
+    while (i < s.length && '0123456789'.includes(s[i])) {
         ans = ans * 10 + (+s[i]);
         i++;
     }
