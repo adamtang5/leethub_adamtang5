@@ -20,8 +20,7 @@ def my_atoi(s)
     end
     
     # check digits
-    digits = '0123456789'
-    while i < s.length && digits.include?(s[i])
+    while i < s.length && '0123456789'.include?(s[i])
         ans = ans * 10 + s[i].to_i
         i += 1
     end
