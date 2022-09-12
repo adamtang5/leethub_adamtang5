@@ -20,7 +20,7 @@ var myAtoi = function(s) {
     }
     
     // check for digit
-    while (i < s.length && '0123456789'.includes(s[i])) {
+    while (i < s.length && /\d/.test(s[i])) {
         ans = ans * 10 + (+s[i]);
         i++;
     }
