@@ -2,34 +2,34 @@ import re
 
 class Solution:
     def myAtoi(self, s: str) -> int:
-        maxValue = pow(2, 31) - 1
-        minValue = -1 * pow(2, 31)
-        s = s.strip()
+        maxValue = 2 ** 31 - 1
+        minValue = -2 ** 31
+        
+        i = 0
+        ans = 0
         sign = 1
-        ans = ''
         
-        if len(s) > 0:
-            if s[0] == '-':
-                sign = -1
-                s = s[1:]
-            elif s[0] == '+':
-                s = s[1:]
-
-            digitRe = "\d"
-            for i in range(len(s)):
-                if re.search(digitRe, s[i]):
-                    ans += s[i]
-                    i += 1
-                else:
-                    break
+        # whitespace
+        while i < len(s) and s[i] == ' ':
+            i += 1
+            
+        # +/-
+        if i < len(s) and s[i] == '-':
+            i += 1
+            sign = -1
+        elif i < len(s) and s[i] == '+':
+            i += 1
+            
+        # check number 0-9
+        digits = set('0123456789')
+        while i < len(s) and s[i] in digits:
+            ans = ans * 10 + int(s[i])
+            i += 1
+            
+        # check bounds
+        ans *= sign
         
-        if len(ans) == 0:
-            return len(ans)
-        ans = sign * int(ans)
+        if ans < 0:
+            return max(ans, minValue)
+        return min(ans, maxValue)
         
-        if ans < minValue:
-            return minValue
-        elif ans > maxValue:
-            return maxValue
-        else:
-            return ans
