@@ -5,9 +5,12 @@ class Solution:
         rows = [''] * numRows
         newBase = (numRows - 1) * 2
         
+        newIdxMods = [0] * newBase
+        for i in range(newBase):
+            newIdxMods[i] = i if i <= newBase / 2 else newBase - i
+        
         for i, ch in enumerate(s):
             iMod = i % newBase
-            newIdxMod = iMod if iMod <= newBase / 2 else newBase - iMod
-            rows[newIdxMod] += ch
+            rows[newIdxMods[iMod]] += ch
             
         return ''.join(rows)
