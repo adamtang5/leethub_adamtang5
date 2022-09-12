@@ -1,5 +1,6 @@
 # @param {Integer} x
 # @return {Integer}
+
 def reverse(x)
     sign = x >= 0 ? 1 : -1
     x = x.abs
