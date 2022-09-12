@@ -12,7 +12,6 @@ def reverse(x)
     while x != 0
         digit = x.remainder(10)
         x = (x / 10.0).truncate(0)
-        p digit, x
         
         if ans > max_sans_ones || (ans == max_sans_ones && digit > max_ones)
             return 0
