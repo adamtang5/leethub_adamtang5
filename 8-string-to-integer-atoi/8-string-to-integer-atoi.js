@@ -3,10 +3,8 @@
  * @return {number}
  */
 var myAtoi = function(s) {
-    let sign = 1;
-    const [minValue, maxValue] = [-1 * 2 ** 31, 2 ** 31 - 1];
-
     s = s.trim();
+    let sign = 1;
     
     if (s[0] === '-') {
         sign = -1;
@@ -20,6 +18,6 @@ var myAtoi = function(s) {
     
     const ans = sign * +s.match(digitsRe)[0];
     
-    if (ans < 0) return Math.max(ans, minValue);
-    return Math.min(ans, maxValue);
+    if (ans < 0) return Math.max(ans, -1 * 2 ** 31);
+    return Math.min(ans, 2 ** 31 - 1);
 };
