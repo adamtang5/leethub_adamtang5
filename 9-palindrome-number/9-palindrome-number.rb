@@ -3,16 +3,14 @@
 def is_palindrome(x)
     return false if x < 0
     return true if x < 10
-    digits = Math.log10(x).truncate(0)
-    while digits > 0
-        first_digit = (x / (10 ** digits)).truncate(0)
-        last_digit = x % 10
-        if first_digit != last_digit
+    s = x.to_s
+    l, r = 0, s.length - 1
+    while l < r
+        if s[l] != s[r]
             return false
         else
-            x %= 10 ** digits
-            x /= 10
-            digits -= 2
+            l += 1
+            r -= 1
         end
     end
     return true
