@@ -3,29 +3,22 @@
  * @return {number}
  */
 var myAtoi = function(s) {
-    let [i, ans, sign] = [0, 0, 1];
+    let sign = 1;
     const [minValue, maxValue] = [-1 * 2 ** 31, 2 ** 31 - 1];
 
-    // whitespace
-    while (i < s.length && s[i] == ' ') {
-        i++;
-    }
+    s = s.trim();
     
-    // +/-
-    if (i < s.length && s[i] === '-') {
+    if (s[0] === '-') {
         sign = -1;
-        i++;
-    } else if (i < s.length && s[i] === '+') {
-        i++;
+        s = s.slice(1);
+    } else if (s[0] === '+') {
+        s = s.slice(1);
     }
     
-    // check for digit
-    while (i < s.length && /\d/.test(s[i])) {
-        ans = ans * 10 + (+s[i]);
-        i++;
-    }
+    const digitsRe = /^\d+/;
+    if (!s.match(digitsRe)) return 0;
     
-    ans *= sign
+    const ans = sign * +s.match(digitsRe)[0];
     
     if (ans < 0) return Math.max(ans, minValue);
     return Math.min(ans, maxValue);
