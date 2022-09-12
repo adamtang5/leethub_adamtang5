@@ -4,12 +4,14 @@ class Solution:
             return False
         if x < 10:
             return True
-        s = str(x)
-        l, r = 0, len(s) - 1
-        while l < r:
-            if s[l] != s[r]:
+        digits = int(math.log10(x))
+        while digits > 0:
+            firstDigit = int(x / pow(10, digits))
+            lastDigit = x % 10
+            if firstDigit != lastDigit:
                 return False
             else:
-                l += 1
-                r -= 1
+                x %= pow(10, digits)
+                x //= 10
+                digits -= 2
         return True
