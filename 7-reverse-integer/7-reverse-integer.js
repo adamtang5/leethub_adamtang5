@@ -2,6 +2,7 @@
  * @param {number} x
  * @return {number}
  */
+
 var reverse = function(x) {
     const sign = x >= 0 ? 1 : -1;
     
