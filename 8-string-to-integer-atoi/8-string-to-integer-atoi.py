@@ -2,6 +2,8 @@ import re
 
 class Solution:
     def myAtoi(self, s: str) -> int:
+        maxValue = pow(2, 31) - 1
+        minValue = -1 * pow(2, 31)
         s = s.strip()
         sign = 1
         ans = ''
@@ -25,9 +27,9 @@ class Solution:
             return len(ans)
         ans = sign * int(ans)
         
-        if ans < -1 * pow(2, 31):
-            return -1 * pow(2, 31)
-        elif ans > pow(2, 31) - 1:
-            return pow(2, 31) - 1
+        if ans < minValue:
+            return minValue
+        elif ans > maxValue:
+            return maxValue
         else:
             return ans
