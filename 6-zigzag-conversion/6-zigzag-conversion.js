@@ -13,17 +13,12 @@ var convert = function (s, numRows) {
     // 2. newBase -> (numRows - 1) * 2
     const newBase = (numRows - 1) * 2;
 
-    // 3. create lookup table
-    const newIdxMods = new Array(newBase);
-    for (let i = 0; i < newBase; i++) {
-        newIdxMods[i] = i <= newBase / 2 ? i : newBase - i;
-    }
-    
-    // 4. iterate through s, (ch, i)
+    // 3. iterate through s, (ch, i)
     for (let i = 0; i < s.length; i++) {
         const ch = s[i];
         const iMod = i % newBase;
-        rows[newIdxMods[iMod]] += ch;
+        const newIdxMod = iMod <= newBase / 2 ? iMod : newBase - iMod;
+        rows[newIdxMod] += ch;
     }
 
     return rows.join('');
