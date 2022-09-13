@@ -22,7 +22,8 @@ var numIslands = function(grid) {
         visited.add(`${row}-${col}`);
         const fundDirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
         for (let [rowDiff, colDiff] of fundDirs) {
-            dfs(row + rowDiff, col + colDiff);
+            const [newRow, newCol] = [row + rowDiff, col + colDiff];
+            dfs(newRow, newCol);
         }
         return 1;
     };
