@@ -3,6 +3,7 @@
  * @return {number}
  */
 var numIslands = function(grid) {
+    if (!grid.length) return 0;
     let ans = 0;
     let visited = new Set();
     
