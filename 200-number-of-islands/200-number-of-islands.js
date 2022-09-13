@@ -28,8 +28,8 @@ var numIslands = function(grid) {
         return 1;
     };
     
-    for (let row = 0; row < grid.length; row++) {
-        for (let col = 0; col < grid[row].length; col++) {
+    for (let row = 0; row < nRows; row++) {
+        for (let col = 0; col < nCols; col++) {
             if (!visited.has(`${row}-${col}`)) {
                 ans += dfs(row, col);
             }
