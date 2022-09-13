@@ -2,6 +2,7 @@
  * @param {character[][]} grid
  * @return {number}
  */
+
 var numIslands = function(grid) {
     let ans = 0;
     let visited = new Set();
