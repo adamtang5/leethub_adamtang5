@@ -13,24 +13,20 @@ class Solution:
         def valid(row, col):
             return inBounds(row, col) and (row, col) not in visited and grid[row][col] == '1'
         
-        def bfs(row, col):
-            q = collections.deque()
-            visited.add((row, col))
-            q.append((row, col))
-
-            while q:
-                currRow, currCol = q.popleft()
+        def dfs(row, col):
+            if not valid(row, col):
+                return 0
+            else:
+                visited.add((row, col))
                 fundDirs = [[0, 1], [1, 0], [0, -1], [-1, 0]]
                 for rowDiff, colDiff in fundDirs:
-                    newRow, newCol = currRow + rowDiff, currCol + colDiff
-                    if valid(newRow, newCol):
-                        q.append((newRow, newCol))
-                        visited.add((newRow, newCol))
+                    newRow, newCol = row + rowDiff, col + colDiff
+                    dfs(newRow, newCol)
+                return 1
             
         for row in range(ROWS):
             for col in range(COLS):
-                if grid[row][col] == '1' and (row, col) not in visited:
-                    bfs(row, col)
-                    ans += 1
+                if (row, col) not in visited:
+                    ans += dfs(row, col)
                     
         return ans
