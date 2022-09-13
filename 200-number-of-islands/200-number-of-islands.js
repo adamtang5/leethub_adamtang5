@@ -3,11 +3,11 @@
  * @return {number}
  */
 var numIslands = function(grid) {
-    const [nRows, nCols] = [grid.length, grid[0].length];
-    let [ans, visited] = [0, new Set()];
+    let ans = 0;
+    let visited = new Set();
     
     const inBounds = (row, col) => {
-        return row >= 0 && row < nRows && col >= 0 && col < nCols;
+        return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
     };
     
     const valid = (row, col) => {
