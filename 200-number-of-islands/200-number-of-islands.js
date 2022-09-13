@@ -17,22 +17,39 @@ var numIslands = function(grid) {
             grid[row][col] === "1";
     };
     
-    const dfs = (row, col) => {
-        if (!valid(row, col)) return 0;
+//     const dfs = (row, col) => {
+//         if (!valid(row, col)) return 0;
         
+//         visited.add(`${row}-${col}`);
+//         const fundDirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+//         fundDirs.forEach(([rowDiff, colDiff]) => {
+//             const [newRow, newCol] = [row + rowDiff, col + colDiff];
+//             dfs(newRow, newCol);
+//         });
+//         return 1;
+//     };
+
+    const bfs = (row, col) => {
+        const queue = [[row, col]];
         visited.add(`${row}-${col}`);
-        const fundDirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
-        fundDirs.forEach(([rowDiff, colDiff]) => {
-            const [newRow, newCol] = [row + rowDiff, col + colDiff];
-            dfs(newRow, newCol);
-        });
-        return 1;
+        while (queue.length) {
+            const [currRow, currCol] = queue.shift();
+            const fundDirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+            fundDirs.forEach(([rowDiff, colDiff]) => {
+            const [newRow, newCol] = [currRow + rowDiff, currCol + colDiff];
+                if (valid(newRow, newCol)) {
+                    queue.push([newRow, newCol]);
+                    visited.add(`${newRow}-${newCol}`);
+                }
+            });
+        }
     };
     
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[row].length; col++) {
-            if (!visited.has(`${row}-${col}`)) {
-                ans += dfs(row, col);
+            if (valid(row, col)) {
+                bfs(row, col);
+                ans++;
             }
         }
     }
