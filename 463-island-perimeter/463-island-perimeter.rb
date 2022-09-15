@@ -9,28 +9,27 @@ def is_land(row, col, grid)
     return in_bounds(row, col, grid) && grid[row][col] == 1
 end
 
-def dfs(row, col, grid, visited, count)
+def dfs(row, col, grid, visited)
+    return 1 if !is_land(row, col, grid)
+    return 0 if visited.include?([row, col])
+        
     visited.add([row, col])
     dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+    ans = 0
     dirs.each do |row_diff, col_diff|
         new_row, new_col = row + row_diff, col + col_diff
-        if is_land(new_row, new_col, grid) && !visited.include?([new_row, new_col])
-            dfs(new_row, new_col, grid, visited, count)
-        elsif !is_land(new_row, new_col, grid)
-            count[0] += 1
-        end
+        ans += dfs(new_row, new_col, grid, visited)
     end
+    return ans
 end
 
 def island_perimeter(grid)
-    ans = [0]
     visited = Set.new
     
     (0...grid.length).each do |row|
         (0...grid[row].length).each do |col|
             if is_land(row, col, grid)
-                dfs(row, col, grid, visited, ans)
-                return ans[0]
+                return dfs(row, col, grid, visited)
             end
         end
     end
