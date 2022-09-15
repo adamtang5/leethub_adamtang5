@@ -4,6 +4,7 @@
  */
 var islandPerimeter = function(grid) {
     const [nRows, nCols] = [grid.length, grid[0].length];
+    let ans = 0;
     const visited = new Set();
     const dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
     
@@ -16,22 +17,22 @@ var islandPerimeter = function(grid) {
     };
     
     const dfs = (row, col) => {
-        if (!isLand(row, col)) return 1;
-        if (visited.has(`${row}-${col}`)) return 0;
-        
         visited.add(`${row}-${col}`);
-        let ans = 0;
         dirs.forEach(([rowDiff, colDiff]) => {
             const [newRow, newCol] = [row + rowDiff, col + colDiff];
-            ans += dfs(newRow, newCol);
+            if (isLand(newRow, newCol) && !visited.has(`${newRow}-${newCol}`)) {
+                dfs(newRow, newCol);
+            } else if (!isLand(newRow, newCol)) {
+                ans++;
+            }
         });
-        return ans;
     };
     
     for (let row = 0; row < nRows; row++) {
         for (let col = 0; col < nCols; col++) {
             if (isLand(row, col)) {
-                return dfs(row, col);
+                dfs(row, col);
+                return ans;
             }
         }
     }
