@@ -11,9 +11,7 @@ var numSubarrayProductLessThanK = function(nums, k) {
             prod /= nums[l];
             l++;
         }
-        if (prod < k) {
-            ans += r - l + 1;
-        }
+        if (prod < k) ans += r - l + 1;
         r++;
     }
     return ans;
