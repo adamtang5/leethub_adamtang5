@@ -6,7 +6,7 @@
 var numSubarrayProductLessThanK = function(nums, k) {
     let [l, r, ans, prod] = [0, 0, 0, nums[0]];
     while (r < nums.length && l <= r) {
-        console.log(prod);
+        // console.log(prod);
         if (prod < k) {
             ans += r - l + 1;
             r++;
