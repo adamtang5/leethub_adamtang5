@@ -3,7 +3,6 @@ class Solution:
         l, r, ans, prod = 0, 0, 0, 1
         while r < len(nums):
             prod *= nums[r]
-            
             while prod >= k and l < r:
                 prod //= nums[l]
                 l += 1
