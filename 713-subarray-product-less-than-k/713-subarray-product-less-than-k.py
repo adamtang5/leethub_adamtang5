@@ -10,7 +10,7 @@ class Solution:
                 if r < len(nums):
                     prod *= nums[r]
             elif l < r:
-                prod /= nums[l]
+                prod //= nums[l]
                 l += 1
             elif l == r:
                 r += 1
