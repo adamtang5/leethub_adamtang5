@@ -1,6 +1,7 @@
 class Solution:
     def zeroFilledSubarray(self, nums: List[int]) -> int:
         currStreak = ans = 0
+        
         for n in nums:
             if n == 0:
                 currStreak += 1
