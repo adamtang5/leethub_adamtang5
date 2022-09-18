@@ -1,6 +1,6 @@
 class Solution:
     def getDescentPeriods(self, prices: List[int]) -> int:
-        l, r, ans = 0, 0, 0
+        l = r = ans = 0
         while r < len(prices):
             ans += r - l + 1
             r += 1
