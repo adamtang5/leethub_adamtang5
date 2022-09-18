@@ -9,15 +9,13 @@ Ask the question: what's the maximum subarray ending at this index
 */
 
 var maxSubArray = function(nums) {
-    const runningMax = new Array(nums.length).fill(0);
+    let [prevMax, currMax, ans] = [-Infinity, -Infinity, -Infinity];
     
-    nums.forEach((n, i) => {
-        if (i === 0) {
-            runningMax[i] = n;
-        } else {
-            runningMax[i] = Math.max(n, n + runningMax[i - 1]);
-        }
+    nums.forEach(n => {
+        prevMax = currMax;
+        currMax = Math.max(n, n + prevMax);
+        ans = Math.max(ans, currMax);
     });
     
-    return Math.max(...runningMax);
+    return ans;
 };
