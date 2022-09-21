@@ -9,11 +9,11 @@ var isValid = function(s) {
         ']' : '[',
         '}' : '{',
     };
-    const isClose = p => Object.keys(open).includes(p);
+    const isOpen = p => Object.values(open).includes(p);
     
     for (let i = 0; i < s.length; i++) {
         const p = s[i];
-        if (!isClose(p)) {
+        if (isOpen(p)) {
             stack.push(p);
         } else {
             if (stack[stack.length - 1] !== open[p]) {
