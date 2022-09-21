@@ -3,12 +3,6 @@
  * @return {string[]}
  */
 
-/*
-Pattern:
-Base case: n = 1 --> ()
-Initial open parens: n, n - 1, ... 1
-*/
-
 var generateParenthesis = function(n) {
     const dp = {};
     dp['0-0'] = [''];
