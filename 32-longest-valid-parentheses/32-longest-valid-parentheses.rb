@@ -2,6 +2,7 @@
 # @return {Integer}
 
 def parse(s)
+    return s.length if s == ''
     ans, stack_height, valid_len = 0, 0, 0
     s.each_char do |paren|
         if paren == '('
