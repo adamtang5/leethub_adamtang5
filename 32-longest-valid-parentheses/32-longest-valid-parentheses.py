@@ -6,7 +6,6 @@ class Solution:
             return len(s)
         
         mirrored = ''.join(['(' if paren == ')' else ')' for paren in s[::-1]])
-        print(s, mirrored)
         
         def parse(s):
             ans = stackHeight = validLen = 0
