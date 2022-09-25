@@ -34,7 +34,6 @@ def longest_valid_parentheses(s)
     end
     s = s[l...r]
     
-    return 0 if s == ''
     mirrored = ''
     s.each_char do |paren|
         if paren == ')'
