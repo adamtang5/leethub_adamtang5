@@ -2,7 +2,6 @@
 # @return {Integer}
 
 def parse(s)
-    return 0 if s == ''
     ans, stack_height, valid_len = 0, 0, 0
     s.each_char do |paren|
         if paren == '('
