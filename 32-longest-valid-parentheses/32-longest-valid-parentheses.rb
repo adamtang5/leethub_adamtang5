@@ -23,6 +23,7 @@ def parse(s)
     return ans
 end
 
+
 def longest_valid_parentheses(s)
     # trim leading ')' and trailing '('
     l, r = 0, s.length
