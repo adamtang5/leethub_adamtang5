@@ -17,7 +17,6 @@ var longestValidParentheses = function(s) {
     s = s.slice(l, r);
     
     let mirrored = s.split('').map(paren => paren === ')' ? '(' : ')').reverse().join('');
-    console.log(s, mirrored);
     
     const parse = s => {
         let [ans, stackHeight, validLen] = [0, 0, 0];
