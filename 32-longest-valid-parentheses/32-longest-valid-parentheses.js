@@ -3,42 +3,14 @@
  * @return {number}
  */
 var longestValidParentheses = function(s) {
-    // trim leading ')'
-    let l = 0;
-    while (s[l] === ')') {
-        l++;
-    }
-    
-    // trim trailing '('
-    let r = s.length;
-    while (s[r - 1] === '(') {
-        r--;
-    }
-    s = s.slice(l, r);
-    
-    let mirrored = s.split('').map(paren => paren === ')' ? '(' : ')').reverse().join('');
-    
-    const parse = s => {
-        let [ans, stackHeight, validLen] = [0, 0, 0];
-
-        for (let i = 0; i < s.length; i++) {
-            if (s[i] === '(') {
-                stackHeight++;
-                validLen++;
-            } else {
-                stackHeight--;
-                if (stackHeight < 0) {
-                    validLen = 0;
-                    stackHeight = 0;
-                } else {
-                    validLen++;
-                }
-                if (stackHeight === 0) ans = Math.max(ans, validLen);
-            }
+    if (s.length < 2) return 0;
+    const dp = new Array(s.length).fill(0);
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === ')' && s[i - 1] === '(') {
+            dp[i] = (dp[i - 2] || 0) + 2;
+        } else if (s[i] === ')' && s[i - 1] === ')' && s[i - 1 - dp[i - 1]] === '(') {
+            dp[i] = (dp[i - 1] || 0) + (dp[i - 2 - dp[i - 1]] || 0) + 2;
         }
-        
-        return ans;
-    };
-    
-    return Math.max(parse(s), parse(mirrored));
+    }
+    return Math.max(...dp);
 };
