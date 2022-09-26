@@ -5,7 +5,6 @@ def is_valid(s)
     return true if s == ''
     return false if s.length % 3 != 0 || !s.include?('abc') || s[0] != 'a' || s[-1] != 'c'
     
-    
     stack = []
     (0...s.length).each do |i|
         if s[i] != 'c'
