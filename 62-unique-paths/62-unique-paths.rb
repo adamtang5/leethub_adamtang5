@@ -9,6 +9,5 @@ def unique_paths(m, n)
             dp[r][c] = dp[r+1][c] + dp[r][c+1]
         end
     end
-    
     return dp[0][0]
 end
