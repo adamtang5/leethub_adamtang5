@@ -1,47 +1,15 @@
 # @param {String} s
 # @return {Integer}
 
-def parse(s)
-    ans, stack_height, valid_len = 0, 0, 0
-    s.each_char do |paren|
-        if paren == '('
-            stack_height += 1
-            valid_len += 1
-        else
-            stack_height -= 1
-            if stack_height < 0
-                valid_len = 0
-                stack_height = 0
-            else
-                valid_len += 1
-            end
-            if stack_height == 0
-                ans = [ans, valid_len].max
-            end
-        end
-    end
-    return ans
-end
-
 def longest_valid_parentheses(s)
-    # trim leading ')' and trailing '('
-    l, r = 0, s.length
-    while s[l] == ')'
-        l += 1
-    end
-    while s[r-1] == '('
-        r -= 1
-    end
-    s = s[l...r]
-    
-    mirrored = ''
-    s.each_char do |paren|
-        if paren == ')'
-            mirrored = '(' + mirrored
-        else
-            mirrored = ')' + mirrored
+    return 0 if s.length < 2
+    dp = Array.new(s.length, 0)
+    (0...s.length).each do |i|
+        if s[i] == ')' && i-1 >= 0 && s[i-1] == '('
+            dp[i] = dp[i-2] + 2
+        elsif s[i] == ')' && i-1 - dp[i-1] >= 0 && s[i-1] == ')' && s[i-1 - dp[i-1]] == '('
+            dp[i] = dp[i-1] + dp[i-2 - dp[i-1]] + 2
         end
     end
-    
-    return [parse(s), parse(mirrored)].max
+    return dp.max
 end
