@@ -11,5 +11,5 @@ def longest_valid_parentheses(s)
             dp[i] = dp[i-1] + dp[i-2 - dp[i-1]] + 2
         end
     end
-    return dp.max
+    dp.max
 end
