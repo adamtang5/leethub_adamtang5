@@ -1,8 +1,9 @@
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         m, n = len(obstacleGrid), len(obstacleGrid[0])
-        if obstacleGrid[m-1][n-1] == 1:
+        if obstacleGrid[-1][-1] == 1:
             return 0
+        
         dp = [[None] * n for _ in range(m)]
         def inBounds(r, c):
             return r in range(m) and c in range(n)
