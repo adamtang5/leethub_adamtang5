@@ -5,8 +5,10 @@ class Solution:
             return 0
         
         dp = [[None] * n for _ in range(m)]
+        
         def inBounds(r, c):
             return r in range(m) and c in range(n)
+        
         def dpValue(r, c):
             return dp[r][c] if inBounds(r, c) else 0
         
