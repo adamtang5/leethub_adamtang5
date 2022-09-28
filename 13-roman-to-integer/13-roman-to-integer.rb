@@ -11,7 +11,7 @@ def roman_to_int(s)
         'M' => 1000,
     }
     
-    ans, i = 0, 0
+    ans = i = 0
     while i < s.length
         if i+1 == s.length || lookup[s[i]] >= lookup[s[i+1]]
             ans += lookup[s[i]]
