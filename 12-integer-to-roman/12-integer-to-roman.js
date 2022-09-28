@@ -14,7 +14,15 @@ var intToRoman = function(num) {
     };
     
     const parse = n => {
-        return n.toString(10).split('').reverse().map((s, p) => +s * (10 ** p)).reverse();
+        let places = Math.ceil(Math.log10(n));
+        const ans = [];
+        while (n > 0) {
+            ans.push(Math.floor(n / (10 ** places)) * (10 ** places));
+            n %= (10 ** places);
+            places--;
+        }
+        return ans;
+        // return n.toString(10).split('').reverse().map((s, p) => +s * (10 ** p)).reverse();
     };
     
     const digit2Roman = n => {
