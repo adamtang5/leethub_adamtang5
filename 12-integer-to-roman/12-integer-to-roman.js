@@ -2,46 +2,48 @@
  * @param {number} num
  * @return {string}
  */
+
 var intToRoman = function(num) {
-    const lookup = {
-        1: 'I',
-        5: 'V',
-        10: 'X',
-        50: 'L',
-        100: 'C',
-        500: 'D',
-        1000: 'M',
-    };
-    
-    const parse = n => {
-        let places = Math.ceil(Math.log10(n));
-        const ans = [];
-        while (n > 0) {
-            ans.push(Math.floor(n / (10 ** places)) * (10 ** places));
-            n %= (10 ** places);
-            places--;
-        }
-        return ans;
-        // return n.toString(10).split('').reverse().map((s, p) => +s * (10 ** p)).reverse();
-    };
-    
-    const digit2Roman = n => {
-        const leadDigit = parseInt(n.toString(10)[0], 10);
-        if (!n) {
+    const lookup = [
+        {
+            1: 'I',
+            5: 'V',
+        },
+        {
+            1: 'X',
+            5: 'L',
+        },
+        {
+            1: 'C',
+            5: 'D',
+        },
+        {
+            1: 'M',
+        },
+    ];
+
+    const digit2Roman = (val, pow) => {
+        if (val === 0) {
             return '';
-        } else if (leadDigit <= 3) {
-            return new Array(leadDigit).fill(lookup[n / leadDigit]).join('');
-        } else if (leadDigit <= 8) {
-            const pre = new Array(Math.abs(Math.min(leadDigit - 5, 0))).fill(lookup[n / leadDigit]).join('');
-            const five = lookup[5 * n / leadDigit];
-            const post = new Array(Math.max(leadDigit - 5, 0)).fill(lookup[n / leadDigit]).join('');
-            return pre + five + post;
-        } else if (leadDigit === 9) {
-            const pre = lookup[n / leadDigit];
-            const ten = lookup[10 * n / leadDigit];
-            return pre + ten;
+        } else if (val <= 3) {
+            return new Array(val).fill(lookup[pow][1]).join('');
+        } else if (val <= 8) {
+            const left = val < 5 ? lookup[pow][1] : '';
+            const right = val > 5 ? new Array(val - 5).fill(lookup[pow][1]).join('') : '';
+            return left + lookup[pow][5] + right;
+        } else if (val === 9) {
+            return lookup[pow][1] + lookup[pow + 1][1];
         }
     };
     
-    return parse(num).map(n => digit2Roman(n)).join('');
+    let powerOf10 = Math.floor(Math.log10(num));
+    let places = new Array(powerOf10 + 1).fill(0);
+    while (num > 0) {
+        places[powerOf10] = Math.floor(num / 10 ** powerOf10);
+        num = num % 10 ** powerOf10;
+        powerOf10 = Math.floor(Math.log10(num));
+    }
+    
+    places = places.map((val, pow) => digit2Roman(val, pow));
+    return places.reverse().join('');
 };
