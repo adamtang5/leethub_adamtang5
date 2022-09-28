@@ -10,16 +10,13 @@ class Solution:
             'M': 1000,
         }
 
-        ans, i = 0, 0
+        ans = i = 0
         while i < len(s):
-            if i+1 == len(s):
+            if i+1 == len(s) or lookup[s[i]] >= lookup[s[i+1]]:
                 ans += lookup[s[i]]
                 i += 1
-            elif lookup[s[i]] < lookup[s[i+1]]:
+            else:
                 ans += lookup[s[i+1]] - lookup[s[i]]
                 i += 2
-            else:
-                ans += lookup[s[i]]
-                i += 1
             
         return ans
