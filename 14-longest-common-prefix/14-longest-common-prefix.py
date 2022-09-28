@@ -11,5 +11,4 @@ class Solution:
                 ans += ch
             else:
                 break
-                
         return ans
