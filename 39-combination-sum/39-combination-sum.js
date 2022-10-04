@@ -8,23 +8,19 @@ var combinationSum = function(candidates, target) {
     if (!candidates.length) return [];
     
     candidates.sort((a, b) => b - a);
-    // console.log(candidates, target);
     
     const ans = [];
     
-    const dfs = (c, t, start=0, suffix=[]) => {
-        // console.log(c, t, start, suffix);
-        if (start > t) return null;
-        if (start === t) {
+    const dfs = (c, t, suffix=[]) => {
+        if (t === 0) {
             ans.unshift(suffix);
-            return suffix;
+        } else if (t > 0) {
+            c = c.slice();
+            let currMax = c.shift();
+            for (let i = Math.floor(t / currMax); i >= 0; i--) {
+                dfs(c, t - i * currMax, [...new Array(i).fill(currMax), ...suffix]);
+            }
         }
-        c = c.slice();
-        let currMax = c.shift();
-        for (let i = Math.floor((t - start) / currMax); i >= 0; i--) {
-            dfs(c, t, start + currMax * i, [...new Array(i).fill(currMax), ...suffix]);
-        }
-        
     };
     
     dfs(candidates, target);
