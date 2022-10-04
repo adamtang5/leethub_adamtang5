@@ -15,10 +15,9 @@ var combinationSum = function(candidates, target) {
         if (t === 0) {
             ans.unshift(suffix);
         } else if (t > 0) {
-            c = c.slice();
-            let currMax = c.shift();
+            let currMax = c[0];
             for (let i = Math.floor(t / currMax); i >= 0; i--) {
-                dfs(c, t - i * currMax, [...new Array(i).fill(currMax), ...suffix]);
+                dfs(c.slice(1), t - i * currMax, [...new Array(i).fill(currMax), ...suffix]);
             }
         }
     };
