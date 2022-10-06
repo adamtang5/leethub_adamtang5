@@ -4,9 +4,9 @@
  */
 var hammingWeight = function(n) {
     let count = 0;
-    const bin = n.toString(2);
-    for (let i = 0; i < bin.length; i++) {
-        if (bin[i] === '1') count++;
+    while (n > 0) {
+        if (n % 2) count++;
+        n = (n - (n % 2)) / 2;
     }
     return count;
 };
