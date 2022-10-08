@@ -3,9 +3,6 @@
  * @return {boolean}
  */
 var isPowerOfFour = function(n) {
-    while (n > 1) {
-        if (n % 4) return false;
-        n /= 4;
-    }
-    return n === 1;
+    let power = Math.floor(Math.log(n) / Math.log(4));
+    return n > 0 && n === 4 ** power;
 };
