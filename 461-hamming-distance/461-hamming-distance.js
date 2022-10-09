@@ -4,5 +4,5 @@
  * @return {number}
  */
 var hammingDistance = function(x, y) {
-    return (x ^ y).toString(2).split('').filter(d => d === '1').length;
+    return (x ^ y).toString(2).replaceAll('0', '').length;
 };
