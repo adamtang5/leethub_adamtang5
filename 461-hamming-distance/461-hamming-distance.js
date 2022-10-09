@@ -4,5 +4,10 @@
  * @return {number}
  */
 var hammingDistance = function(x, y) {
-    return (x ^ y).toString(2).replaceAll('0', '').length;
+    const xorStr = (x ^ y).toString(2);
+    let count = 0;
+    for (let i = 0; i < xorStr.length; i++) {
+        if (xorStr[i] === '1') count++;
+    }
+    return count;
 };
