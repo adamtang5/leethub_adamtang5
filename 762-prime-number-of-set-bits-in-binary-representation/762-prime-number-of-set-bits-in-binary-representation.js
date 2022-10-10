@@ -5,8 +5,7 @@
  */
 var countPrimeSetBits = function(left, right) {
     let count = 0;
-    let primes = [2, 3, 5, 7, 11, 13, 17, 19];
-    primes = new Set(primes);
+    primes = new Set([2, 3, 5, 7, 11, 13, 17, 19]);
     
     const bitCount = n => {
         let count = 0;
