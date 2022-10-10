@@ -5,17 +5,21 @@
  */
 var countPrimeSetBits = function(left, right) {
     let count = 0;
-    const isPrime = n => {
-        if (n < 2) return false;
-        for (let x = 2; x <= Math.sqrt(n); x++) {
-            if (n % x === 0) return false;
+    let primes = [2, 3, 5, 7, 11, 13, 17, 19];
+    primes = new Set(primes);
+    
+    const bitCount = n => {
+        let count = 0;
+        const places = n.toString(2).length;
+        for (let p = 0; p < places; p++) {
+            let mask = 1 << p;
+            if ((mask & n) == (mask)) count++;
         }
-        return true;
+        return count;
     };
     
     for (let i = left; i <= right; i++) {
-        const bits = i.toString(2).split('').filter(d => d === '1').length;
-        if (isPrime(bits)) count++;
+        if (primes.has(bitCount(i))) count++;
     }
     return count;
 };
