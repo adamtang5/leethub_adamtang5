@@ -14,14 +14,8 @@ class Solution:
             primes.add(n)
             return True
         
-        bits = [0] * (right+1)
-        offset = 1
-        for n in range(1, right+1):
-            if n == offset*2:
-                offset = n
-            bits[n] = 1 + bits[n - offset]
-            
         for i in range(left, right+1):
-            if bits[i] in primes or isPrime(bits[i]):
+            bits = len(format(i, 'b').replace('0', ''))
+            if bits in primes or isPrime(bits):
                 count += 1
         return count
