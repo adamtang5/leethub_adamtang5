@@ -7,7 +7,4 @@ class Solution:
             if r < numsLen:
                 nums[l+1] = nums[r]
             l += 1
-        k = 1
-        while k < numsLen and nums[k] > nums[k-1]:
-            k += 1
-        return k
+        return l
