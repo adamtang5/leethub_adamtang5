@@ -11,7 +11,7 @@ var removeDuplicates = function(nums) {
         nums[l + 1] = nums[r];
         l++;
     }
-    console.log(nums);
+    // console.log(nums);
     const k = nums.indexOf(undefined);
     return (k !== -1) ? k : len;
 };
