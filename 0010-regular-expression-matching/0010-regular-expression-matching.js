@@ -4,22 +4,17 @@
  * @return {boolean}
  */
 var isMatch = function(s, p) {
-    const parseP = p => {
-        const ans = [];
-        let i = 0;
-        while (i < p.length) {
-            if (p[i + 1] === '*') {
-                ans.push(p[i] + p[i + 1]);
-                i += 2;
-            } else {
-                ans.push(p[i]);
-                i++;
-            }
+    const parsed = [];
+    let i = 0;
+    while (i < p.length) {
+        if (p[i + 1] === '*') {
+            parsed.push(p[i] + p[i + 1]);
+            i += 2;
+        } else {
+            parsed.push(p[i]);
+            i++;
         }
-        return ans;
-    };
-    
-    const parsed = parseP(p);
+    }
     
     const charMatch = (ch1, ch2) => {
         return ch2 === '.' || ch2 === ch1;
@@ -29,6 +24,9 @@ var isMatch = function(s, p) {
     if (s.length && !parsed.length) return false;
     if (!s.length && !parsed.length) return true;
     if (!s.length && parsed.length) return parsed.every(el => el.length === 2);
+    
+    // dp
+    const dp = [];
     
     // recursive step
     const first = parsed.shift();
@@ -42,11 +40,17 @@ var isMatch = function(s, p) {
             while (first[0] === '.' && len < s.length || s[len] === s[0]) {
                 len++;
             }
-            let bool = false;
-            for (let i = 0; i <= len; i++) {
-                bool ||= isMatch(s.slice(i), parsed);
+            const key = JSON.stringify([s, [first, ...parsed]]);
+            if (dp[key] !== undefined) {
+                return dp[key];
+            } else {
+                let bool = false;
+                for (let i = 0; i <= len; i++) {
+                    bool ||= isMatch(s.slice(i), parsed);
+                }
+                dp[key] = bool;
+                return bool;
             }
-            return bool;
         }
     }
 };
