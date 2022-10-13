@@ -25,7 +25,7 @@ var isMatch = function(s, p) {
     if (!s.length && !parsed.length) return true;
     if (!s.length && parsed.length) return parsed.every(el => el.length === 2);
     
-    const dp = [];
+    const dp = {};
     
     // recursive step
     const first = parsed.shift();
