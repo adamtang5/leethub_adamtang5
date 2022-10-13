@@ -29,7 +29,7 @@ var isMatch = function(s, p) {
     // base case
     if (s.length && !parsed.length) return false;
     if (!s.length && !parsed.length) return true;
-    if (!s.length && parsed.length) return !(parsed.some(el => el.length === 1));
+    if (!s.length && parsed.length) return parsed.every(el => el.length === 2);
     
     // recursive step
     const first = parsed.shift();
