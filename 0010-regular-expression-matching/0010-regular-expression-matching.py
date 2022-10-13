@@ -1,5 +1,7 @@
+import json
+
 class Solution:
-    def isMatch(self, s: str, p: str) -> bool:
+    def isMatch(self, s: str, p: str, dp={}) -> bool:
         parsed = []
         i = 0
         while i < len(p):
@@ -24,15 +26,20 @@ class Solution:
         # recursive steps
         first = parsed.pop(0)
         if len(first) == 1:
-            return charMatch(s[0], first) and self.isMatch(s[1:], parsed)
+            return charMatch(s[0], first) and self.isMatch(s[1:], parsed, dp)
         else:
             if not charMatch(s[0], first[0]):
-                return self.isMatch(s, parsed)
+                return self.isMatch(s, parsed, dp)
             else:
-                length = 1
-                while length < len(s) and (first[0] == '.' or s[length] == s[0]):
-                    length += 1
-                boo = False
-                for i in range(length+1):
-                    boo = boo or self.isMatch(s[i:], parsed)
-                return boo
+                key = json.dumps([s, [first]+parsed])
+                if key in dp:
+                    return dp[key]
+                else:
+                    length = 1
+                    while length < len(s) and (first[0] == '.' or s[length] == s[0]):
+                        length += 1
+                    boo = False
+                    for i in range(length+1):
+                        boo = boo or self.isMatch(s[i:], parsed, dp)
+                    dp[key] = boo
+                    return boo
