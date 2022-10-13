@@ -40,6 +40,7 @@ var isMatch = function(s, p) {
                 len++;
             }
             
+            console.log(dp);
             const key = JSON.stringify([s, [first, ...parsed]]);
             if (dp[key] !== undefined) {
                 return dp[key];
