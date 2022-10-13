@@ -20,7 +20,6 @@ var isMatch = function(s, p) {
     };
     
     const parsed = parseP(p);
-    // console.log(s, parsed);
     
     const charMatch = (ch1, ch2) => {
         return ch2 === '.' || ch2 === ch1;
