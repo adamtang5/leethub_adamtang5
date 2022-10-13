@@ -25,7 +25,6 @@ var isMatch = function(s, p) {
     if (!s.length && !parsed.length) return true;
     if (!s.length && parsed.length) return parsed.every(el => el.length === 2);
     
-    // dp
     const dp = [];
     
     // recursive step
@@ -40,6 +39,7 @@ var isMatch = function(s, p) {
             while (first[0] === '.' && len < s.length || s[len] === s[0]) {
                 len++;
             }
+            
             const key = JSON.stringify([s, [first, ...parsed]]);
             if (dp[key] !== undefined) {
                 return dp[key];
