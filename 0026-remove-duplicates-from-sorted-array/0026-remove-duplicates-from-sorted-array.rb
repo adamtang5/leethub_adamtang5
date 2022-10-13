@@ -11,9 +11,5 @@ def remove_duplicates(nums)
         end
         l += 1
     end
-    k = 1
-    while k < len && nums[k] > nums[k-1]
-        k += 1
-    end
-    return k
+    return l
 end
