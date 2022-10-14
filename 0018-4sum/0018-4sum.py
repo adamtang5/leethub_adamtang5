@@ -20,7 +20,6 @@ class Solution:
                 while nums[j+1] == nums[j] and j < len(nums)-2:
                     j += 1
                 j += 1
-
             while nums[i+1] == nums[i] and i < len(nums)-3:
                 i += 1
             i += 1
