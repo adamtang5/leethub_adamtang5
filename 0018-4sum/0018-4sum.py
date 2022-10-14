@@ -15,6 +15,7 @@ class Solution:
                         l += 1
                     else:
                         r -= 1
+                        
                 while nums[j+1] == nums[j] and j < len(nums)-2:
                     j += 1
                 j += 1
