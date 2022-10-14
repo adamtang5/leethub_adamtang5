@@ -26,7 +26,6 @@ def four_sum(nums, target)
             end
             j += 1
         end
-        
         while nums[i+1] == nums[i] && i < nums.length-3
             i += 1
         end
