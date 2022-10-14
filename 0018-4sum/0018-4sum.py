@@ -4,7 +4,8 @@ class Solution:
         nums.sort()
         ans = set()
         for i in range(len(nums)-3):
-            for j in range(i+1, len(nums)-2):
+            j = i+1
+            while j < len(nums)-2:
                 l, r = j+1, len(nums)-1
                 while l < r:
                     currSum = nums[i]+nums[j]+nums[l]+nums[r]
@@ -14,4 +15,7 @@ class Solution:
                         l += 1
                     else:
                         r -= 1
+                while nums[j+1] == nums[j] and j < len(nums)-2:
+                    j += 1
+                j += 1
         return [json.loads(s) for s in list(ans)]
