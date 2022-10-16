@@ -2,14 +2,6 @@
  * @param {character[][]} board
  * @return {boolean}
  */
-
-/*
-when given an array of length 9
-1. filter the array to only filled cells
-2. sort the array
-3. iterate through the array to see if there are repeats
-*/
-
 var isValidSudoku = function(board) {
     const check9 = arr => {
         arr = arr.filter(cell => cell !== '.');
