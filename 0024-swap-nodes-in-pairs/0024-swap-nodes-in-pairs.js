@@ -15,18 +15,17 @@ var swapPairs = function(head) {
     
     let prev = dummyHead;
     let next = prev.next;
-    let curr, nextPair;
+    let curr;
     if (!head) return head;
     curr = next.next ? next.next : null;
     
     while (next.next) {
-        nextPair = curr.next;
         prev.next = curr;
+        next.next = curr.next;
         curr.next = next;
-        next.next = nextPair;
-        if (!nextPair) return dummyHead.next;
+        if (!next.next) return dummyHead.next;
         prev = next;
-        next = nextPair;
+        next = next.next;
         curr = next.next ? next.next : null;
     }
     return dummyHead.next;
