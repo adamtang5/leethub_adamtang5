@@ -3,7 +3,7 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if not all([n != 0 for n in nums]):
+        if any([n == 0 for n in nums]):
             start = nums.index(0)
             clean = dirty = start
             while dirty < len(nums) and clean < len(nums):
