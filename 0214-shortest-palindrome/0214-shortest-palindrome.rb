@@ -1,9 +1,7 @@
 # @param {String} s
 # @return {String}
 def shortest_palindrome(s)
-    if s.length < 2
-        return s
-    end
+    return s if s.length < 2
     rev_s = s.reverse
     pre, post = s, rev_s
     while pre != post
