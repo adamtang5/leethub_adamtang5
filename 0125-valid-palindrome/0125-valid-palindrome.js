@@ -3,23 +3,17 @@
  * @return {boolean}
  */
 var isPalindrome = function(s) {
-    const isAlphaNum = ch => {
-        return ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z' || ch >= '0' && ch <= '9';
-    };
-    
+    const re = /[^a-z0-9]/g;
+
+    s = s.toLowerCase().replace(re, '');
+    console.log(s);
     let [l, r] = [0, s.length - 1];
     while (l < r) {
-        if (!isAlphaNum(s[l])) {
-            l++;
-        } else if (!isAlphaNum(s[r])) {
-            r--;
+        if (s[l] !== s[r]) {
+            return false;
         } else {
-            if (s[l].toLowerCase() !== s[r].toLowerCase()) {
-                return false;
-            } else {
-                l++;
-                r--;
-            }            
+            l++;
+            r--;
         }
     }
     return true;
