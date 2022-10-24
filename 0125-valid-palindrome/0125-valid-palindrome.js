@@ -3,17 +3,11 @@
  * @return {boolean}
  */
 var isPalindrome = function(s) {
-    let newS = '';
-    const lowerNumeric = /[a-z0-9]/;
-    for (let i = 0; i < s.length; i++) {
-        if (lowerNumeric.test(s[i].toLowerCase())) {
-            newS += s[i].toLowerCase();
-        }
-    }
-    console.log(newS);
-    let [l, r] = [0, newS.length - 1];
+    const re = /[^a-z0-9]/g;
+    s = s.toLowerCase().replace(re, '');
+    let [l, r] = [0, s.length - 1];
     while (l < r) {
-        if (newS[l] !== newS[r]) {
+        if (s[l] !== s[r]) {
             return false;
         } else {
             l++;
