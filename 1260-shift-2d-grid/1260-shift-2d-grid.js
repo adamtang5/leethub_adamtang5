@@ -5,17 +5,12 @@
  */
 
 var shiftGrid = function(grid, k) {
-    let oneD = grid.flat();
-    const shifted1D = new Array(oneD.length).fill(0);
-    
-    for (let i = 0; i < oneD.length; i++) {
-        shifted1D[(i + k) % oneD.length] = oneD[i];
-    }
-
-    for (let i = 0; i < shifted1D.length; i++) {
-        const row = Math.floor(i / grid[0].length);
-        const col = i % grid[0].length;
-        grid[row][col] = shifted1D[i];
-    }
-    return grid;
+    const cols = grid[0].length;
+    const flattened = grid.flat();
+    k %= flattened.length;
+    k = flattened.length - k;
+    const shifted = [...flattened.slice(k), ...flattened.slice(0, k)];
+    const ans = [];
+    while (shifted.length) ans.push(shifted.splice(0, cols));
+    return ans;
 };
