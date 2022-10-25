@@ -4,5 +4,11 @@
  * @return {boolean}
  */
 var isIsomorphic = function(s, t) {
-    return s.split('').map(ch => s.indexOf(ch)).toString() === t.split('').map(ch => t.indexOf(ch)).toString();
+    let sIndex, tIndex;
+    for (let i = 0; i < s.length; i++) {
+        sIndex = s.indexOf(s[i]);
+        tIndex = t.indexOf(t[i]);
+        if (sIndex !== tIndex) return false;
+    }
+    return true;
 };
