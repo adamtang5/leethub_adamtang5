@@ -1,6 +1,6 @@
 class Solution:
     def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
-        ROWS, COLS = len(grid), len(grid[0])
+        COLS = len(grid[0])
         grid1D = [n for row in grid for n in row]
         shifted1D = [0] * len(grid1D)
         for i in range(len(grid1D)):
