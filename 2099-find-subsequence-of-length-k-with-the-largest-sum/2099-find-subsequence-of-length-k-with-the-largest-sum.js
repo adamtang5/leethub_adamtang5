@@ -3,11 +3,6 @@
  * @param {number} k
  * @return {number[]}
  */
-
-/*
-data structure: 2D array matrix to keep track of values and indices
-*/
-
 var maxSubsequence = function(nums, k) {
     let matrix = [];
     nums.forEach((num, i) => matrix.push([num, i]));
