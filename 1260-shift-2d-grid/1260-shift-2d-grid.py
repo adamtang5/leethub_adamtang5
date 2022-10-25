@@ -5,7 +5,6 @@ class Solution:
         shifted1D = [0] * len(grid1D)
         for i in range(len(grid1D)):
             shifted1D[(i+k) % len(grid1D)] = grid1D[i]
-            
         for i in range(len(shifted1D)):
             row = i // COLS
             col = i % COLS
