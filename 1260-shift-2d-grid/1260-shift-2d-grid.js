@@ -9,8 +9,7 @@ var shiftGrid = function(grid, k) {
     let flattened = grid.flat();
     k %= flattened.length;
     l = flattened.length - k;
-    const spliced = flattened.splice(l, k);
-    flattened.splice(0, 0, ...spliced);
+    flattened.splice(0, 0, ...flattened.splice(l, k));
     const ans = [];
     while (flattened.length) ans.push(flattened.splice(0, cols));
     return ans;
