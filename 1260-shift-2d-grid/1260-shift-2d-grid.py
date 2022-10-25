@@ -6,10 +6,8 @@ class Solution:
         for i in range(len(grid1D)):
             shifted1D[(i+k) % len(grid1D)] = grid1D[i]
             
-        ans = [[0] * COLS for _ in range(ROWS)]
-
         for i in range(len(shifted1D)):
             row = i // COLS
             col = i % COLS
-            ans[row][col] = shifted1D[i]
-        return ans
+            grid[row][col] = shifted1D[i]
+        return grid
