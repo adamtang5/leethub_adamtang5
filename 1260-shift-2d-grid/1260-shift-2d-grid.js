@@ -12,12 +12,10 @@ var shiftGrid = function(grid, k) {
         shifted1D[(i + k) % oneD.length] = oneD[i];
     }
 
-    const ans = grid.slice();
-    
     for (let i = 0; i < shifted1D.length; i++) {
         const row = Math.floor(i / grid[0].length);
         const col = i % grid[0].length;
-        ans[row][col] = shifted1D[i];
+        grid[row][col] = shifted1D[i];
     }
-    return ans;
+    return grid;
 };
