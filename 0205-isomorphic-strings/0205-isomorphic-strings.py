@@ -1,3 +1,6 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        return [s.index(ch) for ch in s] == [t.index(ch) for ch in t]
+        for i in range(len(s)):
+            if s.index(s[i]) != t.index(t[i]):
+                return False
+        return True
