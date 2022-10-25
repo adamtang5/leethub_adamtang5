@@ -2,5 +2,8 @@
 # @param {String} t
 # @return {Boolean}
 def is_isomorphic(s, t)
-    return s.chars.map{ |ch| s.index(ch) } == t.chars.map{ |ch| t.index(ch) }
+    (0...s.length).each do |i|
+        return false if s.index(s[i]) != t.index(t[i])
+    end
+    return true
 end
