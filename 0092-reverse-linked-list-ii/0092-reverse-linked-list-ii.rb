@@ -33,8 +33,5 @@ def reverse_between(head, left, right)
     end
     prev.next.next = remain
     prev.next = rev
-    if left == 1
-        head = prev.next
-    end
-    return head
+    return left == 1 ? rev : head
 end
