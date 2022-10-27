@@ -12,10 +12,14 @@
  */
 var invertTree = function(root) {
     if (!root) return root;
-    const right = root.right;
-    root.right = root.left;
-    root.left = right;
-    if (root.right) invertTree(root.right);
-    if (root.left) invertTree(root.left);
+    const queue = [root];
+    while (queue.length) {
+        let curr = queue.shift();
+        const right = curr.right;
+        curr.right = curr.left;
+        curr.left = right;
+        if (curr.right) queue.push(curr.right);
+        if (curr.left) queue.push(curr.left);
+    }
     return root;
 };
