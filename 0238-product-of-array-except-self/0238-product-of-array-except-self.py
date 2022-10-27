@@ -4,7 +4,7 @@ class Solution:
         currProd = 1
         for i in range(len(nums)-1):
             currProd *= nums[i]
-            ans[i+1] *= currProd
+            ans[i+1] = currProd
         currProd = 1
         for i in range(len(nums)-1, 0, -1):
             currProd *= nums[i]
