@@ -4,14 +4,13 @@
  */
 var permute = function(nums) {
     if (nums.length === 1) return [nums];
-    
+
     let ans = [];
-    
     nums.forEach((n, i) => {
-        let remaining = [...nums.slice(0, i), ...nums.slice(i + 1)];
-        let subPerm = permute(remaining);
-        subPerm.forEach(p => {
-            ans.push([n, ...p]);
+        const copy = nums.slice();
+        const extracted = copy.splice(i, 1);
+        permute(copy).forEach(p => {
+            ans.push([extracted, ...p]);
         })
     });
     
