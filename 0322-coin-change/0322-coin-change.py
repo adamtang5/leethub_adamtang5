@@ -1,9 +1,13 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        dp = [float('inf')] * (amount+1)
-        dp[0] = 0
-        for i in range(1, amount+1):
+        to_collect = 1 << amount
+        n = 0
+        while not to_collect & 1:
+            collected = 0
             for coin in coins:
-                if i >= coin:
-                    dp[i] = min(dp[i], dp[i-coin]+1)
-        return -1 if dp[amount] == float('inf') else dp[amount]
+                collected |= to_collect >> coin
+            if not collected:
+                return -1
+            to_collect = collected
+            n += 1
+        return n
