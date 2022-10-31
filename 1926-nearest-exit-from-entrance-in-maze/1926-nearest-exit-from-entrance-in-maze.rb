@@ -28,6 +28,7 @@ def nearest_exit(maze, entrance)
             end
         end
     end
+    return -1 if exits.size == 0
     queue = [entrance]
     dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]]
     while queue.length > 0
