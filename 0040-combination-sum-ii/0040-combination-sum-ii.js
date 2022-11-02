@@ -20,7 +20,6 @@ var combinationSum2 = function(candidates, target) {
             while (c[n] === c[n - 1]) {
                 n++;
             }
-            console.log(n, ans);
             for (let i = Math.min(Math.floor(t / currMax), n); i >= 0; i--) {
                 dfs(c.slice(n), t - i * currMax, [...new Array(i).fill(currMax), ...suffix]);
             }
