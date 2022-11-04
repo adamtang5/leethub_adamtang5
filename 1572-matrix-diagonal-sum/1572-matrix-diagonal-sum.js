@@ -3,16 +3,16 @@
  * @return {number}
  */
 var diagonalSum = function(mat) {
-    let sum = 0;
+    let [sum, n] = [0, mat.length];
     
-    for (let i = 0; i < mat.length; i++) {
+    for (let i = 0; i < n; i++) {
         sum += mat[i][i];
     }
-    for (let i = 0; i < mat.length; i++) {
-        sum += mat[mat.length - 1 - i][i];
+    for (let i = 0; i < n; i++) {
+        sum += mat[n - 1 - i][i];
     }
     
-    if (mat.length % 2) sum -= mat[(mat.length - 1) / 2][(mat.length - 1) / 2];
+    if (n % 2) sum -= mat[(n - 1) / 2][(n - 1) / 2];
     
     return sum;
 };
