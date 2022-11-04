@@ -4,9 +4,7 @@
  */
 var generateMatrix = function(n) {
     const matrix = new Array(n).fill().map(() => new Array(n).fill(0));
-
-    let [minRow, maxRow, minCol, maxCol] = [0, n - 1, 0, n - 1];
-    let currNum = 1;
+    let [minRow, maxRow, minCol, maxCol, currNum, moveIdx] = [0, n - 1, 0, n - 1, 1, 0];
 
     const goRight = () => {
         for (let i = minCol; i <= maxCol; i++) {
@@ -42,7 +40,6 @@ var generateMatrix = function(n) {
 
     const moveSeq = [goRight, goDown, goLeft, goUp];
 
-    let moveIdx = 0;
     while (currNum <= n * n) {
         moveSeq[moveIdx % 4]();
         moveIdx++;
