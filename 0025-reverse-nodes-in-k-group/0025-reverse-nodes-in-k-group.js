@@ -12,7 +12,7 @@
  */
 var reverseKGroup = function(head, k) {
     let [curr, prev, rev, len, i] = [head, head, null, 0, 0];
-    let remain, newPrev;
+    let remain, newPrev, j;
     while (curr) {
         curr = curr.next;
         len++;
@@ -20,7 +20,7 @@ var reverseKGroup = function(head, k) {
     curr = head;
     
     while (len - i >= k) {
-        let j = 0;
+        j = 0;
         rev = null;
         while (j < k) {
             remain = curr.next;
