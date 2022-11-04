@@ -9,7 +9,6 @@ var diagonalSum = function(mat) {
         sum += mat[i][i];
         sum += mat[n - 1 - i][i];
     }
-
     if (n % 2) sum -= mat[(n - 1) / 2][(n - 1) / 2];
     
     return sum;
