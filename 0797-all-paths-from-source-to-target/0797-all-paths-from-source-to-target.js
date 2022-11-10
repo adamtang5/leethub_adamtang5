@@ -2,19 +2,6 @@
  * @param {number[][]} graph
  * @return {number[][]}
  */
-
-/*
-depth first search
-stack vs. recursion
-paths = []
-
-dfs:
-if node === n - 1 ==> paths.push(path)
-if !graph[node].length ==> return
-
-for each nextNode in graph[node],
-dfs(nextNode, path)
-*/
 var allPathsSourceTarget = function(graph) {
     const paths = [];
     
