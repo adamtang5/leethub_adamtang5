@@ -14,7 +14,6 @@ class Solution:
                 else:
                     l += 1
                 maxIdx = (r+l) // 2
-        print(maxIdx, nums[maxIdx])
         
         if maxIdx < len(nums)-1:
             if target > nums[0]:
