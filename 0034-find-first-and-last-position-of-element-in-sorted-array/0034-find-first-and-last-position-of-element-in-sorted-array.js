@@ -7,7 +7,6 @@ var searchRange = function(nums, target) {
     let [l, r] = [0, nums.length - 1];
     let pivot = Math.floor((r + l) / 2);
     while (l <= r) {
-        console.log(l, r, pivot, nums[pivot]);
         if (nums[pivot] !== target) {
             if (nums[pivot] > target) {
                 r = pivot - 1;
