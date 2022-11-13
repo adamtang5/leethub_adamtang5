@@ -4,7 +4,6 @@
  * @return {number[]}
  */
 var searchRange = function(nums, target) {
-    let ans = [-1, -1];
     let [l, r] = [0, nums.length - 1];
     let pivot = Math.floor((r + l) / 2);
     while (l <= r) {
@@ -24,9 +23,8 @@ var searchRange = function(nums, target) {
             while (nums[r] === target) {
                 r++;
             }
-            ans = [l + 1, r - 1];
-            break;
+            return [l + 1, r - 1];
         }
     }
-    return ans;
+    return [-1, -1];
 };
