@@ -4,11 +4,10 @@
  * @return {number}
  */
 var search = function(nums, target) {
-    let ans = -1;
     let [l, r] = [0, nums.length - 1];
     let maxIdx;
     if (nums[0] < nums[nums.length - 1]) {
-        maxIdx = nums.length - 1;
+        maxIdx = r;
     } else {
         maxIdx = Math.floor((r + l) / 2);
         while (l <= r && nums[maxIdx + 1] > nums[maxIdx]) {
@@ -41,6 +40,6 @@ var search = function(nums, target) {
         }
         pivot = Math.floor((r + l) / 2);
     }
-    if (l > r) return ans;
+    if (l > r) return -1;
     if (nums[pivot] === target) return pivot;
 };
