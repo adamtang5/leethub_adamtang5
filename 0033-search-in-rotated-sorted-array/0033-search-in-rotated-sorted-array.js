@@ -12,7 +12,6 @@ var search = function(nums, target) {
     } else {
         maxIdx = Math.floor((r + l) / 2);
         while (l <= r && nums[maxIdx + 1] > nums[maxIdx]) {
-            console.log(maxIdx, nums[maxIdx], l, r);
             if (nums[maxIdx] > nums[0]) {
                 l = maxIdx + 1;
             } else if (nums[maxIdx] < nums[0]) {
@@ -23,7 +22,6 @@ var search = function(nums, target) {
             maxIdx = Math.floor((r + l) / 2);
         }
     }
-    console.log(maxIdx, nums[maxIdx]);
     
     if (maxIdx < nums.length - 1) {
         if (target > nums[0]) {
