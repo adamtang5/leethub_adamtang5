@@ -9,7 +9,6 @@ var applyOperations = function(nums) {
             nums[i + 1] = 0;
         }
     }
-    console.log(nums);
 
     let [l, r] = [0, 1];
     while (r < nums.length && l < r) {
