@@ -10,8 +10,8 @@ class Solution:
             return True
         if bool(p) ^ bool(q):
             return False
-        # if not (bool(p.left) or bool(p.right) or bool(q.left) or bool(q.right)):
-        #     return p.val == q.val
+        if not (bool(p.left) or bool(p.right) or bool(q.left) or bool(q.right)):
+            return p.val == q.val
         
         if p.val != q.val:
             return False
