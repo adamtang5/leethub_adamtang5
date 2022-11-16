@@ -6,12 +6,12 @@ def my_pow(x, n)
     if n > 0
         while n > 0
             return x * my_pow(x, n-1) if n % 2 > 0
-            return my_pow(x*x, n/2) if n % 2 == 0
+            return my_pow(x*x, n/2)
         end
     else
         while n < 0
             return my_pow(x, n+1) / x if n % 2 > 0
-            return my_pow(x*x, n/2) if n % 2 == 0
+            return my_pow(x*x, n/2)
         end
     end
 end
