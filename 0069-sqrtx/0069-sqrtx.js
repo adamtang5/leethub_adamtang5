@@ -7,9 +7,7 @@ var mySqrt = function(x) {
     let [l, r] = [0, x];
     let pivot = Math.floor((l + r) / 2);
     while (l < r) {
-        if (pivot * pivot === x) {
-            return pivot;
-        } else if (pivot * pivot < x && (pivot + 1) * (pivot + 1) > x) {
+        if (pivot * pivot <= x && (pivot + 1) * (pivot + 1) > x) {
             return pivot;
         } else if (pivot * pivot > x) {
             r = pivot;
