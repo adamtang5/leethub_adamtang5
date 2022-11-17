@@ -1,5 +1,6 @@
 # @param {Integer} num
 # @return {Boolean}
+
 def is_perfect_square(num)
     l, r = 1, num
     pivot = (l+r) / 2
