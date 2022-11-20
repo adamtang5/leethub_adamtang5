@@ -4,7 +4,6 @@ class Solution:
             return n
         mem = [0, 1]
         while n > 2:
-            mem.append(mem[0]+mem[1])
-            del mem[0]
+            mem.append(mem[-1]+mem.pop(0))
             n -= 1
-        return mem[0]+mem[1]
+        return sum(mem)
