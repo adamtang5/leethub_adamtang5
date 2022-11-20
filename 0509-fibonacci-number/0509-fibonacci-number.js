@@ -5,11 +5,10 @@
 var fib = function(n) {
     if (n < 2) return n;
     const mem = [0, 1];
-    let i = 2;
-    while (i < n) {
+    while (n > 2) {
         mem.push(mem[0] + mem[1]);
         mem.shift();
-        i++;
+        n--;
     }
     return mem[0] + mem[1];
 };
