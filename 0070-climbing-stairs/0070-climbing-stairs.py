@@ -1,8 +1,8 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        dp = dict()
-        dp[1] = 1
-        dp[2] = 2
-        for x in range(3, n+1):
-            dp[x] = dp[x-1]+dp[x-2]
-        return dp[n]
+        if n <= 2:
+            return n
+        mem = [1, 2]
+        for _ in range(n-2):
+            mem.append(mem[-1]+mem.pop(0))
+        return mem[-1]
