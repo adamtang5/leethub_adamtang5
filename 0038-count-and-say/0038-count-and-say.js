@@ -4,7 +4,6 @@
  */
 var countAndSay = function(n) {
     if (n === 1) return '1';
-    
     const convert = s => {
         let [ans, currCh, currLen, i] = ['', '', 0, 0];
         while (i < s.length) {
