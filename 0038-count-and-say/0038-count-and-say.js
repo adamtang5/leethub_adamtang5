@@ -7,23 +7,23 @@ var countAndSay = function(n) {
     if (n === 1) return '1';
     
     const convert = s => {
-        let [ans, curr] = ['', ''];
-        let i = 0;
+        let [ans, currCh, currLen, i] = ['', '', 0, 0];
         while (i < s.length) {
-            if (s[i] === curr[0]) {
-                curr += s[i];
+            if (s[i] === currCh) {
+                currLen++;
             } else {
-                if (curr.length) {
-                    ans += curr.length.toString();
-                    ans += curr[0];
+                if (currLen) {
+                    ans += currLen.toString();
+                    ans += currCh;
                 }
-                curr = s[i];
+                currCh = s[i];
+                currLen = 1;
             }
             i++;
         }
-        if (curr.length) {
-            ans += curr.length.toString();
-            ans += curr[0];
+        if (currLen) {
+            ans += currLen.toString();
+            ans += currCh;
         }
         return ans;
     };
