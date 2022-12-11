@@ -14,14 +14,12 @@ var addToArrayForm = function(num, k) {
             num[i] = num[i] || 0;
             num[i] += (+s)
         });
-        console.log(num);
         let [i, carry] = [0, 0];
         while (i < num.length) {
             num[i] += carry;
             if (num[i] > 9) {
                 carry = Math.floor(num[i] / 10);
                 num[i] %= 10;
-                console.log(carry, num[i]);
             } else {
                 carry = 0;
             }
