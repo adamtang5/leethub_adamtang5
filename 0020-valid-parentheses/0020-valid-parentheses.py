@@ -6,11 +6,8 @@ class Solution:
             ']': '[',
             '}': '{',
         }
-        def isOpen(p):
-            return p in '([{'
-        
         for p in s:
-            if isOpen(p):
+            if p in '([{':
                 stack.append(p)
             elif len(stack) == 0 or stack.pop(-1) != open[p]:
                 return False
