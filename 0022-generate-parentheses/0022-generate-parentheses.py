@@ -13,9 +13,9 @@ class Solution:
             else:
                 ans = []
                 if valid(o-1, c):
-                    ans += ['(' + seq for seq in dfs(o-1, c)]
+                    ans += ['('+seq for seq in dfs(o-1, c)]
                 if valid(o, c-1):
-                    ans += [')' + seq for seq in dfs(o, c-1)]
+                    ans += [')'+seq for seq in dfs(o, c-1)]
                 dp[(o, c)] = ans
                 return ans
         
