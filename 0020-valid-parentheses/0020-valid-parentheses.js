@@ -9,11 +9,9 @@ var isValid = function(s) {
         ']' : '[',
         '}' : '{',
     };
-    const isOpen = p => '([{'.includes(p);
-    
     for (let i = 0; i < s.length; i++) {
         const p = s[i];
-        if (isOpen(p)) {
+        if ('([{'.includes(p)) {
             stack.push(p);
         } else if (stack.pop() !== open[p]) {
             return false;
