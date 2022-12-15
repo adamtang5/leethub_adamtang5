@@ -7,7 +7,6 @@ def is_valid(s)
         ']' => '[',
         '}' => '{',
     }
-    
     s.each_char do |paren|
         if '([{'.include?(paren)
             stack << paren
@@ -15,6 +14,5 @@ def is_valid(s)
             return false 
         end
     end
-    
     return stack.length == 0
 end
