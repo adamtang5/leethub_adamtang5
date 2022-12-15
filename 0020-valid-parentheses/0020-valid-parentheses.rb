@@ -9,7 +9,7 @@ def is_valid(s)
     }
     
     s.each_char do |paren|
-        if open.values.include?(paren)
+        if '([{'.include?(paren)
             stack << paren
         elsif stack.pop != open[paren]
             return false 
