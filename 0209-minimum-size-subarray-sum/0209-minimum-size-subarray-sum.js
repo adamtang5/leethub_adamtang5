@@ -4,24 +4,14 @@
  * @return {number}
  */
 var minSubArrayLen = function(target, nums) {
-    let [minLen, currSum, l, r] = [Infinity, 0, 0, 0];
-    while (r < nums.length) {
-        if (minLen < Infinity) {
+    let [minLen, currSum, l] = [Infinity, 0, 0];
+    for (let r = 0; r < nums.length; r++) {
+        currSum += nums[r];
+        while (currSum >= target) {
+            minLen = Math.min(minLen, r - l + 1);
             currSum -= nums[l];
             l++;
         }
-        while (r < nums.length && currSum < target) {
-            currSum += nums[r];
-            r++;
-        }
-        if (r < nums.length || currSum >= target) {
-            minLen = Math.min(minLen, r - l);
-        }
-    }
-    while (l < r && currSum >= target) {
-        currSum -= nums[l];
-        l++;
-        if (currSum >= target) minLen = Math.min(minLen, r - l);
     }
     return minLen === Infinity ? 0 : minLen;
 };
