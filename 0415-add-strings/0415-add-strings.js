@@ -17,13 +17,14 @@ var addStrings = function(num1, num2) {
         digits.push((rev1[i] ? +rev1[i] : 0) + (rev2[i] ? +rev2[i] : 0));
     }
     
-    let [i, carry] = [0, 0];
+    let [i, carry, ans] = [0, 0, ''];
     while (i < digits.length) {
         digits[i] += carry;
         carry = Math.floor(digits[i] / 10);
         digits[i] %= 10;
+        ans = digits[i].toString() + ans;
         i++;
     }
-    if (carry) digits.push(carry);
-    return digits.reduce((s, d) => d.toString() + s, '');
+    if (carry) ans = carry.toString() + ans;
+    return ans;
 };
