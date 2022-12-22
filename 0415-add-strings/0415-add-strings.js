@@ -25,5 +25,5 @@ var addStrings = function(num1, num2) {
         i++;
     }
     if (carry) digits.push(carry);
-    return digits.reverse().join("");
+    return digits.reduce((s, d) => d.toString() + s, '');
 };
