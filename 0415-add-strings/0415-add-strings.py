@@ -15,4 +15,8 @@ class Solution:
             i += 1
         if carry:
             digits.append(carry)
-        return ''.join([str(d) for d in digits[::-1]])
+            
+        ans = ''
+        for d in digits[::-1]:
+            ans += str(d)
+        return ans
