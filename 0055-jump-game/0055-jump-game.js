@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 var canJump = function(nums) {
-    let [i, reach] = [0, 0 + nums[0]];
+    let [i, reach] = [0, nums[0]];
     while (i < reach) {
         if (reach >= nums.length - 1) {
             return true;
