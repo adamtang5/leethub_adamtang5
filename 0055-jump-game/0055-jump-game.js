@@ -3,14 +3,14 @@
  * @return {boolean}
  */
 var canJump = function(nums) {
-    let [i, currLimit] = [0, 0 + nums[0]];
-    while (i < currLimit) {
-        if (currLimit >= nums.length - 1) {
+    let [i, reach] = [0, 0 + nums[0]];
+    while (i < reach) {
+        if (reach >= nums.length - 1) {
             return true;
         } else {
             i++;
-            currLimit = Math.max(i + nums[i], currLimit);
+            reach = Math.max(i + nums[i], reach);
         }
     }
-    return currLimit >= nums.length - 1;
+    return reach >= nums.length - 1;
 };
