@@ -14,4 +14,5 @@ class Solution:
             curr = curr.next
             if curr:
                 currVal = curr.val
+
         return head
