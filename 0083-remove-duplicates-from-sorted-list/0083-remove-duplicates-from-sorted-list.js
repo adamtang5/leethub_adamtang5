@@ -17,5 +17,6 @@ var deleteDuplicates = function(head) {
         curr = curr.next;
         if (curr) currVal = curr.val;
     }
+    
     return head;
 };
