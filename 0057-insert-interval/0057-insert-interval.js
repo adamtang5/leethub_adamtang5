@@ -4,24 +4,19 @@
  * @return {number[][]}
  */
 var insert = function(intervals, newInterval) {
-    let [newStart, newEnd] = newInterval;
-    let idx, currStart, currEnd;
-    let [i, len] = [0, 0];
+    let [i, len, idx] = [0, 0, -Infinity];
     while (i < intervals.length) {
-        [currStart, currEnd] = intervals[i];
-        console.log(`curr: ${intervals[i]}`);
-        console.log(`new: ${[newStart, newEnd]}`);
-        if (newEnd < currStart) {
+        if (newInterval[1] < intervals[i][0]) {
             idx = i;
             break;
-        } else if (newStart <= currEnd) {
+        } else if (newInterval[0] <= intervals[i][1]) {
             idx = i;
-            newStart = Math.min(currStart, newStart);
-            newEnd = Math.max(currEnd, newEnd);
+            newInterval[0] = Math.min(intervals[i][0], newInterval[0]);
+            newInterval[1] = Math.max(intervals[i][1], newInterval[1]);
             len++;
             i++;
-            while (i < intervals.length && newEnd >= intervals[i][0]) {
-                newEnd = Math.max(intervals[i][1], newEnd);
+            while (i < intervals.length && newInterval[1] >= intervals[i][0]) {
+                newInterval[1] = Math.max(intervals[i][1], newInterval[1]);
                 len++;
                 i++;
             }
@@ -29,8 +24,7 @@ var insert = function(intervals, newInterval) {
         }
         i++;
     }
-    if (idx === undefined) idx = i;
-    console.log(`idx: ${idx}, len: ${len}, new: ${[newStart, newEnd]}`);
-    intervals.splice(idx, len, [newStart, newEnd]);
+    if (idx < 0) idx = i;
+    intervals.splice(idx, len, newInterval);
     return intervals;
 };
