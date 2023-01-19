@@ -5,5 +5,5 @@ class Solution:
         """
         k %= len(nums)
         right = nums[len(nums)-k:]
-        nums[len(nums)-k:] = []
+        del nums[len(nums)-k:]
         nums[:0] = right
