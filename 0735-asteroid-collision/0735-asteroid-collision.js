@@ -7,11 +7,12 @@ var asteroidCollision = function(asteroids) {
     let top, curr;
     
     for (let i = 0; i < asteroids.length; i++) {
+        curr = asteroids[i];
         if (!stack.length || stack.at(-1) < 0) {
-            stack.push(asteroids[i]);
+            stack.push(curr);
         } else {
             while (true) {
-                [top, curr] = [stack.pop(), asteroids[i]];
+                top = stack.pop();
                 if (top * curr > 0) {
                     stack.push(top);
                     stack.push(curr);
