@@ -19,5 +19,6 @@ class Solution:
                         if stack == []:
                             stack.append(asteroids[i])
                             break
+        
         return stack
     
