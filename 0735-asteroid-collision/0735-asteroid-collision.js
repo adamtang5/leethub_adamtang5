@@ -8,7 +8,7 @@ var asteroidCollision = function(asteroids) {
     
     for (let i = 0; i < asteroids.length; i++) {
         curr = asteroids[i];
-        if (!stack.length || stack.at(-1) < 0) {
+        if (!stack.length || stack[stack.length - 1] < 0) {
             stack.push(curr);
         } else {
             while (true) {
