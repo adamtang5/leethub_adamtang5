@@ -20,3 +20,4 @@ class Solution:
                             stack.append(asteroids[i])
                             break
         return stack
+    
