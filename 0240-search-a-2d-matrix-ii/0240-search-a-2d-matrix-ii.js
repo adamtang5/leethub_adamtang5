@@ -5,35 +5,32 @@
  */
 var searchMatrix = function(matrix, target) {
     let [rlb, rub, clb, cub] = [0, matrix.length - 1, 0, matrix[0].length - 1];
-    while (rlb < matrix.length) {
-        if (target > matrix[rlb].at(-1)) {
-            rlb++;
-        } else {
+    for (let i = 0; i < matrix[0].length; i++) {
+        if (target < matrix[0][i]) {
+            cub = i - 1;
             break;
         }
     }
-    while (rub >= 0) {
-        if (target < matrix[rub][0]) {
-            rub--;
-        } else {
+    for (let i = 0; i < matrix.length; i++) {
+        if (target < matrix[i][0]) {
+            rub = i - 1;
+            break;
+        }
+    }
+    for (let i = rub; i >= 0; i--) {
+        if (target > matrix[i][cub]) {
+            rlb = i + 1;
+            break;
+        }
+    }
+    for (let i = cub; i >= 0; i--) {
+        if (target > matrix[rub][i]) {
+            clb = i + 1;
             break;
         }
     }
     
-    while (clb < matrix[0].length) {
-        if (target > matrix.at(-1)[clb]) {
-            clb++;
-        } else {
-            break;
-        }
-    }
-    while (cub >= 0) {
-        if (target < matrix[0][cub]) {
-            cub--;
-        } else {
-            break;
-        }
-    }
+    console.log(rlb, rub, clb, cub);
     
     for (let r = rlb; r <= rub; r++) {
         if (target >= matrix[r][clb] && target <= matrix[r][cub]) {
