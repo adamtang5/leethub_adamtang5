@@ -30,11 +30,10 @@ var searchMatrix = function(matrix, target) {
         }
     }
     
-    console.log(rlb, rub, clb, cub);
-    
+    let left, right;    
     for (let r = rlb; r <= rub; r++) {
         if (target >= matrix[r][clb] && target <= matrix[r][cub]) {
-            let [left, right] = [clb, cub];
+            [left, right] = [clb, cub];
             let pivot;
             while (left <= right) {
                 pivot = Math.floor((left + right) / 2);
