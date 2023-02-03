@@ -36,8 +36,19 @@ var searchMatrix = function(matrix, target) {
     }
     
     for (let r = rlb; r <= rub; r++) {
-        for (let c = clb; c <= cub; c++) {
-            if (target === matrix[r][c]) return true;
+        if (target >= matrix[r][clb] && target <= matrix[r][cub]) {
+            let [left, right] = [clb, cub];
+            let pivot;
+            while (left <= right) {
+                pivot = Math.floor((left + right) / 2);
+                if (target === matrix[r][pivot]) {
+                    return true;
+                } else if (target < matrix[r][pivot]) {
+                    right = pivot - 1;
+                } else if (target > matrix[r][pivot]) {
+                    left = pivot + 1;
+                }
+            }
         }
     }
     return false;
