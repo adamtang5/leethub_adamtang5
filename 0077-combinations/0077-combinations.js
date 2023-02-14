@@ -11,7 +11,6 @@ var combine = function(n, k) {
         }
         return ans;
     };
-    
     if (k === 1) {
         return new Array(n).fill().map((combo, i) => [i + 1]);
     } else if (k === n) {
