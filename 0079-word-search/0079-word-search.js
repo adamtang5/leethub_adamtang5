@@ -11,7 +11,6 @@ var exist = function(board, word) {
             chTally[board[r][c]]++;
         }
     }
-    
     for (const ch of word) {
         if (chTally[ch] === 0) return false;
         chTally[ch]--;
