@@ -4,6 +4,19 @@
  * @return {boolean}
  */
 var exist = function(board, word) {
+    const chTally = {};
+    for (let r = 0; r < board.length; r++) {
+        for (let c = 0; c < board[0].length; c++) {
+            chTally[board[r][c]] = chTally[board[r][c]] || 0;
+            chTally[board[r][c]]++;
+        }
+    }
+    
+    for (const ch of word) {
+        if (chTally[ch] === 0) return false;
+        chTally[ch]--;
+    }
+    
     const path = new Set();
     
     const inBound = (r, c) => {
