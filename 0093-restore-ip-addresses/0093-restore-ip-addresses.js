@@ -18,13 +18,11 @@ var restoreIpAddresses = function(s) {
   };
   
   const dfs = (s, octIdx = 3, addr = "") => {
-    // console.log([s, octIdx, addr]);
     if (!s.length) return;
     if (s.length > (octIdx + 1) * 3) return;
     if (!octIdx && !validOctet(s)) return;
     if (validOctet(s) && !octIdx) {
       ans.push(s + addr);
-      // console.log(`ans: ${ans}`);
       return;
     }
     for (let digits = 1; digits <= Math.min(s.length, 3); digits++) {
