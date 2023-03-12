@@ -6,7 +6,7 @@
 var countKDifference = function(nums, k) {
   const indices = {};
   let count = 0;
-  for (const num of nums) {
+  for (let num of nums) {
     indices[num] = indices[num] || 0;
     count += indices[num];
     indices[num + k] = indices[num + k] || 0;
