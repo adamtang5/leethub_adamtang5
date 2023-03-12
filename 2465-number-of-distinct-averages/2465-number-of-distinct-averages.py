@@ -3,7 +3,7 @@ class Solution:
     nums.sort()
     avgs = set()
     l, r = 0, len(nums)-1
-    while (l < r):
+    while l < r:
       avgs.add((nums[l]+nums[r])/2)
       l += 1
       r -= 1
