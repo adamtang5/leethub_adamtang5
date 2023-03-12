@@ -1,6 +1,6 @@
 function countKDifference(nums: number[], k: number): number {
-  const indices = {}
-  let count = 0
+  const indices: {} = {}
+  let count: number = 0
   for (let num of nums) {
     indices[num] = indices[num] || 0
     count += indices[num]
