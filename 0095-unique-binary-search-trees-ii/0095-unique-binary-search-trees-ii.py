@@ -19,21 +19,14 @@ class Solution:
           helper(rootVal+1, ub)
           if rootVal == ub:
             for leftTree in dp[(lb, rootVal-1)]:
-              newTree = TreeNode(rootVal)
-              newTree.left = leftTree
-              trees.append(newTree)
+              trees.append(TreeNode(rootVal, leftTree, None))
           elif rootVal == lb:
             for rightTree in dp[(rootVal+1, ub)]:
-              newTree = TreeNode(rootVal)
-              newTree.right = rightTree
-              trees.append(newTree)
+              trees.append(TreeNode(rootVal, None, rightTree))
           else:
             for leftTree in dp[(lb, rootVal-1)]:
               for rightTree in dp[(rootVal+1, ub)]:
-                newTree = TreeNode(rootVal)
-                newTree.left = leftTree
-                newTree.right = rightTree
-                trees.append(newTree)
+                trees.append(TreeNode(rootVal, leftTree, rightTree))
         if lb <= ub:
           dp[(lb, ub)] = dp.get((lb, ub), trees)
     
