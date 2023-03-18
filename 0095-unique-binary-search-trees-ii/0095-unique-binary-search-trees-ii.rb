@@ -18,24 +18,13 @@ def helper(lb, ub, dp)
       helper(lb, root_val-1, dp)
       helper(root_val+1, ub, dp)
       if root_val == ub
-        dp["#{lb}-#{root_val-1}"].each do |left_tree|
-          new_tree = TreeNode.new(root_val)
-          new_tree.left = left_tree
-          trees << new_tree
-        end
+        dp["#{lb}-#{root_val-1}"].each{ |left_tree| trees << TreeNode.new(root_val, left_tree, nil) }
       elsif root_val == lb
-        dp["#{root_val+1}-#{ub}"].each do |right_tree|
-          new_tree = TreeNode.new(root_val)
-          new_tree.right = right_tree
-          trees << new_tree
-        end
+        dp["#{root_val+1}-#{ub}"].each{ |right_tree| trees << TreeNode.new(root_val, nil, right_tree) }
       else
         dp["#{lb}-#{root_val-1}"].each do |left_tree|
           dp["#{root_val+1}-#{ub}"].each do |right_tree|
-            new_tree = TreeNode.new(root_val)
-            new_tree.left = left_tree
-            new_tree.right = right_tree
-            trees << new_tree
+            trees << TreeNode.new(root_val, left_tree, right_tree)
           end
         end
       end
