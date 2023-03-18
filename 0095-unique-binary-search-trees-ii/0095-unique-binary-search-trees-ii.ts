@@ -27,23 +27,16 @@ function generateTrees(n: number): Array<TreeNode | null> {
       helper(rootVal + 1, ub)
       if (rootVal === ub) {
         dp[`${lb}-${rootVal - 1}`].forEach(leftTree => {
-          const newTree = new TreeNode(rootVal)
-          newTree.left = leftTree
-          trees.push(newTree)
+          trees.push(new TreeNode(rootVal, leftTree, null))
         })
       } else if (rootVal === lb) {
         dp[`${rootVal + 1}-${ub}`].forEach(rightTree => {
-          const newTree = new TreeNode(rootVal)
-          newTree.right = rightTree
-          trees.push(newTree)
+          trees.push(new TreeNode(rootVal, null, rightTree))
         })
       } else {
         dp[`${lb}-${rootVal - 1}`].forEach(leftTree => {
           dp[`${rootVal + 1}-${ub}`].forEach(rightTree => {
-            const newTree = new TreeNode(rootVal)
-            newTree.left = leftTree
-            newTree.right = rightTree
-            trees.push(newTree)
+            trees.push(new TreeNode(rootVal, leftTree, rightTree))
           })
         })
       }
