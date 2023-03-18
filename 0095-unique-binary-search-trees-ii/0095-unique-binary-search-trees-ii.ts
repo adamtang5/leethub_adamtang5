@@ -13,26 +13,9 @@
  */
 
 function generateTrees(n: number): Array<TreeNode | null> {
-  function range(lb: number, ub: number): number[] {
-    const ans: number[] = []
-    let n = lb
-    while (n <= ub) {
-      ans.push(n)
-      n++
-    }
-    return ans
-  }
-
-  function cloneTree(tree: TreeNode): TreeNode {
-    const newTree = new TreeNode(tree.val)
-    if (tree.left) newTree.left = cloneTree(tree.left)
-    if (tree.right) newTree.right = cloneTree(tree.right)
-    return newTree
-  }
-
   const dp = {}
   
-  function treeMakerHelper(lb: number, ub: number): void {
+  function helper(lb: number, ub: number): void {
     if (lb === ub) {
       dp[`${lb}-${ub}`] = dp[`${lb}-${ub}`] || [new TreeNode(lb)]
       return
@@ -40,8 +23,8 @@ function generateTrees(n: number): Array<TreeNode | null> {
     
     const trees: TreeNode[] = []
     for (let rootVal = lb; rootVal <= ub; rootVal++) {
-      treeMakerHelper(lb, rootVal - 1)
-      treeMakerHelper(rootVal + 1, ub)
+      helper(lb, rootVal - 1)
+      helper(rootVal + 1, ub)
       if (rootVal === ub) {
         dp[`${lb}-${rootVal - 1}`].forEach(leftTree => {
           const newTree = new TreeNode(rootVal)
@@ -68,6 +51,6 @@ function generateTrees(n: number): Array<TreeNode | null> {
     if (lb <= ub) dp[`${lb}-${ub}`] = dp[`${lb}-${ub}`] || trees
   }
   
-  treeMakerHelper(1, n)
+  helper(1, n)
   return dp[`1-${n}`]
 }
