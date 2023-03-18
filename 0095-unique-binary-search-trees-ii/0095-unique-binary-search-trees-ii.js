@@ -11,26 +11,9 @@
  * @return {TreeNode[]}
  */
 var generateTrees = function(n) {
-  const range = (lb, ub) => {
-    const ans = [];
-    let n = lb;
-    while (n <= ub) {
-      ans.push(n);
-      n++;
-    }
-    return ans;
-  };
-  
-  const cloneTree = tree => {
-    const newTree = new TreeNode(tree.val);
-    if (tree.left) newTree.left = cloneTree(tree.left);
-    if (tree.right) newTree.right = cloneTree(tree.right);
-    return newTree;
-  };
-
   const dp = {};
   
-  const treeMakerHelper = (lb, ub) => {
+  const helper = (lb, ub) => {
     if (lb === ub) {
       dp[`${lb}-${ub}`] = dp[`${lb}-${ub}`] || [new TreeNode(lb)];
       return;
@@ -38,8 +21,8 @@ var generateTrees = function(n) {
     
     const trees = [];
     for (let rootVal = lb; rootVal <= ub; rootVal++) {
-      treeMakerHelper(lb, rootVal - 1);
-      treeMakerHelper(rootVal + 1, ub);
+      helper(lb, rootVal - 1);
+      helper(rootVal + 1, ub);
       if (rootVal === ub) {
         dp[`${lb}-${rootVal - 1}`].forEach(leftTree => {
           const newTree = new TreeNode(rootVal);
@@ -66,6 +49,6 @@ var generateTrees = function(n) {
     if (lb <= ub) dp[`${lb}-${ub}`] = dp[`${lb}-${ub}`] || trees;
   };
   
-  treeMakerHelper(1, n);
+  helper(1, n);
   return dp[`1-${n}`];
 };
