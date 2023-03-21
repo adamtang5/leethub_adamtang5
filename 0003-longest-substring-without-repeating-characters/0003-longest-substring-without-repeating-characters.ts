@@ -1,7 +1,6 @@
 function lengthOfLongestSubstring(s: string): number {
   if (!s.length) return 0
-  let sub = ''
-  let max = 0
+  let [sub, max] = ['', 0]
   
   for (let i = 0; i < s.length; i++) {
     if (!sub.includes(s[i])) {
