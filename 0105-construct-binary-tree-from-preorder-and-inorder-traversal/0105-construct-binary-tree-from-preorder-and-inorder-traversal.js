@@ -12,33 +12,23 @@
  * @return {TreeNode}
  */
 var buildTree = function(preorder, inorder) {
-  const decompose = (preorder, inorder) => {
-    const ans = {
-      rootVal: null,
-      leftInorder: null,
-      rightInorder: null,
-      leftPreorder: null,
-      rightPreorder: null,
-    };
+  const inIdx = {};
+  inorder.forEach((el, i) => inIdx[el] = i);
+  
+  const helper = preVals => {
+    if (!preVals.length) return null;
+    if (preVals.length === 1) return new TreeNode(preVals[0]);
     
-    if (preorder.length) {
-      ans.rootVal = preorder[0];
-      ans.leftInorder = inorder.slice(0, inorder.indexOf(ans.rootVal));
-      ans.rightInorder = inorder.slice(inorder.indexOf(ans.rootVal) + 1);
-      ans.leftPreorder = preorder.filter(el => ans.leftInorder.includes(el));
-      ans.rightPreorder = preorder.filter(el => ans.rightInorder.includes(el));
+    const [rootVal, leftVals, rightVals] = [preVals[0], [], []];
+    for (let i = 1; i < preVals.length; i++) {
+      if (inIdx[preVals[i]] < inIdx[rootVal]) {
+        leftVals.push(preVals[i]);
+      } else {
+        rightVals.push(preVals[i]);
+      }
     }
-    return ans;
+    return new TreeNode(rootVal, helper(leftVals), helper(rightVals));
   };
   
-  const parsed = decompose(preorder, inorder);
-  if (parsed.rootVal === null) {
-    return null;
-  } else {
-    return new TreeNode(
-      parsed.rootVal,
-      buildTree(parsed.leftPreorder, parsed.leftInorder),
-      buildTree(parsed.rightPreorder, parsed.rightInorder),
-    )
-  }
+  return helper(preorder);
 };
