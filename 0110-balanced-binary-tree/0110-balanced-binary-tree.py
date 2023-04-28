@@ -9,8 +9,7 @@ class Solution:
     def dfs(node):
       if not node:
         return True, 0
-      lBal, lHt = dfs(node.left)
-      rBal, rHt = dfs(node.right)
-      return lBal and rBal and abs(lHt - rHt) <= 1, max(lHt, rHt)+1
+      left, right = dfs(node.left), dfs(node.right)
+      return left[0] and right[0] and abs(left[1]-right[1]) <= 1, max(left[1], right[1])+1
     
     return dfs(root)[0]
