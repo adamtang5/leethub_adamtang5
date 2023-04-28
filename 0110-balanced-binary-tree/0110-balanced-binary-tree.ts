@@ -15,9 +15,8 @@ function isBalanced(root: TreeNode | null): boolean {
   type auxNode = [boolean, number]
   function dfs(node: TreeNode | null): auxNode {
     if (!node) return [true, 0]
-    const [lBal, lHt] = dfs(node.left)
-    const [rBal, rHt] = dfs(node.right)
-    return [lBal && rBal && Math.abs(lHt - rHt) <= 1, Math.max(lHt, rHt) + 1]
+    const [left, right] = [dfs(node.left), dfs(node.right)]
+    return [left[0] && right[0] && Math.abs(left[1] - right[1]) <= 1, Math.max(left[1], right[1]) + 1]
   }
   
   return dfs(root)[0]
