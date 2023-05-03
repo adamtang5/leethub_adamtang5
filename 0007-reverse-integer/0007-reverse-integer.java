@@ -4,11 +4,9 @@ class Solution {
     x = Math.abs(x);
     String s = Integer.toString(x);
     String rev = "";
-    char ch;
     
     for (int i = 0; i < s.length(); i++) {
-      ch = s.charAt(i);
-      rev = ch + rev;
+      rev = s.charAt(i) + rev;
     }
     try {
       return sign * Integer.parseInt(rev);
