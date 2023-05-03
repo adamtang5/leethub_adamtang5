@@ -8,5 +8,5 @@ function myAtoi(s: string): number {
   if (!s.match(digitsRe)) return 0
   
   const ans = sign * +s.match(digitsRe)[0]
-  return ans < 0 ? Math.max(ans, -1 * 2 **31) : Math.min(ans, 2 ** 31 - 1)
+  return ans < 0 ? Math.max(ans, -2147483648) : Math.min(ans, 2147483647)
 }
