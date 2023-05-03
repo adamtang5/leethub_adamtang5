@@ -1,8 +1,7 @@
 class Solution {
   public int reverse(int x) {
     int sign = x >= 0 ? 1 : -1;
-    x = Math.abs(x);
-    String s = Integer.toString(x);
+    String s = Integer.toString(Math.abs(x));
     String rev = "";
     
     for (int i = 0; i < s.length(); i++) {
