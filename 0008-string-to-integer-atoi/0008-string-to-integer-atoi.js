@@ -14,5 +14,5 @@ var myAtoi = function(s) {
 
   const ans = sign * +s.match(digitsRe)[0];
 
-  return (ans < 0) ? Math.max(ans, 0 - 2 ** 31) : Math.min(ans, 2 ** 31 - 1);
+  return ans < 0 ? Math.max(ans, -1 * 2 ** 31) : Math.min(ans, 2 ** 31 - 1);
 };
