@@ -16,7 +16,6 @@ class Solution {
     List<String> list = new ArrayList<String>();
     while (matcher.find()) {
       list.add(matcher.group());
-      System.out.println(list.get(0));
       break;
     }
 
