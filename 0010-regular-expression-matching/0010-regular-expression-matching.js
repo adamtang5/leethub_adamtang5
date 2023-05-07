@@ -21,18 +21,30 @@ var isMatch = function (s, p) {
   };
 
   const dfs = (s, parsed, dp) => {
-    if (s.length && !parsed.length) return false;
-    if (!s.length && !parsed.length) return true;
-    if (!s.length && parsed.length) return parsed.every(el => el.length === 2);
+    const key = JSON.stringify([s, parsed]);
+    
+    if (s.length && !parsed.length) {
+      dp[key] = false;
+      return dp[key];
+    }
+    if (!s.length && !parsed.length) {
+      dp[key] = true;
+      return dp[key];
+    }
+    if (!s.length && parsed.length) {
+      dp[key] = parsed.every(el => el.length === 2);
+      return dp[key];
+    }
 
     const first = parsed.shift();
     if (first.length === 1) {
-      return charMatch(s[0], first) && isMatch(s.slice(1), parsed, dp);
+      dp[key] = charMatch(s[0], first) && dfs(s.slice(1), parsed, dp);
+      return dp[key];
     } else {
       if (!charMatch(s[0], first[0])) {
-        return isMatch(s, parsed, dp);
+        dp[key] = dfs(s, parsed, dp);
+        return dp[key];
       } else {
-        const key = JSON.stringify([s, [first, ...parsed]]);
         if (dp[key] !== undefined) {
           return dp[key];
         } else {
@@ -43,7 +55,8 @@ var isMatch = function (s, p) {
 
           let ans = false;
           for (let i = 0; i <= len; i++) {
-            ans ||= isMatch(s.slice(i), parsed, dp);
+            const copy = parsed.slice();
+            ans ||= dfs(s.slice(i), copy, dp);
           }
           dp[key] = ans;
           return ans;
