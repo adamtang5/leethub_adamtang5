@@ -34,7 +34,7 @@
 
 <ul>
 	<li><code>1 &lt;= s.length&nbsp;&lt;= 20</code></li>
-	<li><code>1 &lt;= p.length&nbsp;&lt;= 30</code></li>
+	<li><code>1 &lt;= p.length&nbsp;&lt;= 20</code></li>
 	<li><code>s</code> contains only lowercase English letters.</li>
 	<li><code>p</code> contains only lowercase English letters, <code>'.'</code>, and&nbsp;<code>'*'</code>.</li>
 	<li>It is guaranteed for each appearance of the character <code>'*'</code>, there will be a previous valid character to match.</li>
