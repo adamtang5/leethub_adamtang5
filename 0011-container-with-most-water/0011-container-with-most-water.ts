@@ -1,14 +1,21 @@
 function maxArea(height: number[]): number {
-  let l: number = 0
-  let r: number = height.length - 1
-  let ans: number = 0
+  let l = 0
+  let r = height.length - 1
+  let ans = (r - l) * Math.min(height[r], height[l])
+  let currLeft: number
+  let currRight: number
   while (l < r) {
-    ans = Math.max(ans, (r - l) * Math.min(height[r], height[l]))
+    [currLeft, currRight] = [height[l], height[r]]
     if (height[l] <= height[r]) {
-      l++
+      while (l < r && height[l] <= currLeft) {
+        l++
+      }
     } else {
-      r--
+      while (l < r && height[r] <= currRight) {
+        r--
+      }
     }
+    ans = Math.max(ans, (r - l) * Math.min(height[r], height[l]))
   }
   return ans
 }
