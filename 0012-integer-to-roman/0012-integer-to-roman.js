@@ -44,10 +44,7 @@ var intToRoman = function(num) {
     num = Math.floor(num / 10);
   }
 
-  const places = digits.map((digit, pow) => digit2Roman(digit, pow));
   let ans = '';
-  for (let i = places.length - 1; i >= 0; i--) {
-    ans += places[i];
-  }
+  digits.forEach((digit, pow) => ans = digit2Roman(digit, pow) + ans);
   return ans;
 };
