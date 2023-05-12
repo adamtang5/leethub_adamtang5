@@ -31,12 +31,8 @@ var intToRoman = function(num) {
           ans += lookup[pow][1] + lookup[pow][5];
         }
         break;
-      case 0:
-        if (val === 5) {
-          ans += lookup[pow][5];
-        }
       default:
-        if (val > 5) ans += lookup[pow][5];
+        if (val >= 5) ans += lookup[pow][5];
         ans += new Array(val % 5).fill(lookup[pow][1]).join('');
     }
     return ans;
