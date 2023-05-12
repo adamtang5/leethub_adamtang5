@@ -45,5 +45,9 @@ var intToRoman = function(num) {
   }
 
   const places = digits.map((digit, pow) => digit2Roman(digit, pow));
-  return places.reverse().join('');
+  let ans = '';
+  for (let i = places.length - 1; i >= 0; i--) {
+    ans += places[i];
+  }
+  return ans;
 };
