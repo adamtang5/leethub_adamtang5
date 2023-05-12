@@ -38,14 +38,12 @@ var intToRoman = function(num) {
     return ans;
   };
 
-  let powerOf10 = Math.floor(Math.log10(num));
-  let places = new Array(powerOf10 + 1).fill(0);
+  const digits = [];
   while (num > 0) {
-    places[powerOf10] = Math.floor(num / 10 ** powerOf10);
-    num = num % 10 ** powerOf10;
-    powerOf10 = Math.floor(Math.log10(num));
+    digits.push(num % 10);
+    num = Math.floor(num / 10);
   }
 
-  places = places.map((val, pow) => digit2Roman(val, pow));
+  const places = digits.map((digit, pow) => digit2Roman(digit, pow));
   return places.reverse().join('');
 };
