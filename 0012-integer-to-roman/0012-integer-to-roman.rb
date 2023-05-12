@@ -21,7 +21,7 @@ def digit_to_roman(val, pow)
     ans += lookup[pow][5] if val >= 5
     ans += lookup[pow][1]*(val%5)
   end
-  return ans
+  ans
 end
 
 def int_to_roman(num)
