@@ -1,6 +1,5 @@
 # @param {Integer} num
 # @return {String}
-
 def digit_to_roman(val, pow)
   lookup = [
     {1=>'I', 5=>'V'},
