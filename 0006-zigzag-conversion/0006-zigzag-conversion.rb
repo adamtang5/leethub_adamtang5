@@ -11,5 +11,5 @@ def convert(s, num_rows)
     new_i_mod = i_mod <= new_base/2 ? i_mod : new_base-i_mod
     rows[new_i_mod] += ch
   end
-  return rows.join('')
+  rows.join('')
 end
