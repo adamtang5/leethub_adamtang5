@@ -1,5 +1,5 @@
 class Solution {
-  public String digitToRoman(int val) {
+  public String digitToRoman(int val, int mult) {
     if (val == 0) return "";
     
     Map lookup = new HashMap();
@@ -12,19 +12,7 @@ class Solution {
     lookup.put(1000, "M");
 
     String ans = "";
-    int sig;
-    if (val < 10) {
-      sig = val;
-    } else if (val < 100) {
-      sig = val / 10;
-    } else if (val < 1000) {
-      sig = val / 100;
-    } else {
-      sig = val / 1000;
-    }
-    
-    int mult = val / sig;
-    
+    int sig = val / mult;
     switch (sig % 5) {
       case 4:
         if (sig > 5) {
@@ -46,7 +34,7 @@ class Solution {
     String ans = "";
     int base = 10;
     while (num > 0) {
-      ans = digitToRoman(num % base) + ans;
+      ans = digitToRoman(num % base, base / 10) + ans;
       num -= num % base;
       base *= 10;
     }
