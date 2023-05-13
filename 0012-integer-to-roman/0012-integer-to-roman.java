@@ -43,17 +43,12 @@ class Solution {
   }
   
   public String intToRoman(int num) {
-    ArrayList<Integer> digits = new ArrayList<Integer>();
+    String ans = "";
     int base = 10;
     while (num > 0) {
-      digits.add(num % base);
+      ans = digitToRoman(num % base) + ans;
       num -= num % base;
       base *= 10;
-    }
-    
-    String ans = "";
-    for (int digit : digits) {
-      ans = digitToRoman(digit) + ans;
     }
     return ans;
   }
