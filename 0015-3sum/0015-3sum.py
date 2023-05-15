@@ -6,7 +6,7 @@ class Solution:
     ans = []
     i, l, r = 0, None, None
     while i < len(nums)-2:
-      l, r = i + 1, len(nums)-1
+      l, r = i+1, len(nums)-1
       while l < r:
         if nums[i]+nums[l]+nums[r] < 0:
           l += 1
