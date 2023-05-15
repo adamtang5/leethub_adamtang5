@@ -2,7 +2,7 @@ function threeSum(nums: number[]): number[][] {
   const ans: number[][] = []
   nums.sort((a, b) => a - b)
   let i = 0
-  let l, r
+  let l: number, r: number
   while (i < nums.length - 2) {
     [l, r] = [i + 1, nums.length - 1]
     while (l < r) {
