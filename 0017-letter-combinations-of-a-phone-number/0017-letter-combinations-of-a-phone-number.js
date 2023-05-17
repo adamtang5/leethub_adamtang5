@@ -20,7 +20,5 @@ var letterCombinations = function(digits) {
   if (digits.length === 1) return lookup[+digits].split('');
 
   let d1Combos = letterCombinations(digits[0]);
-  return d1Combos.map(ch => {
-    return letterCombinations(digits.slice(1)).map(combo => ch + combo);
-  }).flat();
+  return d1Combos.map(ch => letterCombinations(digits.slice(1)).map(combo => ch + combo)).flat();
 };
