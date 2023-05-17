@@ -19,6 +19,6 @@ var letterCombinations = function(digits) {
   if (!digits.length) return [];
   if (digits.length === 1) return lookup[+digits].split('');
 
-  let headCombos = letterCombinations(digits[0]);
-  return headCombos.map(ch => letterCombinations(digits.slice(1)).map(combo => ch + combo)).flat();
+  const leadLetters = letterCombinations(digits[0]);
+  return leadLetters.map(ch => letterCombinations(digits.slice(1)).map(combo => ch + combo)).flat();
 };
