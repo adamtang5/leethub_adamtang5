@@ -1,28 +1,18 @@
-LOOKUP = [
-  '',
-  '',
-  'abc',
-  'def',
-  'ghi',
-  'jkl',
-  'mno',
-  'pqrs',
-  'tuv',
-  'wxyz',
-]
+LOOKUP = {
+  '2': 'abc',
+  '3': 'def',
+  '4': 'ghi',
+  '5': 'jkl',
+  '6': 'mno',
+  '7': 'pqrs',
+  '8': 'tuv',
+  '9': 'wxyz',
+}
 
 class Solution:
   def letterCombinations(self, digits: str) -> List[str]:
-    if len(digits) == 0:
-      return []
-    else:
-      ans = list(LOOKUP[int(digits[0])])
-      digits = digits[1:]
+    if len(digits) == 0: return []
+    if len(digits) == 1: return list(LOOKUP[digits])
 
-      while len(digits):
-        lead_ch = digits[0]
-        digits = digits[1:]
-
-        d1_combos = list(LOOKUP[int(lead_ch)])
-        ans = [combo + ch for combo in ans for ch in d1_combos]
-      return ans
+    lead_letters = self.letterCombinations(digits[0])
+    return [ch + combo for combo in self.letterCombinations(digits[1:]) for ch in lead_letters]
