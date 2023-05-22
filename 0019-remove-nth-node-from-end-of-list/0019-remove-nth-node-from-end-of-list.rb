@@ -1,29 +1,28 @@
 # Definition for singly-linked list.
 # class ListNode
-#     attr_accessor :val, :next
-#     def initialize(val = 0, _next = nil)
-#         @val = val
-#         @next = _next
-#     end
+#   attr_accessor :val, :next
+#   def initialize(val = 0, _next = nil)
+#     @val = val
+#     @next = _next
+#   end
 # end
 # @param {ListNode} head
 # @param {Integer} n
 # @return {ListNode}
 def remove_nth_from_end(head, n)
-    len, curr = 0, head
-    while curr
-        len += 1
-        curr = curr.next
+  ahead = behind = head
+  while n >= 0
+    if ahead
+      ahead = ahead.next
+      n -= 1
+    else
+      return head.next
     end
-    i, dh = -1, ListNode.new
-    dh.next = head
-    curr = dh
-    while i < len - n - 1
-        curr = curr.next
-        i += 1
-    end
-    prev = curr
-    curr = curr.next
-    prev.next = curr.next
-    return dh.next
+  end
+  while ahead
+    ahead = ahead.next
+    behind = behind.next
+  end
+  behind.next = behind.next.next
+  head
 end
