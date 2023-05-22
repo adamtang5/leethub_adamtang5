@@ -1,8 +1,8 @@
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
+ *   this.val = (val===undefined ? 0 : val)
+ *   this.next = (next===undefined ? null : next)
  * }
  */
 /**
@@ -11,22 +11,20 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
-  let [len, curr] = [0, head];
-  while (curr) {
-      len++;
-      curr = curr.next;
+  let [ahead, behind] = [head, head];
+  while (n >= 0) {
+    if (ahead) {
+      ahead = ahead.next;
+      n--;
+    } else {
+      return head.next;
+    }
   }
-
-  let [i, dh] = [-1, new ListNode()];
-  dh.next = head;
-  curr = dh;
-
-  while (i < len - n - 1) {
-      curr = curr.next;
-      i++;
+  
+  while (ahead) {
+    ahead = ahead.next;
+    behind = behind.next;
   }
-  let prev = curr;
-  curr = curr.next;
-  prev.next = curr.next;
-  return dh.next;
+  behind.next = behind.next.next;
+  return head;
 };
