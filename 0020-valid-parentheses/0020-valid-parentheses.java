@@ -11,12 +11,8 @@ class Solution {
       if (open.containsValue(p)) {
         stack.add(p);
       } else {
-        System.out.println(stack);
         if (stack.isEmpty()) return false;
         String popped = stack.get(stack.size() - 1);
-        System.out.println(popped);
-        System.out.println(p);
-        System.out.println(open.get(p));
         if (!popped.equals(open.get(p))) {
           return false;
         } else {
