@@ -6,11 +6,11 @@ function isValid(s: string): boolean {
     '}': '{',
   }
   for (let p of s) {
-    if (Object.values(open).includes(p)) {
+    if ('([{'.includes(p)) {
       stack.push(p)
     } else if (stack.pop() !== open[p]) {
       return false
     }
   }
   return !stack.length
-};
+}
