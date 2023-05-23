@@ -6,7 +6,7 @@ function isValid(s: string): boolean {
     '}': '{',
   }
   for (let p of s) {
-    if ('([{'.includes(p)) {
+    if (Object.values(open).includes(p)) {
       stack.push(p)
     } else if (stack.pop() !== open[p]) {
       return false
