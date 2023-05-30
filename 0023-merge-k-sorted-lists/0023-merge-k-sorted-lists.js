@@ -9,27 +9,25 @@
  * @param {ListNode[]} lists
  * @return {ListNode}
  */
-const merge2Lists = (list1, list2) => {
-  const dh = new ListNode();
-  let [curr1, curr2, currDH] = [list1, list2, dh];
-  while (curr1 && curr2) {
-    if (curr1.val <= curr2.val) {
-      currDH.next = curr1;
-      curr1 = curr1.next;
-    } else {
-      currDH.next = curr2;
-      curr2 = curr2.next;
-    }
-    currDH = currDH.next;
-  }
-  currDH.next = curr1 ? curr1 : curr2;
-  return dh.next; 
-};
-    
 var mergeKLists = function(lists) {
+  const merge2Lists = (list1, list2) => {
+    const dh = new ListNode();
+    let [curr1, curr2, currDH] = [list1, list2, dh];
+    while (curr1 && curr2) {
+      if (curr1.val <= curr2.val) {
+        currDH.next = curr1;
+        curr1 = curr1.next;
+      } else {
+        currDH.next = curr2;
+        curr2 = curr2.next;
+      }
+      currDH = currDH.next;
+    }
+    currDH.next = curr1 ? curr1 : curr2;
+    return dh.next; 
+  };
+
   if (!lists.length) return null;
-  if (lists.length === 1) return lists[0];
-  
   let first, second;
   while (lists.length > 1) {
     first = lists.shift();
