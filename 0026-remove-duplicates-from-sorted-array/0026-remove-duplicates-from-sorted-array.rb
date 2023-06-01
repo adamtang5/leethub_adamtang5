@@ -3,12 +3,8 @@
 def remove_duplicates(nums)
   l, r, len = 0, 0, nums.length
   while r < len
-    while r < len && nums[r] == nums[l]
-      r += 1
-    end
-    if r < len
-      nums[l+1] = nums[r]
-    end
+    r += 1 while r < len && nums[r] == nums[l]
+    nums[l+1] = nums[r] if r < len
     l += 1
   end
   l
