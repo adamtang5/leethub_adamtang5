@@ -35,7 +35,5 @@ var findSubstring = function(s, words) {
       }
     }
   }
-
-  // ans.sort((a, b) => a - b);
   return ans;
 };
