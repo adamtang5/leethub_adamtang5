@@ -29,9 +29,7 @@ var findSubstring = function(s, words) {
       if (hashCopy[popped] !== undefined) hashCopy[popped]++;
       if (hashCopy[currWord] !== undefined) {
         hashCopy[currWord]--;
-        if (Object.values(hashCopy).every(val => val === 0)) {
-          ans.push(start);
-        }
+        if (Object.values(hashCopy).every(val => val === 0)) ans.push(start);
       }
     }
   }
