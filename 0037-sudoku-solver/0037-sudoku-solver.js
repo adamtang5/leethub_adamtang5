@@ -31,20 +31,20 @@ var solveSudoku = function(board) {
     if (board[r][c] !== '.') {
       backTrack(nextR, nextC);
     } else {
-      for (let digit = 1; digit <= 9; digit++) {
+      for (let d = 1; d <= 9; d++) {
         const subIdx = 3 * Math.floor(r / 3) + Math.floor(c / 3);
-        if (!rows[r].has(digit) && !cols[c].has(digit) && !subs[subIdx].has(digit)) {
-          rows[r].add(digit);
-          cols[c].add(digit);
-          subs[subIdx].add(digit);
-          board[r][c] = digit.toString();
+        if (!rows[r].has(d) && !cols[c].has(d) && !subs[subIdx].has(d)) {
+          rows[r].add(d);
+          cols[c].add(d);
+          subs[subIdx].add(d);
+          board[r][c] = d.toString();
           
           backTrack(nextR, nextC);
           
           if (!isSolved) {
-            rows[r].delete(digit);
-            cols[c].delete(digit);
-            subs[subIdx].delete(digit);
+            rows[r].delete(d);
+            cols[c].delete(d);
+            subs[subIdx].delete(d);
             board[r][c] = '.';
           }
         }
