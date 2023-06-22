@@ -40,7 +40,7 @@ def solve_sudoku(board)
     (0...9).each do |c|
       if board[r][c] != '.'
         d = board[r][c].to_i
-        sub_idx = (r/3*3) + (c/3)
+        sub_idx = r/3*3 + c/3
         rows[r].add(d)
         cols[c].add(d)
         subs[sub_idx].add(d)
