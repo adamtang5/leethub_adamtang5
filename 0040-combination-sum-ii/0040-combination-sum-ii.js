@@ -17,9 +17,7 @@ var combinationSum2 = function(candidates, target) {
     } else if (t > 0) {
       let currMax = c[0];
       let n = 1;
-      while (c[n] === c[n - 1]) {
-        n++;
-      }
+      while (c[n] === c[n - 1]) n++;
       for (let i = Math.min(Math.floor(t / currMax), n); i >= 0; i--) {
         dfs(c.slice(n), t - i * currMax, [...new Array(i).fill(currMax), ...suffix]);
       }
