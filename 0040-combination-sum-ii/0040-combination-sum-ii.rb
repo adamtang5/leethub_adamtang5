@@ -12,7 +12,7 @@ def dfs(c, t, ans, suffix=[])
     n = 1
     n += 1 while n < c.length && c[n] == c[n-1]
     ([t / curr_max, n].min).downto(0).each do |i|
-      dfs(c[n..-1], t-i*curr_max, ans, [curr_max]*i + suffix)
+      dfs(c[n..-1], t-i*curr_max, ans, [curr_max]*i+suffix)
     end
   end
 end
