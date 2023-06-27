@@ -2,20 +2,22 @@ class Solution {
   public int trap(int[] height) {
     if (height.length == 1) return 0;
     int ans = 0;
-    int level;
-    int[] lBound = new int[height.length];
-    lBound[0] = 0;
-    for (int i = 1; i < lBound.length; i++) {
-      lBound[i] = Math.max(lBound[i - 1], height[i - 1]);
-    }
-    int[] rBound = new int[height.length];
-    rBound[rBound.length - 1] = 0;
-    for (int i = rBound.length - 2; i >= 0; i--) {
-      rBound[i] = Math.max(rBound[i + 1], height[i + 1]);
-    }
-    for (int i = 1; i < height.length - 1; i++) {
-      level = Math.min(lBound[i], rBound[i]);
-      ans += Math.max(0, level - height[i]);
+    int l = 0;
+    int r = height.length - 1;
+    int maxL = height[l];
+    int maxR = height[r];
+    int level = Math.min(maxL, maxR);
+    while (l < r) {
+      if (maxL <= maxR) {
+        l++;
+        ans += Math.max(0, level - height[l]);
+        maxL = Math.max(maxL, height[l]);
+      } else {
+        r--;
+        ans += Math.max(0, level - height[r]);
+        maxR = Math.max(maxR, height[r]);
+      }
+      level = Math.min(maxL, maxR);
     }
     return ans;
   }
