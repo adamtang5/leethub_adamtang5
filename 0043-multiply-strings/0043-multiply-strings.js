@@ -8,7 +8,7 @@ var multiply = function(num1, num2) {
   const rev1 = num1.split('').reverse();
   const rev2 = num2.split('').reverse();
   const products = new Array(num1.length + num2.length).fill(0);
-  let prod;
+  let prod, place;
   rev1.forEach((digit1, place1) => {
     rev2.forEach((digit2, place2) => {
       place = place1 + place2;
