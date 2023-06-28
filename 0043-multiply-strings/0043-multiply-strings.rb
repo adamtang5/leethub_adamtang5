@@ -3,14 +3,12 @@
 # @return {String}
 def multiply(num1, num2)
   return '0' if num1 == '0' || num2 == '0'
-  products = Array.new(num1.length + num2.length, 0)
-  p1 = p2 = prod = place = nil
-  (0...num1.length).reverse_each do |i|
-    p1 = num1.length-i-1
-    (0...num2.length).reverse_each do |j|
-      p2 = num2.length-j-1
-      place = p1 + p2
-      prod = num1[i].to_i*num2[j].to_i
+  rev1, rev2 = num1.split('').reverse, num2.split('').reverse
+  products = Array.new(rev1.length+rev2.length, 0)
+  rev1.each_with_index do |digit1, place1|
+    rev2.each_with_index do |digit2, place2|
+      place = place1+place2
+      prod = digit1.to_i*digit2.to_i
       products[place] += prod%10
       products[place+1] += (prod/10).floor
     end
@@ -21,10 +19,6 @@ def multiply(num1, num2)
       products[i] %= 10
     end
   end
-  ans = ""
-  products.each_with_index do |n, i|
-    break if i == products.length-1 && n == 0
-    ans = n.to_s+ans
-  end
-  ans
+  products.pop if products[-1] == 0
+  products.reverse.map { |n| n.to_s }.join('')
 end
