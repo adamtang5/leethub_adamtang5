@@ -1,9 +1,10 @@
 class Solution:
-    def jump(self, nums: List[int]) -> int:
-        steps = [len(nums)] * len(nums)
-        steps[0] = 0
-        for i in range(len(nums)-1):
-            for j in range(1, nums[i]+1):
-                if i+j < len(steps):
-                    steps[i+j] = min(steps[i+j], steps[i]+1)
-        return steps[-1]
+  def jump(self, nums: List[int]) -> int:
+    ans = l = r = ub = 0
+    while r < len(nums)-1:
+      for i in range(l, r+1):
+        ub = max(ub, i+nums[i])
+      l = r+1
+      r = ub
+      ans += 1
+    return ans
