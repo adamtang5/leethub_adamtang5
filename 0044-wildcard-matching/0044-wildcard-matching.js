@@ -41,7 +41,6 @@ var isMatch = function(s, p) {
         return dp[key];
       }
     } else {
-      while (pIdx < p.length - 1 && p[pIdx + 1] === '*') pIdx++;
       if (dp[key] !== undefined) {
         return dp[key];
       } else {
