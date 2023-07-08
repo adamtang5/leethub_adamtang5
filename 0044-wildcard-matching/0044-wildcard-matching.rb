@@ -7,7 +7,6 @@ def char_match(ch1, ch2)
 end
 
 def parse(s, chunks)
-  p [s, chunks]
   return true if chunks.length == 0
   start = 0
   chunk_idx = 0
@@ -21,7 +20,6 @@ def parse(s, chunks)
       start += j
     else
       start += 1
-      # start += 1 while start < s.length && !char_match(s[start], chunks[chunk_idx][0])
     end
   end
   chunk_idx == chunks.length
@@ -52,5 +50,4 @@ def is_match(s, p)
   end
   return true if p == "*"
   parse(s, p.split('*')[1..-1])
-  
 end
