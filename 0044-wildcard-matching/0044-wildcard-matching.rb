@@ -26,22 +26,23 @@ def parse(s, chunks)
 end
 
 def is_match(s, p)
+  return s == '' if p == ''
   p.gsub!(/\*+/, '*')
   i = 0
   if p[i] != '*'
-    while p[i] != '*' && i < p.length
+    while i < p.length && p[i] != '*'
+      return false if i >= s.length
       return false if !char_match(s[i], p[i])
       i += 1
     end
     s = s[i..-1]
     p = p[i..-1]
   end
-  return true if s == '' && p == ''
-  return false if s != '' && p == ''
-  return true if p == "*"
+  return s == '' if p == ''
   i = 0
   if p[-1-i] != '*'
     while p[-1-i] != '*'
+      return false if i >= s.length
       return false if !char_match(s[-1-i], p[-1-i])
       i += 1
     end
