@@ -2,42 +2,47 @@ import re
 
 class Solution:
   def isMatch(self, s: str, p: str) -> bool:
-    p = re.sub(r"\*+", '*', p)
-    
     def charMatch(ch1: str, ch2: str) -> bool:
       return ch2 == '?' or ch2 == ch1
     
-    def dfs(sIdx: int, pIdx: int, dp: dict) -> bool:
-      key = (sIdx, pIdx)
-      
-      if sIdx < len(s) and pIdx == len(p):
-        dp[key] = False
-        return dp[key]
-      if sIdx == len(s) and pIdx == len(p):
-        dp[key] = True
-        return dp[key]
-      if sIdx == len(s) and pIdx < len(p):
-        dp[key] = True
-        for i in range(pIdx, len(p)):
-          if p[i] != '*':
-            dp[key] = False
-            break
-        return dp[key]
-      
-      if p[pIdx] != '*':
-        if not charMatch(s[sIdx], p[pIdx]):
-          dp[key] = False
-          return dp[key]
+    def parse(s: str, chunks: list) -> bool:
+      print(s, chunks)
+      if chunks == []: return True
+      start = cIdx = 0
+      j = 1
+      while cIdx < len(chunks) and start < len(s):
+        while start < len(s) and not charMatch(s[start], chunks[cIdx][0]):
+          start += 1
+        if start == len(s):
+          break
+        j = 1
+        while j < len(chunks[cIdx]) and start+j < len(s) and charMatch(s[start+j], chunks[cIdx][j]):
+          j += 1
+        if j == len(chunks[cIdx]):
+          cIdx += 1
+          start += j
         else:
-          dp[key] = dfs(sIdx+1, pIdx+1, dp)
-          return dp[key]
-      else:
-        if key in dp:
-          return dp[key]
-        ans = False
-        for i in range(sIdx, len(s)+1):
-          ans = ans or dfs(i, pIdx+1, dp)
-        dp[key] = ans
-        return dp[key]
-  
-    return dfs(0, 0, dict())
+          start += 1
+      return cIdx == len(chunks)
+      
+    if p == '': return s == ''
+    p = re.sub(r"\*+", '*', p)
+    i = 0
+    if p[i] != '*':
+      while i < len(p) and p[i] != '*':
+        if i >= len(s): return False
+        if not charMatch(s[i], p[i]): return False
+        i += 1
+      s = s[i:]
+      p = p[i:]
+    if p == '': return s == ''
+    i = 0
+    if p[-1-i] != '*':
+      while i < len(p) and p[-1-i] != '*':
+        if i >= len(s): return False
+        if not charMatch(s[-1-i], p[-1-i]): return False
+        i += 1
+      s = s[:-i]
+      p = p[:-i]
+    if p == '*': return True
+    return parse(s, p[1:-1].split('*'))
