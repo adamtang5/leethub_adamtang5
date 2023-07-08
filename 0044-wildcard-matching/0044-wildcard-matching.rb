@@ -8,8 +8,8 @@ end
 
 def parse(s, chunks)
   return true if chunks.length == 0
-  start = 0
-  chunk_idx = 0
+  start = chunk_idx = 0
+  j = 1
   while chunk_idx < chunks.length && start < s.length
     start += 1 while start < s.length && !char_match(s[start], chunks[chunk_idx][0])
     break if start == s.length
@@ -49,5 +49,5 @@ def is_match(s, p)
     p = p[0...-i]
   end
   return true if p == "*"
-  parse(s, p.split('*')[1..-1])
+  parse(s, p[1...-1].split('*'))
 end
