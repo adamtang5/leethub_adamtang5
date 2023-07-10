@@ -4,15 +4,13 @@
  */
 var groupAnagrams = function(strs) {
   const groups = {};
-  let keyString = "";
-
+  let keyString;
   strs.forEach(s => {
-    let chs = s.split('');
+    const chs = s.split('');
     chs.sort();
     keyString = JSON.stringify(chs);
     groups[keyString] = groups[keyString] || [];
     groups[keyString].push(s);
   });
-
   return Object.values(groups);
 };
