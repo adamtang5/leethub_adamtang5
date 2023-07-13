@@ -4,9 +4,8 @@
  */
 var solveNQueens = function(n) {
   const buildBoard = coords => {
-    const dim = coords.length;
-    const ans = new Array(dim).fill().map(() => new Array(dim).fill('.'));
-    coords.forEach((c, r) => ans[r][c] = "Q");
+    const ans = new Array(coords.length).fill().map(() => new Array(coords.length).fill('.'));
+    coords.forEach((c, r) => ans[r][c] = 'Q');
     return ans.map(row => row.join(''));
   };
   
