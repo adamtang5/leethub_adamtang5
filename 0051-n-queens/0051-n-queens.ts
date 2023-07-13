@@ -9,11 +9,11 @@ function solveNQueens(n: number): string[][] {
     return c >= 0 && c < n
   }
   
-  const seqs: Set<string> = new Set()
+  const seqs: number[][] = []
   
   function dfs(seq: number[]): void {
     if (seq.length === n) {
-      seqs.add(JSON.stringify(seq))
+      seqs.push(seq)
       return
     }
     const redSet: Set<number> = new Set(seq)
@@ -29,5 +29,5 @@ function solveNQueens(n: number): string[][] {
   for (let i = 0; i < n; i++) {
     dfs([i])
   }
-  return [...seqs].map(s => JSON.parse(s)).map(seq => buildBoard(seq))
+  return seqs.map(seq => buildBoard(seq))
 }
