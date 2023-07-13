@@ -13,11 +13,11 @@ var solveNQueens = function(n) {
     return c >= 0 && c < n;
   };
   
-  const seqs = new Set();
+  const seqs = [];
   
   const dfs = seq => {
     if (seq.length === n) {
-      seqs.add(JSON.stringify(seq));
+      seqs.push(seq);
       return;
     }
     const redSet = new Set(seq);
@@ -34,5 +34,5 @@ var solveNQueens = function(n) {
     dfs([i]);
   }
   
-  return [...seqs].map(s => JSON.parse(s)).map(seq => buildBoard(seq));
+  return seqs.map(seq => buildBoard(seq));
 };
