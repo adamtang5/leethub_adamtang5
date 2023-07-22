@@ -29,7 +29,7 @@ function spiralOrder(matrix: number[][]): number[] {
   
   const moveSeq: Function[] = [goRight, goDown, goLeft, goUp]
   
-  let moveIdx = 0;
+  let moveIdx = 0
   while (rub >= rlb && cub >= clb) {
     moveSeq[moveIdx % moveSeq.length]()
     moveIdx++
