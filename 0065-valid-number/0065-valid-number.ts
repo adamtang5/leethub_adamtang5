@@ -1,6 +1,4 @@
 function isNumber(s: string): boolean {
-  const digitsRe: RegExp = /[0-9]/
-  
   function validNum(s: string, numType: string): boolean {
     if (s.length === 0) return false
     if ("+-".includes(s[0])) return validNum(s.slice(1), numType)
@@ -10,13 +8,13 @@ function isNumber(s: string): boolean {
         if (s[i] === ".") {
           if (dotIdx >= 0 || s.length === 1) return false
           dotIdx = i
-        } else if (!digitsRe.test(s[i])) {
+        } else if (!/[0-9]/.test(s[i])) {
           return false
         }
       }
     } else if (numType === "int") {
       for (let i = 0; i < s.length; i++) {
-        if (!digitsRe.test(s[i])) return false
+        if (!/[0-9]/.test(s[i])) return false
       }
     }
     return true
