@@ -3,8 +3,6 @@
  * @return {boolean}
  */
 var isNumber = function(s) {
-  const digitsRe = /[0-9]/;
-
   const validNum = (s, numType) => {
     if (s.length === 0) return false;
     if ("+-".includes(s[0])) return validNum(s.slice(1), numType);
@@ -14,13 +12,13 @@ var isNumber = function(s) {
         if (s[i] === ".") {
           if (dotIdx >= 0 || s.length === 1) return false;
           dotIdx = i;
-        } else if (!digitsRe.test(s[i])) {
+        } else if (!/[0-9]/.test(s[i])) {
           return false;
         }
       }
     } else if (numType === "int") {
       for (let i = 0; i < s.length; i++) {
-        if (!digitsRe.test(s[i])) return false;
+        if (!/[0-9]/.test(s[i])) return false;
       }
     }
     return true;
