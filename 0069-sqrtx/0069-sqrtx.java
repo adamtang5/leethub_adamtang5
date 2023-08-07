@@ -1,6 +1,6 @@
 class Solution {
   public int mySqrt(int x) {
-    if (x == Integer.MAX_VALUE) return mySqrt(x - 1);
+    // if (x == Integer.MAX_VALUE) return mySqrt(x - 1);
     int pivot = 46340;
     if (x >= pivot * pivot) return pivot;
     if (x < 2) return x;
