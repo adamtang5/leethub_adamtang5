@@ -16,12 +16,9 @@ class Solution {
     } else if (divisor == Integer.MIN_VALUE) {
       return dividend == Integer.MIN_VALUE ? 1 : 0;
     }
+    
     int d = 0 - Math.abs(dividend);
     int dv = Math.abs(divisor);
-    
-    System.out.println(d);
-    System.out.println(dv);
-    
     int output = 0;
     int temp;
     int mul;
