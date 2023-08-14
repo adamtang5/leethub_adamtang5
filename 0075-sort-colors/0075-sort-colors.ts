@@ -1,0 +1,18 @@
+/**
+ Do not return anything, modify nums in-place instead.
+ */
+function sortColors(nums: number[]): void {
+  const tally: number[] = new Array(3).fill(0)
+  nums.forEach(n => tally[n]++)
+
+  let [n, i] = [0, 0]
+  while (i < nums.length) {
+    if (tally[n] > 0) {
+      nums[i] = n
+      tally[n]--
+      i++
+    } else {
+      n++
+    }
+  }
+}
