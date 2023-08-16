@@ -1,9 +1,8 @@
 class Solution {
   public List<List<Integer>> subsets(int[] nums) {
     List<List<Integer>> ans = new ArrayList();
-    int ub = 1 << nums.length;
     int p;
-    for (int i = 0; i < ub; i++) {
+    for (int i = 0; i < 1 << nums.length; i++) {
       List<Integer> sub = new ArrayList<Integer>();
       for (int j = 0; j < nums.length; j++) {
         p = i & 1 << j;
