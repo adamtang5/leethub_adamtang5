@@ -27,5 +27,5 @@ def partition(head, x)
     curr = next_node
   end
   left_tail.next = right.next
-  return left.next
+  left.next
 end
