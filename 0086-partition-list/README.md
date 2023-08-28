@@ -4,7 +4,7 @@
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2021/01/04/partition.jpg" style="width: 662px; height: 222px; filter: brightness(83%);">
+<img alt="" src="https://assets.leetcode.com/uploads/2021/01/04/partition.jpg" style="width: 662px; height: 222px;">
 <pre><strong>Input:</strong> head = [1,4,3,2,5,2], x = 3
 <strong>Output:</strong> [1,2,2,4,3,5]
 </pre>
