@@ -9,10 +9,9 @@ var grayCode = function(n) {
     lastSeq[lastSeq.length - 1] = n - 1;
     return [...lastSeq, ...lastSeq];
   };
+  
   const seq = bitSeq(n);
-  
   const ans = new Array(2 ** n).fill(0);
-  
   for (let i = 0; i < ans.length - 1; i++) {
     ans[i + 1] = ans[i] ^ (1 << (n - 1 - seq[i]));
   }
