@@ -39,7 +39,7 @@ def helper(post_lb, post_ub, inorder, postorder, in_idx)
       r = mid-1
     end
   end
-    return TreeNode.new(
+    TreeNode.new(
       inorder[root_in_idx],
       helper(post_lb, mid+1, inorder, postorder, in_idx),
       helper(mid+1, post_ub-1, inorder, postorder, in_idx)
@@ -49,5 +49,5 @@ end
 def build_tree(inorder, postorder)
   in_idx = Hash.new
   inorder.each_with_index{ |el, i| in_idx[el] = i }
-  return helper(0, postorder.length, inorder, postorder, in_idx)
+  helper(0, postorder.length, inorder, postorder, in_idx)
 end
