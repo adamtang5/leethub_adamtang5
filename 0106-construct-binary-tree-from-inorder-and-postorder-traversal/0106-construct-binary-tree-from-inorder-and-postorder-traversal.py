@@ -10,12 +10,10 @@ class Solution:
     for i, e in enumerate(inorder):
       inIdx[e] = i
     
-    def helper(postLb, postUb):
-      if postLb == postUb:
-        return None
+    def helper(postLb, postUb) -> Optional[TreeNode]:
+      if postLb == postUb: return None
       rootInIdx = inIdx[postorder[postUb-1]]
-      if postUb-postLb == 1:
-        return TreeNode(inorder[rootInIdx])
+      if postUb-postLb == 1: return TreeNode(inorder[rootInIdx])
       l, r = postLb, postUb-2
       if inIdx[postorder[r]] < rootInIdx:
         return TreeNode(inorder[rootInIdx], helper(postLb, postUb-1), None)
