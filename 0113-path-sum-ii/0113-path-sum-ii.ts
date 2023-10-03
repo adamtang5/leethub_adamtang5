@@ -15,11 +15,12 @@ function pathSum(root: TreeNode | null, targetSum: number): number[][] {
   const ans: number[][] = []
   function dfs(node: TreeNode | null, runningSum: number, runningVals: number[]): void {
     if (!node) return
+    const next: number[] = [...runningVals, node.val]
     if (!node.left && !node.right && runningSum + node.val === targetSum) {
-      ans.push([...runningVals, node.val])
+      ans.push(next)
     }
-    dfs(node.left, runningSum + node.val, [...runningVals, node.val])
-    dfs(node.right, runningSum + node.val, [...runningVals, node.val])
+    dfs(node.left, runningSum + node.val, next)
+    dfs(node.right, runningSum + node.val, next)
   }
   dfs(root, 0, [])
   return ans
