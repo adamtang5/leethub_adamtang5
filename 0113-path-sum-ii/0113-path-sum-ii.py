@@ -9,9 +9,10 @@ class Solution:
     ans = []
     def dfs(node: Optional[TreeNode], runningSum: int, runningVals: List[int]) -> None:
       if node is None: return
+      next = runningVals+[node.val]
       if node.left is None and node.right is None and runningSum+node.val == targetSum:
-        ans.append(runningVals+[node.val])
-      dfs(node.left, runningSum+node.val, runningVals+[node.val])
-      dfs(node.right, runningSum+node.val, runningVals+[node.val])
+        ans.append(next)
+      dfs(node.left, runningSum+node.val, next)
+      dfs(node.right, runningSum+node.val, next)
     dfs(root, 0, [])
     return ans
