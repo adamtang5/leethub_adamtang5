@@ -15,11 +15,12 @@ var pathSum = function(root, targetSum) {
   const ans = [];
   const dfs = (node, runningSum, runningVals) => {
     if (!node) return;
+    const next = [...runningVals, node.val];
     if (!node.left && !node.right && runningSum + node.val === targetSum) {
-      ans.push([...runningVals, node.val]);
+      ans.push(next);
     }
-    dfs(node.left, runningSum + node.val, [...runningVals, node.val]);
-    dfs(node.right, runningSum + node.val, [...runningVals, node.val]);
+    dfs(node.left, runningSum + node.val, next);
+    dfs(node.right, runningSum + node.val, next);
   };
   dfs(root, 0, []);
   return ans;
