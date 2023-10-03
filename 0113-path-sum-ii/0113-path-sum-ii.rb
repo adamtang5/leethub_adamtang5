@@ -12,9 +12,10 @@
 # @return {Integer[][]}
 def dfs(node, running_sum, running_vals, target_sum, ans)
   return nil if !node
-  ans << running_vals+[node.val] if !node.left && !node.right && running_sum+node.val == target_sum
-  dfs(node.left, running_sum+node.val, running_vals+[node.val], target_sum, ans)
-  dfs(node.right, running_sum+node.val, running_vals+[node.val], target_sum, ans)
+  next_vals = running_vals+[node.val]
+  ans << next_vals if !node.left && !node.right && running_sum+node.val == target_sum
+  dfs(node.left, running_sum+node.val, next_vals, target_sum, ans)
+  dfs(node.right, running_sum+node.val, next_vals, target_sum, ans)
   nil
 end
 
