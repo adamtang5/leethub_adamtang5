@@ -10,17 +10,24 @@
 # @param {TreeNode} root
 # @param {Integer} target_sum
 # @return {Integer[][]}
-def dfs(node, running_sum, running_vals, target_sum, ans)
-  return nil if !node
-  next_vals = running_vals+[node.val]
-  ans << next_vals if !node.left && !node.right && running_sum+node.val == target_sum
-  dfs(node.left, running_sum+node.val, next_vals, target_sum, ans)
-  dfs(node.right, running_sum+node.val, next_vals, target_sum, ans)
-  nil
-end
-
 def path_sum(root, target_sum)
-  ans = []
-  dfs(root, 0, [], target_sum, ans)
+  ans, running_sum = [], 0
+  stack1 = root ? [root] : []
+  stack2 = []
+  curr = nil
+  while stack1 != []
+    curr = stack1.pop
+    stack2 << curr
+    running_sum += curr.val
+    stack1 << curr.right if curr.right
+    stack1 << curr.left if curr.left
+    if !stack2[-1].left && !stack2[-1].right
+      ans << stack2.map{ |node| node.val } if running_sum == target_sum
+      while stack1 != [] && stack2 != [] && stack1[-1] != stack2[-1].right
+        curr = stack2.pop
+        running_sum -= curr.val
+      end
+    end
+  end
   ans
 end
