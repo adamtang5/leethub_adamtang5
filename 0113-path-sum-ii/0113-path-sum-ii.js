@@ -23,9 +23,9 @@ var pathSum = function(root, targetSum) {
     runningSum += curr.val;
     if (curr.right) stack1.push(curr.right);
     if (curr.left) stack1.push(curr.left);
-    if (!stack2.at(-1).left && !stack2.at(-1).right) {
+    if (!stack2[stack2.length - 1].left && !stack2[stack2.length - 1].right) {
       if (runningSum === targetSum) ans.push(stack2.map(node => node.val));
-      while (stack1.length && stack2.length && stack1.at(-1) !== stack2.at(-1).right) {
+      while (stack1.length && stack2.length && stack1[stack1.length - 1] !== stack2[stack2.length - 1].right) {
         curr = stack2.pop();
         runningSum -= curr.val;
       }
