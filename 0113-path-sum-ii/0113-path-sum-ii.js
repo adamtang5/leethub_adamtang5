@@ -13,15 +13,23 @@
  */
 var pathSum = function(root, targetSum) {
   const ans = [];
-  const dfs = (node, runningSum, runningVals) => {
-    if (!node) return;
-    const next = [...runningVals, node.val];
-    if (!node.left && !node.right && runningSum + node.val === targetSum) {
-      ans.push(next);
+  let runningSum = 0;
+  const stack1 = root ? [root] : [];
+  const stack2 = [];
+  let curr;
+  while (stack1.length) {
+    curr = stack1.pop();
+    stack2.push(curr);
+    runningSum += curr.val;
+    if (curr.right) stack1.push(curr.right);
+    if (curr.left) stack1.push(curr.left);
+    if (!stack2.at(-1).left && !stack2.at(-1).right) {
+      if (runningSum === targetSum) ans.push(stack2.map(node => node.val));
+      while (stack1.length && stack2.length && stack1.at(-1) !== stack2.at(-1).right) {
+        curr = stack2.pop();
+        runningSum -= curr.val;
+      }
     }
-    dfs(node.left, runningSum + node.val, next);
-    dfs(node.right, runningSum + node.val, next);
-  };
-  dfs(root, 0, []);
+  }
   return ans;
 };
