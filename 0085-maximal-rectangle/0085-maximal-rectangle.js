@@ -26,24 +26,19 @@ var maximalRectangle = function(matrix) {
       thSet.clear();
       if (h[r][c] && v[r][c]) {
         for (let j = 0; j < h[r][c]; j++) thSet.add(v[r][c + j]);
-        console.log(thSet);
         for (let th of thSet) {
           wd = 0;
           while (wd < h[r][c] && v[r][c + wd] >= th) wd++;
-          console.log(r, c, wd * th);
           ans = Math.max(ans, wd * th);
         }
         thSet.clear();
         for (let i = 0; i < v[r][c]; i++) thSet.add(h[r + i][c]);
-        console.log(thSet);
         for (let th of thSet) {
           ht = 0;
           while (ht < v[r][c] && h[r + ht][c] >= th) ht++;
-          console.log(r, c, ht * th);
           ans = Math.max(ans, ht * th);
         }
         thSet.clear();
-        console.log(ans);
       }
     }
   }
