@@ -33,7 +33,5 @@ var isScramble = function(s1, s2) {
     return ans;
   };
   
-  let ans = dfs(s1, s2);
-  console.log(dp);
-  return ans;
+  return dfs(s1, s2);
 };
