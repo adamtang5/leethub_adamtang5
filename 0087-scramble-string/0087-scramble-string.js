@@ -22,12 +22,17 @@ var isScramble = function(s1, s2) {
       tally1[s1.charCodeAt(i) - aCode]++;
       tally2[s2.charCodeAt(i) - aCode]++;
     }
-    if (JSON.stringify(tally1) !== JSON.stringify(tally2)) return false;
+    if (JSON.stringify(tally1) !== JSON.stringify(tally2)) {
+      dp[key] = false;
+      return false;
+    }
     
     let ans = false;
     for (let split = 1; split < s1.length; split++) {
-      ans ||= dfs(s1.slice(0, split), s2.slice(0, split)) && dfs(s1.slice(split), s2.slice(split));
-      ans ||= dfs(s1.slice(0, split), s2.slice(s2.length - split)) && dfs(s1.slice(split), s2.slice(0, s2.length - split));
+      ans ||= dfs(s1.slice(0, split), s2.slice(0, split)) &&
+        dfs(s1.slice(split), s2.slice(split));
+      ans ||= dfs(s1.slice(0, split), s2.slice(s2.length - split)) &&
+        dfs(s1.slice(split), s2.slice(0, s2.length - split));
     }
     dp[key] = ans;
     return ans;
