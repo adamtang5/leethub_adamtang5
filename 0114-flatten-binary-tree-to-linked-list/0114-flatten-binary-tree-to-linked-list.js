@@ -23,5 +23,4 @@ var flatten = function(root) {
     if (curr.right) stack.push(curr.right);
     if (curr.left) stack.push(curr.left);
   }
-  return ans.right;
 };
