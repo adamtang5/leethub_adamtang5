@@ -11,7 +11,7 @@ var numDistinct = function(s, t) {
     if (tChars.has(s[i])) newS += s[i];
   }
   if (!newS.length) return 0;
-  let [l, r] = [0, s.length];
+  let [l, r] = [0, newS.length];
   while (l < newS.length && newS[l] !== t[0]) l++;
   while (r > 0 && newS[r - 1] !== t.at(-1)) r--;
   s = newS.slice(l, r);
