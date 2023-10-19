@@ -4,19 +4,19 @@
  * @return {number}
  */
 var numDistinct = function(s, t) {
-  const tChars = new Set();
-  for (let i = 0; i < t.length; i++) {
-    tChars.add(t[i]);
-  }
-  let newS = "";
-  for (let i = 0; i < s.length; i++) {
-    if (tChars.has(s[i])) newS += s[i];
-  }
-  let [l, r] = [0, s.length];
-  while (newS[l] !== t[0] && l < newS.length) l++;
-  while (newS[r - 1] !== t.at(-1) && r >= 0) r--;
-  s = newS.slice(l, r);
-  if (!s.length) return 0;
+  // const tChars = new Set();
+  // for (let i = 0; i < t.length; i++) {
+  //   tChars.add(t[i]);
+  // }
+  // let newS = "";
+  // for (let i = 0; i < s.length; i++) {
+  //   if (tChars.has(s[i])) newS += s[i];
+  // }
+  // let [l, r] = [0, s.length];
+  // while (newS[l] !== t[0] && l < newS.length) l++;
+  // while (newS[r - 1] !== t.at(-1) && r >= 0) r--;
+  // s = newS.slice(l, r);
+  // if (!s.length) return 0;
   const dp = new Array(s.length).fill().map(_ => new Array(t.length).fill(0));
   for (let l = 0; l < s.length; l++) {
     if (s[l] === t[0]) dp[l][0]++;
