@@ -5,18 +5,19 @@
  */
 var numDistinct = function(s, t) {
   const tChars = new Set();
-  for (let i = 0; i < t.length; i++) {
-    tChars.add(t[i]);
-  }
+  for (let i = 0; i < t.length; i++) tChars.add(t[i]);
   let newS = "";
   for (let i = 0; i < s.length; i++) {
     if (tChars.has(s[i])) newS += s[i];
   }
+  if (!newS.length) return 0;
   let [l, r] = [0, s.length];
-  while (newS[l] !== t[0] && l < newS.length) l++;
-  while (newS[r - 1] !== t.at(-1) && r >= 0) r--;
+  while (l < newS.length && newS[l] !== t[0]) l++;
+  while (r > 0 && newS[r - 1] !== t.at(-1)) r--;
   s = newS.slice(l, r);
   if (!s.length) return 0;
+  if (s === t) return 1;
+  
   const dp = new Array(s.length).fill().map(_ => new Array(t.length).fill(0));
   for (let l = 0; l < s.length; l++) {
     if (s[l] === t[0]) dp[l][0]++;
