@@ -13,24 +13,31 @@
  * @return {Node}
  */
 var connect = function(root) {
-  const queue = root ? [[0, root]] : [];
-  const levels = [];
-  while (queue.length) {
-    const [level, node] = queue.shift();
-    if (level > levels.length - 1) levels.push([]);
-    levels[level].push(node);
-    if (node.left) queue.push([level + 1, node.left]);
-    if (node.right) queue.push([level + 1, node.right]);
-  }
-  let curr;
-  while (levels.length) {
-    const level = levels.shift();
-    curr = null;
-    let last;
-    while (level.length) {
-      last = level.pop();
-      last.next = curr;
-      curr = last;
+  if (!root) return root;
+  const isLeaf = node => !node.left && !node.right;
+  const nextChild = node => !node ? null : (node.left ? node.left : node.right);
+  const lastChild = node => !node ? null : (node.right ? node.right : node.left);
+  
+  let thisCur = root;
+  let thisNxt = null;
+  let nxtLvl = nextChild(thisCur);
+  
+  while (thisCur && nxtLvl) {
+    if (thisCur.left && thisCur.right) {
+      thisCur.left.next = thisCur.right;
+    }
+    if (lastChild(thisCur) && thisNxt) {
+      while (thisNxt && isLeaf(thisNxt)) thisNxt = thisNxt.next;
+      lastChild(thisCur).next = nextChild(thisNxt);
+    }
+    thisCur = thisNxt;
+    if (thisNxt) thisNxt = thisNxt.next;
+    if (!thisCur) {
+      thisCur = nxtLvl;
+      thisNxt = thisCur;
+      while (thisNxt && isLeaf(thisNxt)) thisNxt = thisNxt.next;
+      nxtLvl = !thisNxt || isLeaf(thisNxt) ? null : nextChild(thisNxt);
+      thisNxt = thisCur.next;
     }
   }
   return root;
