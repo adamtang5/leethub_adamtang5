@@ -20,48 +20,37 @@ class Node {
   }
 };
 */
-
-class AuxNode {
-  private int level;
-  private Node node;
-  
-  public AuxNode(int level, Node node) {
-    this.level = level;
-    this.node = node;
-  }
-  
-  public int getLevel() {
-    return level;
-  }
-  
-  public Node getNode() {
-    return node;
-  }
-}
-
 class Solution {
+  public boolean isLeaf(Node node) {
+    return node.left == null && node.right == null;
+  }
+  
+  public Node nextChild(Node node) {
+    return node == null ? null : node.left != null ? node.left : node.right;
+  }
+  
+  public Node lastChild(Node node) {
+    return node == null ? null : node.right != null ? node.right : node.left;
+  }
+  
   public Node connect(Node root) {
-    List<AuxNode> queue = new ArrayList<AuxNode>();
-    if (root != null) queue.add(new AuxNode(0, root));
-    List<List<Node>> levels = new ArrayList();
-    while (!queue.isEmpty()) {
-      AuxNode curr = queue.remove(0);
-      int level = curr.getLevel();
-      Node node = curr.getNode();
-      if (level > levels.size() - 1) levels.add(new ArrayList<Node>());
-      levels.get(level).add(node);
-      if (node.left != null) queue.add(new AuxNode(level + 1, node.left));
-      if (node.right != null) queue.add(new AuxNode(level + 1, node.right));
-    }
-    Node currNode;
-    while (!levels.isEmpty()) {
-      List<Node> currLevel = levels.remove(0);
-      currNode = null;
-      Node last;
-      while (!currLevel.isEmpty()) {
-        last = currLevel.remove(currLevel.size() - 1);
-        last.next = currNode;
-        currNode = last;
+    Node thisCur = root;
+    Node thisNxt = null;
+    Node nxtLvl = nextChild(root);
+    while (thisCur != null && nxtLvl != null) {
+      if (thisCur.left != null && thisCur.right != null) thisCur.left.next = thisCur.right;
+      if (lastChild(thisCur) != null && thisNxt != null) {
+        while (thisNxt != null && isLeaf(thisNxt)) thisNxt = thisNxt.next;
+        lastChild(thisCur).next = nextChild(thisNxt);
+      }
+      thisCur = thisNxt;
+      if (thisNxt != null) thisNxt = thisNxt.next;
+      if (thisCur == null) {
+        thisCur = nxtLvl;
+        thisNxt = thisCur;
+        while (thisNxt != null && isLeaf(thisNxt)) thisNxt = thisNxt.next;
+        nxtLvl = thisNxt == null || isLeaf(thisNxt) ? null : nextChild(thisNxt);
+        thisNxt = thisCur.next;
       }
     }
     return root;
