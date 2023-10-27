@@ -13,7 +13,6 @@
  * @return {Node}
  */
 var connect = function(root) {
-  if (!root) return root;
   const isLeaf = node => !node.left && !node.right;
   const nextChild = node => !node ? null : (node.left ? node.left : node.right);
   const lastChild = node => !node ? null : (node.right ? node.right : node.left);
