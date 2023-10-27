@@ -14,25 +14,36 @@
  * }
  */
 function connect(root: Node | null): Node | null {
-  type AuxNode = [number, Node]
-  const queue: AuxNode[] = root ? [[0, root]] : []
-  const levels: Node[][] = []
-  while (queue.length) {
-    const [level, node] = queue.shift()
-    if (level > levels.length - 1) levels.push([])
-    levels[level].push(node)
-    if (node.left) queue.push([level + 1, node.left])
-    if (node.right) queue.push([level + 1, node.right])
+  function isLeaf(node: Node): boolean {
+    return !node.left && !node.right
   }
-  let curr: Node | null
-  while (levels.length) {
-    const level: Node[] = levels.shift()
-    curr = null
-    let last: Node
-    while (level.length) {
-      last = level.pop()
-      last.next = curr
-      curr = last
+  
+  function nextChild(node: Node | null): Node | null {
+    return !node ? null : (node.left ? node.left : node.right)
+  }
+  
+  function lastChild(node: Node | null): Node | null {
+    return !node ? null : (node.right ? node.right : node.left)
+  }
+  
+  let thisCur: Node | null = root
+  let thisNxt: Node | null
+  let nxtLvl: Node | null = nextChild(thisCur)
+  
+  while (thisCur && nxtLvl) {
+    if (thisCur.left && thisCur.right) thisCur.left.next = thisCur.right
+    if (lastChild(thisCur) && thisNxt) {
+      while (thisNxt && isLeaf(thisNxt)) thisNxt = thisNxt.next
+      lastChild(thisCur).next = nextChild(thisNxt)
+    }
+    thisCur = thisNxt
+    if (thisNxt) thisNxt = thisNxt.next
+    if (!thisCur) {
+      thisCur = nxtLvl
+      thisNxt = thisCur
+      while (thisNxt && isLeaf(thisNxt)) thisNxt = thisNxt.next
+      nxtLvl = !thisNxt || isLeaf(thisNxt) ? null : nextChild(thisNxt)
+      thisNxt = thisCur.next
     }
   }
   return root
