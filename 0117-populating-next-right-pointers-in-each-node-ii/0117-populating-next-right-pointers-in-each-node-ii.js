@@ -22,9 +22,7 @@ var connect = function(root) {
   let nxtLvl = nextChild(thisCur);
   
   while (thisCur && nxtLvl) {
-    if (thisCur.left && thisCur.right) {
-      thisCur.left.next = thisCur.right;
-    }
+    if (thisCur.left && thisCur.right) thisCur.left.next = thisCur.right;
     if (lastChild(thisCur) && thisNxt) {
       while (thisNxt && isLeaf(thisNxt)) thisNxt = thisNxt.next;
       lastChild(thisCur).next = nextChild(thisNxt);
