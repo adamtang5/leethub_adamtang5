@@ -10,11 +10,10 @@
 # @param {ListNode} head
 # @return {Boolean}
 def hasCycle(head)
-  visited, curr = Set.new, head
-  while curr
-    return true if visited.include?(curr)
-    visited << curr
+  curr = head
+  10001.times do
+    return false if !curr
     curr = curr.next
   end
-  false
+  true
 end
