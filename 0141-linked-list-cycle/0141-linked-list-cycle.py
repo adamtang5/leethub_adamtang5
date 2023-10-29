@@ -6,9 +6,8 @@
 
 class Solution:
   def hasCycle(self, head: Optional[ListNode]) -> bool:
-    visited, curr = set(), head
-    while curr:
-      if curr in visited: return True
-      visited.add(curr)
+    curr = head
+    for _ in range(10001):
+      if not curr: return False
       curr = curr.next
-    return False
+    return True
