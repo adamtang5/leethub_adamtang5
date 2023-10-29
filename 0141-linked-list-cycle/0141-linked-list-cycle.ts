@@ -11,12 +11,10 @@
  */
 
 function hasCycle(head: ListNode | null): boolean {
-  const visited: Set<ListNode> = new Set()
   let curr: ListNode | null = head
-  while (curr) {
-    if (visited.has(curr)) return true
-    visited.add(curr)
+  for (let n = 0; n <= 10000; n++) {
+    if (!curr) return false
     curr = curr.next
   }
-  return false
+  return true
 };
