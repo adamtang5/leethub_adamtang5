@@ -11,12 +11,10 @@
  * @return {boolean}
  */
 var hasCycle = function(head) {
-  const visited = new Set();
   let curr = head;
-  while (curr) {
-    if (visited.has(curr)) return true;
-    visited.add(curr);
+  for (let n = 0; n <= 10000; n++) {
+    if (!curr) return false;
     curr = curr.next;
   }
-  return false;
+  return true;
 };
