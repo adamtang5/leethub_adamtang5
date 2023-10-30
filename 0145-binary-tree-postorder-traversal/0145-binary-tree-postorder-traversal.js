@@ -12,12 +12,13 @@
  */
 var postorderTraversal = function(root) {
   const ans = [];
-  const dfs = node => {
-    if (!node) return;
-    dfs(node.left);
-    dfs(node.right);
-    ans.push(node.val);
-  };
-  dfs(root);
+  const stack = root ? [root] : [];
+  let popped;
+  while (stack.length) {
+    popped = stack.pop();
+    ans.unshift(popped.val);
+    if (popped.left) stack.push(popped.left);
+    if (popped.right) stack.push(popped.right);
+  }
   return ans;
 };
