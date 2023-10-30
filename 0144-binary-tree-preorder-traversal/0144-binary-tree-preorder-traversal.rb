@@ -14,6 +14,7 @@ def dfs(node, ans)
   ans << node.val
   dfs(node.left, ans)
   dfs(node.right, ans)
+  nil
 end
 
 def preorder_traversal(root)
