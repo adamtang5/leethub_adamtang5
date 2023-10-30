@@ -9,16 +9,14 @@
 # end
 # @param {TreeNode} root
 # @return {Integer[]}
-def dfs(node, ans)
-  return if !node
-  dfs(node.left, ans)
-  dfs(node.right, ans)
-  ans << node.val
-  nil
-end
-
 def postorder_traversal(root)
-  ans = []
-  dfs(root, ans)
+  ans, popped = [], nil
+  stack = root ? [root] : []
+  while !stack.empty?
+    popped = stack.pop
+    ans.unshift(popped.val)
+    stack << popped.left if popped.left
+    stack << popped.right if popped.right
+  end
   ans
 end
