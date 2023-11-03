@@ -10,11 +10,7 @@ var majorityElement = function(nums) {
       ans = num;
       count++;
     } else {
-      if (ans === num) {
-        count++;
-      } else {
-        count--;
-      }
+      count = ans === num ? count + 1 : count - 1;
     }
   }
   return ans;
