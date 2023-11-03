@@ -11,16 +11,11 @@
  */
 
 function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
-  const nodes: Set<ListNode> = new Set()
-  let curr: ListNode | null = headA
-  while (curr) {
-    nodes.add(curr)
-    curr = curr.next
+  let node1: ListNode | null = headA
+  let node2: ListNode | null = headB
+  while (node1 !== node2) {
+    node1 = node1 ? node1.next : headB
+    node2 = node2 ? node2.next : headA
   }
-  curr = headB
-  while (curr) {
-    if (nodes.has(curr)) return curr
-    curr = curr.next
-  }
-  return null
+  return node1
 }
