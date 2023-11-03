@@ -12,27 +12,10 @@
  * @return {ListNode}
  */
 var getIntersectionNode = function(headA, headB) {
-  let [lenA, lenB] = [0, 0];
-  let [currA, currB] = [headA, headB];
-  while (currA) {
-    lenA++;
-    currA = currA.next;
+  let [node1, node2] = [headA, headB];
+  while (node1 !== node2) {
+    node1 = node1 ? node1.next : headB;
+    node2 = node2 ? node2.next : headA;
   }
-  while (currB) {
-    lenB++;
-    currB = currB.next;
-  }
-  console.log(lenA, lenB);
-  [currA, currB] = [headA, headB];
-  if (lenA > lenB) {
-    for (let i = lenA - lenB; i > 0; i--) currA = currA.next;
-  } else if (lenB > lenA) {
-    for (let i = lenB - lenA; i > 0; i--) currB = currB.next;
-  }
-  while (currA) {
-    if (currA === currB) break;
-    currA = currA.next;
-    currB = currB.next;
-  }
-  return currA;
+  return node1;
 };
