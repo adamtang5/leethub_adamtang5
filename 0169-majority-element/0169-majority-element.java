@@ -8,10 +8,8 @@ class Solution {
       } else {
         tally.put(num, tally.get(num) + 1);
       }
-    }
-    for (Map.Entry<Integer, Integer> entry : tally.entrySet()) {
-      if ((double) entry.getValue() >= (double) nums.length / 2.0) {
-        ans = entry.getKey();
+      if ((double) tally.get(num) >= (double) nums.length / 2.0) {
+        ans = num;
         break;
       }
     }
