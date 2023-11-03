@@ -6,8 +6,5 @@ class Solution:
         ans = num
         count += 1
       else:
-        if ans == num:
-          count += 1
-        else:
-          count -= 1
+        count = count + 1 if ans == num else count - 1
     return ans
