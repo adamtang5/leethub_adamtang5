@@ -1,9 +1,14 @@
 # @param {Integer[]} nums
 # @return {Integer}
 def majority_element(nums)
-  tally = Hash.new(0)
+  ans, count = nil, 0
   nums.each do |num|
-    tally[num] += 1
-    return num if tally[num] >= nums.length / 2.0
+    if count == 0
+      ans = num
+      count += 1
+    else
+      count = ans == num ? count + 1 : count - 1
+    end
   end
+  ans
 end
