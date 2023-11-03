@@ -4,11 +4,9 @@
  */
 var majorityElement = function(nums) {
   const tally = {};
-  nums.forEach(num => {
+  for (const num of nums) {
     tally[num] = tally[num] || 0;
     tally[num]++;
-  });
-  for (const key in tally) {
-    if (tally[key] >= nums.length / 2) return key;
+    if (tally[num] >= nums.length / 2) return num;
   }
 };
