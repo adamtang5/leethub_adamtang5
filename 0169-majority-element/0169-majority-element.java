@@ -1,16 +1,13 @@
 class Solution {
   public int majorityElement(int[] nums) {
-    int ans = 0;
-    Map<Integer, Integer> tally = new HashMap<Integer, Integer>();
+    int ans = 1000000001;
+    int count = 0;
     for (int num : nums) {
-      if (!tally.containsKey(num)) {
-        tally.put(num, 1);
-      } else {
-        tally.put(num, tally.get(num) + 1);
-      }
-      if ((double) tally.get(num) >= (double) nums.length / 2.0) {
+      if (count == 0) {
         ans = num;
-        break;
+        count++;
+      } else {
+        count = ans == num ? count + 1 : count - 1;
       }
     }
     return ans;
