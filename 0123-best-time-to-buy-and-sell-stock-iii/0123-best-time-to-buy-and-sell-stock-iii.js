@@ -15,8 +15,7 @@ var maxProfit = function(prices) {
     bw[i] = Math.max(bw[i + 1], rMax - prices[i]);
     rMax = Math.max(rMax, prices[i]);
   }
-  // console.log(fw, bw);
-  for (let i = 1; i < prices.length; i++) {
+  for (let i = 0; i < prices.length; i++) {
     ans = Math.max(ans, fw[i] + bw[i]);
   }
   return ans;
