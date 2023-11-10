@@ -1,5 +1,10 @@
 # @param {Integer} n, a positive integer
 # @return {Integer}
 def hamming_weight(n)
-  n.to_s(2).chars.select{ |d| d == '1' }.length
+  ans = 0
+  while n > 0
+    ans += 1 if n & 1 > 0
+    n /= 2
+  end
+  ans
 end
