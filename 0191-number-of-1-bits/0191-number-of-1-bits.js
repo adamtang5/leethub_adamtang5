@@ -3,5 +3,10 @@
  * @return {number}
  */
 var hammingWeight = function(n) {
-  return n.toString(2).split('').filter(d => d === '1').length;
+  let ans = 0;
+  while (n > 0) {
+    if (n & 1) ans++;
+    n >>>= 1;
+  }
+  return ans;
 };
