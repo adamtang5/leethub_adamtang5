@@ -20,5 +20,5 @@ end
 def max_path_sum(root)
   ans = [root.val]
   dfs(root, ans)
-  return ans[0]
+  ans[0]
 end
