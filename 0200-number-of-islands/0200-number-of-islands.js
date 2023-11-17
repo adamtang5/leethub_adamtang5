@@ -32,7 +32,7 @@ var numIslands = function(grid) {
   };
 
   for (let row = 0; row < grid.length; row++) {
-    for (let col = 0; col < grid[row].length; col++) {
+    for (let col = 0; col < grid[0].length; col++) {
       if (valid(row, col)) {
         bfs(row, col, dirs);
         ans++;
