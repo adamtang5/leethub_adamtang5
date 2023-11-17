@@ -8,20 +8,32 @@ def valid(row, col, grid, visited)
   in_bounds(row, col, grid) && !visited.include?([row, col]) && grid[row][col] == '1'
 end
 
-def dfs(row, col, grid, visited, dirs)
-  return 0 if !valid(row, col, grid, visited)
+def bfs(row, col, grid, visited, dirs)
+  q = [[row, col]]
   visited.add([row, col])
-  dirs.each{ |row_diff, col_diff| dfs(row+row_diff, col+col_diff, grid, visited, dirs) }
-  1
+  while !q.empty?
+    curr_row, curr_col = q.shift
+    dirs.each do |row_diff, col_diff|
+      new_row, new_col = curr_row+row_diff, curr_col+col_diff
+      if valid(new_row, new_col, grid, visited)
+        q << [new_row, new_col]
+        visited.add([new_row, new_col])
+      end
+    end
+  end
+  nil
 end
 
 def num_islands(grid)
-  return 0 if grid.length == 0
+  return 0 if grid.empty?
   ans, visited = 0, Set.new
   dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]]
   (0...grid.length).each do |row|
-    (0...grid[row].length).each do |col|
-      ans += dfs(row, col, grid, visited, dirs) if !visited.include?([row, col])
+    (0...grid[0].length).each do |col|
+      if valid(row, col, grid, visited)
+        bfs(row, col, grid, visited, dirs)
+        ans += 1
+      end
     end
   end
   ans
