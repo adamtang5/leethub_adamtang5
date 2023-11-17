@@ -3,7 +3,6 @@
  * @return {number}
  */
 var numIslands = function(grid) {
-  if (!grid.length) return 0;
   let ans = 0;
   let visited = new Set();
   const dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
@@ -16,27 +15,19 @@ var numIslands = function(grid) {
     return inBounds(row, col) && !visited.has(`${row}-${col}`) && grid[row][col] === "1";
   };
 
-  const bfs = (row, col, dirs) => {
-    const queue = [[row, col]];
+  const dfs = (row, col, dirs) => {
+    if (!valid(row, col)) return 0;
+
     visited.add(`${row}-${col}`);
-    while (queue.length) {
-      const [currRow, currCol] = queue.shift();
-      dirs.forEach(([rowDiff, colDiff]) => {
-      const [newRow, newCol] = [currRow + rowDiff, currCol + colDiff];
-        if (valid(newRow, newCol)) {
-          queue.push([newRow, newCol]);
-          visited.add(`${newRow}-${newCol}`);
-        }
-      });
+    for (const [rowDiff, colDiff] of dirs) {
+      dfs(row + rowDiff, col + colDiff, dirs);
     }
+    return 1;
   };
 
   for (let row = 0; row < grid.length; row++) {
-    for (let col = 0; col < grid[0].length; col++) {
-      if (valid(row, col)) {
-        bfs(row, col, dirs);
-        ans++;
-      }
+    for (let col = 0; col < grid[row].length; col++) {
+      if (!visited.has(`${row}-${col}`)) ans += dfs(row, col, dirs);
     }
   }
   return ans;
