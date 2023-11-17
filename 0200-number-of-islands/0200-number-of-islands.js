@@ -15,19 +15,19 @@ var numIslands = function(grid) {
     return inBounds(row, col) && !visited.has(`${row}-${col}`) && grid[row][col] === "1";
   };
 
-  const dfs = (row, col, dirs) => {
+  const dfs = (row, col) => {
     if (!valid(row, col)) return 0;
 
     visited.add(`${row}-${col}`);
     for (const [rowDiff, colDiff] of dirs) {
-      dfs(row + rowDiff, col + colDiff, dirs);
+      dfs(row + rowDiff, col + colDiff);
     }
     return 1;
   };
 
   for (let row = 0; row < grid.length; row++) {
     for (let col = 0; col < grid[row].length; col++) {
-      if (!visited.has(`${row}-${col}`)) ans += dfs(row, col, dirs);
+      if (!visited.has(`${row}-${col}`)) ans += dfs(row, col);
     }
   }
   return ans;
