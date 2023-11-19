@@ -13,18 +13,16 @@ var ladderLength = function(beginWord, endWord, wordList) {
     return ans;
   };
   
-  const wordSet = new Set(wordList);
   const adjList = {};
-  adjList[beginWord] = new Set();
-  const queue = [beginWord];
+  const wordQ = [beginWord];
   const visited = new Set();
   let first;
-  while (queue.length) {
-    first = queue.shift();
+  while (wordQ.length) {
+    first = wordQ.shift();
     visited.add(first);
     wordList.forEach(word => {
       if (distance(first, word) === 1) {
-        if (!visited.has(word) && !queue.includes(word)) queue.push(word);
+        if (!visited.has(word) && !wordQ.includes(word)) wordQ.push(word);
         adjList[first] = adjList[first] || new Set();
         adjList[word] = adjList[word] || new Set();
         adjList[first].add(word);
@@ -32,8 +30,8 @@ var ladderLength = function(beginWord, endWord, wordList) {
       }
     });
   }
-  if (!adjList[endWord]) return 0;
   
+  if (!adjList[endWord]) return 0;
   const pathQ = [[beginWord]];
   visited.clear();
   visited.add(beginWord);
