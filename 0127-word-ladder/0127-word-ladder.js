@@ -32,7 +32,6 @@ var ladderLength = function(beginWord, endWord, wordList) {
       }
     });
   }
-  // console.log(adjList);
   if (!adjList[endWord]) return 0;
   
   const pathQ = [[beginWord]];
