@@ -1,14 +1,3 @@
-type PresentNumberState = {
-  state: "Present"
-  range: { lb: number; ub: number }
-}
-
-type NeighborNumberState = {
-  state: "Neighbor"
-}
-
-type NumberState = PresentNumberState | NeighborNumberState
-
 function longestConsecutive(nums: number[]): number {
   const tally = {}
   let ans = 0
@@ -16,11 +5,10 @@ function longestConsecutive(nums: number[]): number {
     if (!tally[num]) {
       if ((!tally[num + 1] || tally[num + 1].state === "Neighbor") &&
           (!tally[num - 1] || tally[num - 1].state === "Neighbor")) {
-        const newNumberState: PresentNumberState = {
+        tally[num] = {
           state: "Present",
           range: { lb: num, ub: num },
         }
-        tally[num] = newNumberState
         ans = Math.max(ans, 1)
         tally[num + 1] = { state: "Neighbor" }
         tally[num - 1] = { state: "Neighbor" }
@@ -32,7 +20,7 @@ function longestConsecutive(nums: number[]): number {
       let rMax = num
       if (tally[num + 1] && tally[num + 1].state === "Present") rMax = tally[num + 1].range.ub
       if (tally[num - 1] && tally[num - 1].state === "Present") lMin = tally[num - 1].range.lb
-      const newNumberState: PresentNumberState = {
+      const newNumberState = {
         state: "Present",
         range: { lb: lMin, ub: rMax }
       }
