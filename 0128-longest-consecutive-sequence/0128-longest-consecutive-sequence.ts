@@ -1,8 +1,3 @@
-type Range = {
-  lb: number
-  ub: number
-}
-
 function longestConsecutive(nums: number[]): number {
   const edge: Set<number> = new Set()
   const occurred = {}
