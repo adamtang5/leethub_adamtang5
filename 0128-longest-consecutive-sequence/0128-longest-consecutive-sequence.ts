@@ -1,33 +1,39 @@
+type Range = {
+  lb: number
+  ub: number
+}
+
 function longestConsecutive(nums: number[]): number {
-  const tally = {}
+  const edge: Set<number> = new Set()
+  const occurred = {}
   let ans = 0
   nums.forEach(num => {
-    if (!tally[num]) {
-      if ((!tally[num + 1] || tally[num + 1].state === "Neighbor") &&
-          (!tally[num - 1] || tally[num - 1].state === "Neighbor")) {
-        tally[num] = {
-          state: "Present",
-          range: { lb: num, ub: num },
+    if (!edge.has(num) && !occurred[num]) {
+      if (!occurred[num + 1] && !occurred[num - 1]) {
+        occurred[num] = {
+          lb: num,
+          ub: num,
         }
         ans = Math.max(ans, 1)
-        tally[num + 1] = { state: "Neighbor" }
-        tally[num - 1] = { state: "Neighbor" }
+        edge.add(num + 1)
+        edge.add(num - 1)
       }
-    } else if (tally[num] && tally[num].state === "Neighbor") {
-      tally[num + 1] = tally[num + 1] || { state: "Neighbor" }
-      tally[num - 1] = tally[num - 1] || { state: "Neighbor" }
+    } else if (edge.has(num)) {
+      if (!occurred[num + 1]) edge.add(num + 1)
+      if (!occurred[num - 1]) edge.add(num - 1)
       let lMin = num
       let rMax = num
-      if (tally[num + 1] && tally[num + 1].state === "Present") rMax = tally[num + 1].range.ub
-      if (tally[num - 1] && tally[num - 1].state === "Present") lMin = tally[num - 1].range.lb
-      const newNumberState = {
-        state: "Present",
-        range: { lb: lMin, ub: rMax }
+      if (occurred[num + 1]) rMax = occurred[num + 1].ub
+      if (occurred[num - 1]) lMin = occurred[num - 1].lb
+      const newState = {
+        lb: lMin,
+        ub: rMax,
       }
-      tally[num] = newNumberState
+      occurred[num] = newState
+      occurred[lMin] = newState
+      occurred[rMax] = newState
+      edge.delete(num)
       ans = Math.max(ans, rMax - lMin + 1)
-      tally[lMin] = newNumberState
-      tally[rMax] = newNumberState
     }
   })
   return ans
