@@ -12,15 +12,11 @@ var solve = function(board) {
   }
   
   const edgeIsland = [];
-  const safeSet = new Set();
   const dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
 
   board.forEach((row, r) => {
     row.forEach((val, c) => {
-      if (isEdge(r, c) && val === "O") {
-        edgeIsland.push([r, c]);
-        safeSet.add(`${r}-${c}`);
-      }
+      if (isEdge(r, c) && val === "O") edgeIsland.push([r, c]);
     });
   });
   
