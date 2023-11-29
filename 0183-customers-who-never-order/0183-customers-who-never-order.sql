@@ -1,4 +1,4 @@
-/* Write your PL/SQL query statement below */
+/* Write your T-SQL query statement below */
 SELECT Customers.name AS "Customers" FROM Customers
 LEFT JOIN Orders ON Customers.id=Orders.customerId
 WHERE Orders.id IS NULL;
