@@ -11,8 +11,7 @@ class Solution:
   def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
     if not head: return head
     
-    orig = []
-    curr = head
+    orig, curr = [], head
     while curr:
       orig.append(curr)
       curr = curr.next
@@ -21,8 +20,7 @@ class Solution:
     for i in range(len(orig)):
       randoms[i] = orig.index(orig[i].random) if orig[i].random in orig else -1
       
-    ans = Node(head.val)
-    ansArr = []
+    ans, ansArr = Node(head.val), []
     curr = ans
     for i in range(1, len(orig)):
       ansArr.append(curr)
