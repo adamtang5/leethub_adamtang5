@@ -17,12 +17,12 @@ var reorderList = function(head) {
   }
   let second = slow.next;
   slow.next = null;
-  let prev, nextNode;
+  let prev, next;
   while (second) {
-    nextNode = second.next;
+    next = second.next;
     second.next = prev;
     prev = second;
-    second = nextNode;
+    second = next;
   }
   let first = head;
   second = prev;
