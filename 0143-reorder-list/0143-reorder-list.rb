@@ -9,21 +9,27 @@
 # @param {ListNode} head
 # @return {Void} Do not return anything, modify head in-place instead.
 def reorder_list(head)
-  stack, curr = [], head
-  while curr
-    stack << curr
-    curr = curr.next
+  slow, fast = head, head.next
+  while fast && fast.next
+    slow = slow.next
+    fast = fast.next.next
   end
-  curr = head
-  stack.shift
-  while !stack.empty?
-    curr.next = stack.pop
-    curr = curr.next
-    if !stack.empty?
-      curr.next = stack.shift
-      curr = curr.next
-    end
+  second = slow.next
+  slow.next = nil
+  prev_node = next_node = nil
+  while second
+    next_node = second.next
+    second.next = prev_node
+    prev_node = second
+    second = next_node
   end
-  curr.next = nil
+  first, second = head, prev_node
+  next1 = next2 = nil
+  while second
+    next1, next2 = first.next, second.next
+    first.next = second
+    second.next = next1
+    first, second = next1, next2
+  end
   nil
 end
