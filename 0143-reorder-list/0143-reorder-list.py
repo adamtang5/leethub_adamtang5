@@ -8,16 +8,22 @@ class Solution:
     """
     Do not return anything, modify head in-place instead.
     """
-    stack, curr = [], head
-    while curr:
-      stack.append(curr)
-      curr = curr.next
-    curr = head
-    stack.pop(0)
-    while stack:
-      curr.next = stack.pop()
-      curr = curr.next
-      if stack:
-        curr.next = stack.pop(0)
-        curr = curr.next
-    curr.next = None
+    slow, fast = head, head.next
+    while fast and fast.next:
+      slow = slow.next
+      fast = fast.next.next
+    second = slow.next
+    slow.next = None
+    prevNode = nextNode = None
+    while second:
+      nextNode = second.next
+      second.next = prevNode
+      prevNode = second
+      second = nextNode
+    first, second = head, prevNode
+    next1 = next2 = None
+    while second:
+      next1, next2 = first.next, second.next
+      first.next = second
+      second.next = next1
+      first, second = next1, next2
