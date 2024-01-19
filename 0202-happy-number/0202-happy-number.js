@@ -13,7 +13,7 @@ var isHappy = function(n) {
     return ans;
   };
   
-  let iter = 16;
+  let iter = 17;
   while (n !== 1 && iter > 0) {
     n = reduce(n);
     iter--;
