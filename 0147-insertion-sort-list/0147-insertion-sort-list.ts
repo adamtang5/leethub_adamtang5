@@ -11,7 +11,7 @@
  */
 
 function insertionSortList(head: ListNode | null): ListNode | null {
-  const dh: ListNode | null = new ListNode()
+  const dh: ListNode = new ListNode()
   let orig: ListNode | null = head
   let currPrev: ListNode | null = dh
   let currNext: ListNode | null = dh.next
