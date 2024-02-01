@@ -26,5 +26,5 @@ function insertionSortList(head: ListNode | null): ListNode | null {
     currPrev = dh
     currNext = dh.next
   }
-  return currNext
+  return dh.next
 }
