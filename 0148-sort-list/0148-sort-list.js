@@ -16,13 +16,12 @@ var sortList = function(head) {
     slow = slow.next;
     fast = fast.next.next;
   }
-  let [prev1, prev2] = [new ListNode(), new ListNode()];
-  prev1.next = head;
-  prev2.next = slow.next;
+  let prev1 = head;
+  let prev2 = slow.next;
   slow.next = null;
   
-  prev1.next = sortList(prev1.next);
-  prev2.next = sortList(prev2.next);
+  prev1 = sortList(prev1);
+  prev2 = sortList(prev2);
 
   const merge = (head1, head2) => {
     let [prev, curr1, curr2] = [new ListNode(), head1, head2];
@@ -45,5 +44,5 @@ var sortList = function(head) {
     return prev.next;
   };
   
-  return merge(prev1.next, prev2.next);
+  return merge(prev1, prev2);
 };
