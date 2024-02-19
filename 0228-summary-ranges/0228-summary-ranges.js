@@ -3,30 +3,15 @@
  * @return {string[]}
  */
 var summaryRanges = function(nums) {
-  if (!nums.length) return nums;
-  let l, r;
+  let [l, r] = [0, 0];
   const ans = [];
-  nums.forEach(num => {
-    if (l === undefined) {
-      l = num;
-      r = num;
-    } else if (num === r + 1) {
-      r = num;
-    } else {
-      if (l === r) {
-        ans.push(l.toString());
-      } else {
-        ans.push(`${l}->${r}`);
-      }
-      l = num;
-      r = num;
+  while (l < nums.length) {
+    while (r < nums.length - 1 && nums[r + 1] === nums[r] + 1) r++;
+    if (l < nums.length) {
+      ans.push(l === r ? nums[l].toString() : `${nums[l]}->${nums[r]}`);
+      l = r + 1;
+      r = l;
     }
-  });
-  if (l === r) {
-    ans.push(l.toString());
-  } else {
-    ans.push(`${l}->${r}`);
   }
-
   return ans;
 };
