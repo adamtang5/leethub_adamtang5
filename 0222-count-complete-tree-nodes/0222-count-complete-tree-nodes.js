@@ -12,14 +12,16 @@
  */
 var countNodes = function(root) {
   if (!root) return 0;
-  const queue = [[0, root]];
-  const levels = [];
-  while (queue.length) {
-    const [level, node] = queue.shift();
-    if (level > levels.length - 1) levels.push([]);
-    levels[level].push(node);
-    if (node.left) queue.push([level + 1, node.left]);
-    if (node.right) queue.push([level + 1, node.right]);
+  let [left, right] = [root, root];
+  let [lHt, rHt] = [0, 0];
+  while (left) {
+    lHt++;
+    left = left.left;
   }
-  return 2 ** (levels.length - 1) - 1 + levels.at(-1).length;
+  while (right) {
+    rHt++;
+    right = right.right;
+  }
+  if (lHt === rHt) return 2 ** lHt - 1;
+  return 1 + countNodes(root.left) + countNodes(root.right);
 };
