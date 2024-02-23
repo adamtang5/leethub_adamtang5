@@ -1,13 +1,6 @@
 function addDigits(num: number): number {
-  function reduce(n: number): number {
-    let ans = 0
-    while (n > 0) {
-      ans += n % 10
-      n = Math.floor(n / 10)
-    }
-    return ans
-  }
-  
-  while (num >= 10) num = reduce(num)
+  if (num === 0) return num
+  num %= 9
+  if (num === 0) return 9
   return num
 }
