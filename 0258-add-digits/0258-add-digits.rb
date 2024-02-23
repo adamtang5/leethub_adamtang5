@@ -1,15 +1,8 @@
 # @param {Integer} num
 # @return {Integer}
-def reduce(n)
-  ans = 0
-  while n > 0
-    ans += n%10
-    n /= 10
-  end
-  ans
-end
-
 def add_digits(num)
-  num = reduce(num) while num >= 10
+  return 0 if num == 0
+  num %= 9
+  return 9 if num == 0
   num
 end
