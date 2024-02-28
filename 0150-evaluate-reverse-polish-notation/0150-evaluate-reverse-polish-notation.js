@@ -9,11 +9,10 @@ function TreeNode(val, left, right) {
 }
 
 var evalRPN = function(tokens) {
-  const ops = '+-*/';
   const stack = [];
   let first, second, result;
   for (const token of tokens) {
-    if (ops.includes(token)) {
+    if ('+-*/'.includes(token)) {
       second = stack.pop();
       first = stack.pop();
       switch (token) {
