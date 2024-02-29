@@ -11,11 +11,11 @@ class LRUCache:
     self.left, self.right = Node(0, 0), Node(0, 0)
     self.left.next, self.right.prev = self.right, self.left
 
-  def remove(self, node: Node):
+  def remove(self, node: Node) -> None:
     prev, nxt = node.prev, node.next
     prev.next, nxt.prev = nxt, prev
     
-  def insert(self, node: Node):
+  def insert(self, node: Node) -> None:
     prev, nxt = self.right.prev, self.right
     prev.next = nxt.prev = node
     node.next, node.prev = nxt, prev
