@@ -28,6 +28,5 @@ var maxPoints = function(points) {
     ans = Math.max(ans, groups[key].size);
   }
   
-  // console.log(groups);
   return ans;
 };
