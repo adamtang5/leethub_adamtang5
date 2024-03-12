@@ -4,23 +4,17 @@
  */
 var numSquares = function(n) {
   const squares = [];
-  const dp = {};
-  let sq;
-  for (let b = 1; b <= Math.floor(Math.sqrt(n)); b++) {
-    sq = b * b;
-    squares.unshift(sq);
-    dp[sq] = 1;
+  let b = 1;
+  while (b * b <= n) {
+    squares.push(b * b);
+    b++;
   }
-  
-  const populate = num => {
-    if (num in dp) return;
-    squares.forEach(sq => {
-      if (sq <= num && num - sq in dp) {
-        dp[num] = Math.min(dp[num] || num, dp[sq] + dp[num - sq]);
-      }
-    });
-  };
-  
-  for (let b = 1; b <= n; b++) populate(b);
+  const dp = new Array(n + 1).fill(Infinity);
+  dp[0] = 0;
+  for (let i = 1; i <= n; i++) {
+    for (const sq of squares) {
+      if (i >= sq) dp[i] = Math.min(dp[i], dp[i - sq] + 1);
+    }
+  }
   return dp[n];
 };
