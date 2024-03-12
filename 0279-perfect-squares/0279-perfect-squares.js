@@ -22,6 +22,5 @@ var numSquares = function(n) {
   };
   
   for (let b = 1; b <= n; b++) populate(b);
-  
   return dp[n];
 };
