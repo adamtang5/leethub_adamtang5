@@ -14,13 +14,9 @@ var numSquares = function(n) {
   
   const populate = num => {
     if (num in dp) return;
-    let val = num;
     squares.forEach(sq => {
-      if (sq <= num) {
-        if (num - sq in dp) {
-          val = Math.min(val, dp[sq] + dp[num - sq]);
-          dp[num] = val;
-        }
+      if (sq <= num && num - sq in dp) {
+        dp[num] = Math.min(dp[num] || num, dp[sq] + dp[num - sq]);
       }
     });
   };
