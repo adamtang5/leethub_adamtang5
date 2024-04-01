@@ -13,7 +13,6 @@ var fractionToDecimal = function(numerator, denominator) {
   num -= d * denom;
   while (num !== 0) {
     num *= 10;
-    // console.log(num, dp);
     if (num in dp) {
       if (prev !== undefined) post = dp[prev].val;
       let [i, curr] = [1, prev];
