@@ -1,5 +1,5 @@
 class Node:
-  def __init__(self, val: str, prev: int):
+  def __init__(self, val: str, prev: Optional[int]):
     self.val, self.prev = val, prev
 
 class Solution:
