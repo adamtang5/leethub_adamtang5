@@ -1,5 +1,5 @@
 function trailingZeroes(n: number): number {
-  const powers = [];
+  const powers: number[] = [];
   let b = 5;
   while (b < 10000) {
     powers.push(b);
