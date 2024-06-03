@@ -1,10 +1,3 @@
-import (
-  "fmt"
-  "strconv"
-  "strings"
-  "regexp"
-)
-
 func myAtoi(s string) int {
   s = strings.TrimSpace(s)
   sign := 1
@@ -19,7 +12,6 @@ func myAtoi(s string) int {
   }
   
   r, _ := regexp.Compile("^\\d+")
-  fmt.Println(r.FindString(s))
   if !r.MatchString(s) {
     return 0
   }
