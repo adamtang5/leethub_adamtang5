@@ -1,17 +1,5 @@
 class Solution {
-  public int getSum(int[] nums) {
-    int sum = 0;
-    for (int i : nums) {
-      sum += i;
-    }
-    return sum;
-  }
-  
   public List<List<Integer>> threeSum(int[] nums) {
-    if (nums.length == 3) {
-      return getSum(nums) == 0 ? Arrays.asList(Arrays.asList(nums[0], nums[1], nums[2])) : Arrays.asList();
-    }
-    
     List<List<Integer>> ans = new ArrayList<>();
     Arrays.sort(nums);
     int i = 0;
