@@ -1,6 +1,6 @@
 func searchRange(nums []int, target int) []int {
   l, r := 0, len(nums)-1
-  pivot, ans := (r+l)/2, []int{-1, -1}
+  pivot := (r+l)/2
   
   for l <= r {
     if nums[pivot] != target {
@@ -18,9 +18,8 @@ func searchRange(nums []int, target int) []int {
       for r < len(nums) && nums[r] == target {
         r++
       }
-      ans[0], ans[1] = l+1, r-1
-      break
+      return []int{l+1, r-1}
     }
   }
-  return ans
+  return []int{-1, -1}
 }
