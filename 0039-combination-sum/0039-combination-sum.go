@@ -9,7 +9,6 @@ func combinationSum(candidates []int, target int) [][]int {
     return [][]int{}
   }
   sort.Sort(sort.Reverse(sort.IntSlice(f)))
-  fmt.Println(f)
   ans := [][]int{}
   dfs(f, target, &ans, []int{})
   return ans
