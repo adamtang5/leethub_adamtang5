@@ -2,20 +2,17 @@ func trap(height []int) int {
   if len(height) == 1 {
     return 0
   }
-  ans, l, r := 0, 0, len(height)-1
-  maxL, maxR := height[l], height[r]
-  level := min(maxL, maxR)
-  for l < r {
-    if maxL <= maxR {
-      l++
-      ans += max(0, level-height[l])
-      maxL = max(maxL, height[l])
-    } else {
-      r--
-      ans += max(0, level-height[r])
-      maxR = max(maxR, height[r])
-    }
-    level = min(maxL, maxR)
+  ans, level, lBound := 0, 0, make([]int, len(height))
+  for i:=1;i<len(lBound);i++ {
+    lBound[i] = max(lBound[i-1], height[i-1])
+  }
+  rBound := make([]int, len(height))
+  for i:=len(rBound)-2;i>=0;i-- {
+    rBound[i] = max(rBound[i+1], height[i+1])
+  }
+  for i:=1;i<len(height)-1;i++ {
+    level = min(lBound[i], rBound[i])
+    ans += max(0, level-height[i])
   }
   return ans
 }
