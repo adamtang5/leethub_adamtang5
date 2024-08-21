@@ -13,7 +13,6 @@ func isMatch(s string, p string) bool {
       i++
     }
   }
-  // fmt.Println(parsed)
   return dfs(s, parsed, map[string]bool{})
 }
 
@@ -26,12 +25,10 @@ func dfs(s string, patterns []string, dp map[string]bool) bool {
   
   if len(s) > 0 && len(patterns) == 0 {
     dp[key] = false
-    // fmt.Println(dp)
     return dp[key]
   }
   if len(s) == 0 && len(patterns) == 0 {
     dp[key] = true
-    // fmt.Println(dp)
     return dp[key]
   }
   if len(s) == 0 && len(patterns) > 0 {
@@ -43,7 +40,6 @@ func dfs(s string, patterns []string, dp map[string]bool) bool {
       }
     }
     dp[key] = ans
-    // fmt.Println(dp)
     return ans
   }
   
@@ -52,13 +48,11 @@ func dfs(s string, patterns []string, dp map[string]bool) bool {
   if len(first) == 1 {
     ans := charMatch(s[0], first[0]) && dfs(s[1:], patterns, dp)
     dp[key] = ans
-    // fmt.Println(dp)
     return ans
   } else {
     if !charMatch(s[0], first[0]) {
       ans := dfs(s, patterns, dp)
       dp[key] = ans
-      // fmt.Println(dp)
       return ans
     } else {
       l := 1
@@ -71,7 +65,6 @@ func dfs(s string, patterns []string, dp map[string]bool) bool {
         ans = ans || dfs(s[i:], clone, dp)
       }
       dp[key] = ans
-      // fmt.Println(dp)
       return ans
     }
   }
