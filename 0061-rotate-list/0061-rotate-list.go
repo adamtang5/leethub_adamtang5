@@ -14,7 +14,7 @@ func rotateRight(head *ListNode, k int) *ListNode {
     curr = curr.Next
     l++
   }
-  headIdx := (l-(k%l))%l
+  headIdx := (l-k%l)%l
   if headIdx == 0 {
     return head
   }
