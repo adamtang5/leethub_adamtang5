@@ -1,27 +1,14 @@
-class Solution(object):
-  def isNumber(self, s):
-    """
-    :type s: str
-    :rtype: bool
-    """
+class Solution:
+  def isNumber(self, s: str) -> bool:
     digitsRe = re.compile("[0-9]")
 
-    def trimSign(s):
-      """
-      :type s: str
-      :rtype: str
-      """
+    def trimSign(s: str) -> str:
       if len(s) > 0 and s[0] in "+-":
         return s[1:]
       else:
         return s
     
-    def validNum(s, numType):
-      """
-      :type s: str
-      :type numType: str
-      :rtype: bool
-      """
+    def validNum(s: str, numType: str) -> bool:
       if len(s) == 0:
         return False
       
@@ -47,4 +34,5 @@ class Solution(object):
       return validNum(parts[0], "dec") and validNum(parts[1], "int")
     else:
       return False
+      
       
