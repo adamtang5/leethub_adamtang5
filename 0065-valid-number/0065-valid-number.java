@@ -1,9 +1,6 @@
 class Solution {
   public boolean validNum(String s, String numType) {
     if (s.length() == 0) return false;
-    String lead = s.substring(0, 1);
-    if (lead.equals("+") || lead.equals("-")) return validNum(s.substring(1), numType);
-    
     if (numType == "dec") {
       int dotIdx = -1;
       for (int i = 0; i < s.length(); i++) {
@@ -26,10 +23,10 @@ class Solution {
     s = s.toLowerCase();
     List<String> parts = new ArrayList<String>();
     if (!s.contains("e")) {
-      parts.add(s);
+      parts.add(trimSign(s));
     } else {
-      parts.add(s.substring(0, s.indexOf("e")));
-      parts.add(s.substring(s.indexOf("e") + 1));
+      parts.add(trimSign(s.substring(0, s.indexOf("e"))));
+      parts.add(trimSign(s.substring(s.indexOf("e") + 1)));
     }
     
     if (parts.size() == 1) {
@@ -38,6 +35,14 @@ class Solution {
       return validNum(parts.get(0), "dec") && validNum(parts.get(1), "int");
     } else {
       return false;
+    }
+  }
+
+  public String trimSign(String s) {
+    if (s.length() > 0 && "+-".contains(s.substring(0, 1))) {
+      return s.substring(1);
+    } else {
+      return s;
     }
   }
 }
