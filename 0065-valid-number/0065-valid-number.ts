@@ -1,7 +1,14 @@
 function isNumber(s: string): boolean {
+  function trimSign(s: string): string {
+    if ("+-".includes(s[0])) {
+      return s.slice(1)
+    } else {
+      return s
+    }
+  }
+
   function validNum(s: string, numType: string): boolean {
     if (s.length === 0) return false
-    if ("+-".includes(s[0])) return validNum(s.slice(1), numType)
     if (numType === "dec") {
       let dotIdx: number = -1
       for (let i = 0; i < s.length; i++) {
@@ -20,7 +27,7 @@ function isNumber(s: string): boolean {
     return true
   }
   
-  const parts: string[] = s.toLowerCase().split("e")
+  const parts: string[] = s.toLowerCase().split("e").map(part => trimSign(part))
   if (parts.length === 1) {
     return validNum(parts[0], "dec")
   } else if (parts.length === 2) {
