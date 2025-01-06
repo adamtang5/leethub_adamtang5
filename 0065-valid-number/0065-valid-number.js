@@ -3,9 +3,16 @@
  * @return {boolean}
  */
 var isNumber = function(s) {
+  const trimSign = s => {
+    if ("+-".includes(s[0])) {
+      return s.slice(1);
+    } else {
+      return s;
+    }
+  }
+
   const validNum = (s, numType) => {
     if (s.length === 0) return false;
-    if ("+-".includes(s[0])) return validNum(s.slice(1), numType);
     if (numType === "dec") {
       let dotIdx = -1;
       for (let i = 0; i < s.length; i++) {
@@ -24,7 +31,7 @@ var isNumber = function(s) {
     return true;
   };
   
-  const parts = s.toLowerCase().split("e");
+  const parts = s.toLowerCase().split("e").map(part => trimSign(part));
   if (parts.length === 1) {
     return validNum(parts[0], "dec");
   } else if (parts.length === 2) {
