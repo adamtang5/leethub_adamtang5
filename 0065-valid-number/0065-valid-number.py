@@ -1,14 +1,31 @@
 import re
 
-class Solution:
-  def isNumber(self, s: str) -> bool:
+class Solution(object):
+  def isNumber(self, s):
+    """
+    :type s: str
+    :rtype: bool
+    """
     digitsRe = re.compile("[0-9]")
+
+    def trimSign(s):
+      """
+      :type s: str
+      :rtype: str
+      """
+      if len(s) > 0 and s[0] in "+-":
+        return s[1:]
+      else:
+        return s
     
-    def validNum(s: str, numType: str) -> bool:
+    def validNum(s, numType):
+      """
+      :type s: str
+      :type numType: str
+      :rtype: bool
+      """
       if len(s) == 0:
         return False
-      if s[0] in "+-":
-        return validNum(s[1:], numType)
       
       if numType == "dec":
         dotIdx = -1
@@ -25,7 +42,7 @@ class Solution:
             return False
       return True
     
-    parts = s.lower().split("e")
+    parts = [trimSign(part) for part in s.lower().split("e")]
     if len(parts) == 1:
       return validNum(parts[0], "dec")
     elif len(parts) == 2:
