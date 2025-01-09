@@ -1,12 +1,12 @@
 function fullJustify(words: string[], maxWidth: number): string[] {
-  function leftJustify(words: string[], maxWidth: number): string {
+  function leftJustify(words: string[]): string {
     let ans = words.join(" ")
     const tail: string = " ".repeat(maxWidth - ans.length)
     return ans + tail
   }
   
-  function justifyLine(words: string[], maxWidth: number): string {
-    if (words.length === 1) return leftJustify(words, maxWidth)
+  function justifyLine(words: string[]): string {
+    if (words.length === 1) return leftJustify(words)
     const wordsLen: number = words.reduce((sum, word) => sum + word.length, 0)
     let spaces: number = maxWidth - wordsLen
     const wordsCount: number = words.length
@@ -35,7 +35,7 @@ function fullJustify(words: string[], maxWidth: number): string[] {
       minWidth -= words[r].length
       minWidth--
       r--
-      lines.push(justifyLine(words.slice(l, r + 1), maxWidth))
+      lines.push(justifyLine(words.slice(l, r + 1)))
       l = r + 1
       r = l
       minWidth = l < words.length ? words[l].length : 0
@@ -45,7 +45,7 @@ function fullJustify(words: string[], maxWidth: number): string[] {
         minWidth += words[r].length
         minWidth++
       } else {
-        lines.push(leftJustify(words.slice(l), maxWidth))
+        lines.push(leftJustify(words.slice(l)))
         break
       }
     }
