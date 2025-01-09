@@ -1,14 +1,14 @@
 class Solution:
   def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
-    def leftJustify(words: List[str], maxWidth: int) -> str:
+    def leftJustify(words: List[str]) -> str:
       ans = " ".join(words)
       tail = " "*(maxWidth-len(ans))
       ans += tail
       return ans
     
-    def justifyLine(words: List[str], maxWidth: int) -> str:
+    def justifyLine(words: List[str]) -> str:
       if len(words) == 1:
-        return leftJustify(words, maxWidth)
+        return leftJustify(words)
       wordsLen = sum(len(word) for word in words)
       spaces = maxWidth-wordsLen
       ans = ""
@@ -33,7 +33,7 @@ class Solution:
         minWidth -= len(words[r])
         minWidth -= 1
         r -= 1
-        lines.append(justifyLine(words[l:r+1], maxWidth))
+        lines.append(justifyLine(words[l:r+1]))
         l = r+1
         r = l
         minWidth = len(words[l]) if l < len(words) else 0
@@ -43,6 +43,6 @@ class Solution:
           minWidth += len(words[r])
           minWidth += 1
         else:
-          lines.append(leftJustify(words[l:], maxWidth))
+          lines.append(leftJustify(words[l:]))
           break
     return lines
