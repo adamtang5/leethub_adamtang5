@@ -4,15 +4,15 @@
  * @return {string[]}
  */
 var fullJustify = function(words, maxWidth) {
-  const leftJustify = (words, maxWidth) => {
+  const leftJustify = words => {
     let ans = words.join(" ");
     const tail = " ".repeat(maxWidth - ans.length);
     ans += tail;
     return ans;
   };
   
-  const justifyLine = (words, maxWidth) => {
-    if (words.length === 1) return leftJustify(words, maxWidth);
+  const justifyLine = words => {
+    if (words.length === 1) return leftJustify(words);
     const wordsLen = words.reduce((sum, word) => sum + word.length, 0);
     let spaces = maxWidth - wordsLen;
     const wordsCount = words.length;
@@ -39,7 +39,7 @@ var fullJustify = function(words, maxWidth) {
       minWidth -= words[r].length;
       minWidth--;
       r--;
-      lines.push(justifyLine(words.slice(l, r + 1), maxWidth));
+      lines.push(justifyLine(words.slice(l, r + 1)));
       l = r + 1;
       r = l;
       minWidth = l < words.length ? words[l].length : 0;
@@ -49,7 +49,7 @@ var fullJustify = function(words, maxWidth) {
         minWidth += words[r].length;
         minWidth++;
       } else {
-        lines.push(leftJustify(words.slice(l), maxWidth));
+        lines.push(leftJustify(words.slice(l)));
         break;
       }
     }
