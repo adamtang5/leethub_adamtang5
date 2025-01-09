@@ -6,10 +6,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0065-valid-number](https://github.com/adamtang5/leethub_adamtang5/tree/master/0065-valid-number) |
 | [0067-add-binary](https://github.com/adamtang5/leethub_adamtang5/tree/master/0067-add-binary) |
+| [0068-text-justification](https://github.com/adamtang5/leethub_adamtang5/tree/master/0068-text-justification) |
 ## Array
 |  |
 | ------- |
 | [0066-plus-one](https://github.com/adamtang5/leethub_adamtang5/tree/master/0066-plus-one) |
+| [0068-text-justification](https://github.com/adamtang5/leethub_adamtang5/tree/master/0068-text-justification) |
 ## Math
 |  |
 | ------- |
@@ -23,4 +25,5 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0067-add-binary](https://github.com/adamtang5/leethub_adamtang5/tree/master/0067-add-binary) |
+| [0068-text-justification](https://github.com/adamtang5/leethub_adamtang5/tree/master/0068-text-justification) |
 <!---LeetCode Topics End-->
