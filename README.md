@@ -8,6 +8,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0067-add-binary](https://github.com/adamtang5/leethub_adamtang5/tree/master/0067-add-binary) |
 | [0068-text-justification](https://github.com/adamtang5/leethub_adamtang5/tree/master/0068-text-justification) |
 | [0071-simplify-path](https://github.com/adamtang5/leethub_adamtang5/tree/master/0071-simplify-path) |
+| [0072-edit-distance](https://github.com/adamtang5/leethub_adamtang5/tree/master/0072-edit-distance) |
 ## Array
 |  |
 | ------- |
@@ -37,6 +38,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0070-climbing-stairs](https://github.com/adamtang5/leethub_adamtang5/tree/master/0070-climbing-stairs) |
+| [0072-edit-distance](https://github.com/adamtang5/leethub_adamtang5/tree/master/0072-edit-distance) |
 ## Memoization
 |  |
 | ------- |
