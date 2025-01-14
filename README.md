@@ -16,6 +16,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0068-text-justification](https://github.com/adamtang5/leethub_adamtang5/tree/master/0068-text-justification) |
 | [0073-set-matrix-zeroes](https://github.com/adamtang5/leethub_adamtang5/tree/master/0073-set-matrix-zeroes) |
 | [0074-search-a-2d-matrix](https://github.com/adamtang5/leethub_adamtang5/tree/master/0074-search-a-2d-matrix) |
+| [0075-sort-colors](https://github.com/adamtang5/leethub_adamtang5/tree/master/0075-sort-colors) |
 ## Math
 |  |
 | ------- |
@@ -59,4 +60,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0073-set-matrix-zeroes](https://github.com/adamtang5/leethub_adamtang5/tree/master/0073-set-matrix-zeroes) |
 | [0074-search-a-2d-matrix](https://github.com/adamtang5/leethub_adamtang5/tree/master/0074-search-a-2d-matrix) |
+## Two Pointers
+|  |
+| ------- |
+| [0075-sort-colors](https://github.com/adamtang5/leethub_adamtang5/tree/master/0075-sort-colors) |
+## Sorting
+|  |
+| ------- |
+| [0075-sort-colors](https://github.com/adamtang5/leethub_adamtang5/tree/master/0075-sort-colors) |
 <!---LeetCode Topics End-->
