@@ -14,6 +14,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0066-plus-one](https://github.com/adamtang5/leethub_adamtang5/tree/master/0066-plus-one) |
 | [0068-text-justification](https://github.com/adamtang5/leethub_adamtang5/tree/master/0068-text-justification) |
+| [0073-set-matrix-zeroes](https://github.com/adamtang5/leethub_adamtang5/tree/master/0073-set-matrix-zeroes) |
 ## Math
 |  |
 | ------- |
@@ -47,4 +48,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0071-simplify-path](https://github.com/adamtang5/leethub_adamtang5/tree/master/0071-simplify-path) |
+## Hash Table
+|  |
+| ------- |
+| [0073-set-matrix-zeroes](https://github.com/adamtang5/leethub_adamtang5/tree/master/0073-set-matrix-zeroes) |
+## Matrix
+|  |
+| ------- |
+| [0073-set-matrix-zeroes](https://github.com/adamtang5/leethub_adamtang5/tree/master/0073-set-matrix-zeroes) |
 <!---LeetCode Topics End-->
