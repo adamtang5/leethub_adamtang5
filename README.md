@@ -9,6 +9,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0068-text-justification](https://github.com/adamtang5/leethub_adamtang5/tree/master/0068-text-justification) |
 | [0071-simplify-path](https://github.com/adamtang5/leethub_adamtang5/tree/master/0071-simplify-path) |
 | [0072-edit-distance](https://github.com/adamtang5/leethub_adamtang5/tree/master/0072-edit-distance) |
+| [0076-minimum-window-substring](https://github.com/adamtang5/leethub_adamtang5/tree/master/0076-minimum-window-substring) |
 ## Array
 |  |
 | ------- |
@@ -55,6 +56,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0073-set-matrix-zeroes](https://github.com/adamtang5/leethub_adamtang5/tree/master/0073-set-matrix-zeroes) |
+| [0076-minimum-window-substring](https://github.com/adamtang5/leethub_adamtang5/tree/master/0076-minimum-window-substring) |
 ## Matrix
 |  |
 | ------- |
@@ -68,4 +70,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0075-sort-colors](https://github.com/adamtang5/leethub_adamtang5/tree/master/0075-sort-colors) |
+## Sliding Window
+|  |
+| ------- |
+| [0076-minimum-window-substring](https://github.com/adamtang5/leethub_adamtang5/tree/master/0076-minimum-window-substring) |
 <!---LeetCode Topics End-->
