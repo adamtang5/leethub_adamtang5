@@ -21,6 +21,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0075-sort-colors](https://github.com/adamtang5/leethub_adamtang5/tree/master/0075-sort-colors) |
 | [0078-subsets](https://github.com/adamtang5/leethub_adamtang5/tree/master/0078-subsets) |
 | [0079-word-search](https://github.com/adamtang5/leethub_adamtang5/tree/master/0079-word-search) |
+| [0080-remove-duplicates-from-sorted-array-ii](https://github.com/adamtang5/leethub_adamtang5/tree/master/0080-remove-duplicates-from-sorted-array-ii) |
 ## Math
 |  |
 | ------- |
@@ -71,6 +72,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0075-sort-colors](https://github.com/adamtang5/leethub_adamtang5/tree/master/0075-sort-colors) |
+| [0080-remove-duplicates-from-sorted-array-ii](https://github.com/adamtang5/leethub_adamtang5/tree/master/0080-remove-duplicates-from-sorted-array-ii) |
 ## Sorting
 |  |
 | ------- |
