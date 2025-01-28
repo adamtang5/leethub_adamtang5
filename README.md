@@ -98,4 +98,5 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0082-remove-duplicates-from-sorted-list-ii](https://github.com/adamtang5/leethub_adamtang5/tree/master/0082-remove-duplicates-from-sorted-list-ii) |
+| [0083-remove-duplicates-from-sorted-list](https://github.com/adamtang5/leethub_adamtang5/tree/master/0083-remove-duplicates-from-sorted-list) |
 <!---LeetCode Topics End-->
