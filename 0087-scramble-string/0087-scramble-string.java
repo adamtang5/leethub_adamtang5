@@ -38,10 +38,6 @@ class Solution {
   
   public boolean isScramble(String s1, String s2) {
     Map<String, Boolean> dp = new HashMap<String, Boolean>();
-    boolean ans = dfs(s1, s2, dp);
-    // System.out.println(dp.keySet().stream()
-    //   .map(key -> key + "=" + dp.get(key))
-    //   .collect(Collectors.joining(", ", "{", "}")));
     return dfs(s1, s2, dp);
   }
 }
