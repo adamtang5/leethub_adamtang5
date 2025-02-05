@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/gray-code/">89. Gray Code</a></h2><h3>Medium</h3><hr><div><p>An <strong>n-bit gray code sequence</strong> is a sequence of <code>2<sup>n</sup></code> integers where:</p>
+<h2><a href="https://leetcode.com/problems/gray-code">89. Gray Code</a></h2><h3>Medium</h3><hr><p>An <strong>n-bit gray code sequence</strong> is a sequence of <code>2<sup>n</sup></code> integers where:</p>
 
 <ul>
 	<li>Every integer is in the <strong>inclusive</strong> range <code>[0, 2<sup>n</sup> - 1]</code>,</li>
@@ -13,7 +13,8 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> n = 2
+<pre>
+<strong>Input:</strong> n = 2
 <strong>Output:</strong> [0,1,3,2]
 <strong>Explanation:</strong>
 The binary representation of [0,1,3,2] is [00,01,11,10].
@@ -30,7 +31,8 @@ The binary representation of [0,1,3,2] is [00,01,11,10].
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> n = 1
+<pre>
+<strong>Input:</strong> n = 1
 <strong>Output:</strong> [0,1]
 </pre>
 
@@ -40,4 +42,3 @@ The binary representation of [0,1,3,2] is [00,01,11,10].
 <ul>
 	<li><code>1 &lt;= n &lt;= 16</code></li>
 </ul>
-</div>
