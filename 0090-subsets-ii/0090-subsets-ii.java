@@ -13,12 +13,12 @@ class Solution {
       ans.add(res);
       return;
     }
-    int curr = (int) tallies.get(0);
+    int curr = tallies.get(0);
     tallies.remove(0);
     for (int part = Math.min(curr, target); part >= 0; part--) {
       List<Integer> newRes = new ArrayList<Integer>(res);
       for (int i = 0; i < part; i++) {
-        newRes.add((int) keys.get(idx));
+        newRes.add(keys.get(idx));
       }
       dfs(
         target - part,
@@ -40,11 +40,11 @@ class Solution {
     initial.add(1);
     tallies.add(initial);
     for (int i = 1; i < nums.length; i++) {
-      int lastFirst = ((List<Integer>) tallies.get(tallies.size() - 1)).get(0);
+      int lastFirst = (tallies.get(tallies.size() - 1)).get(0);
       if (nums[i] == lastFirst) {
-        int lastLast = ((List<Integer>) tallies.get(tallies.size() - 1)).get(1);
+        int lastLast = (tallies.get(tallies.size() - 1)).get(1);
         lastLast++;
-        ((List<Integer>) tallies.get(tallies.size() - 1)).set(1, lastLast);
+        tallies.get(tallies.size() - 1).set(1, lastLast);
       } else {
         List<Integer> newPair = new ArrayList<Integer>();
         newPair.add(nums[i]);
