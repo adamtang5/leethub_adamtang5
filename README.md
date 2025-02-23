@@ -38,6 +38,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0069-sqrtx](https://github.com/adamtang5/leethub_adamtang5/tree/master/0069-sqrtx) |
 | [0070-climbing-stairs](https://github.com/adamtang5/leethub_adamtang5/tree/master/0070-climbing-stairs) |
 | [0089-gray-code](https://github.com/adamtang5/leethub_adamtang5/tree/master/0089-gray-code) |
+| [0096-unique-binary-search-trees](https://github.com/adamtang5/leethub_adamtang5/tree/master/0096-unique-binary-search-trees) |
 ## Bit Manipulation
 |  |
 | ------- |
@@ -64,6 +65,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0085-maximal-rectangle](https://github.com/adamtang5/leethub_adamtang5/tree/master/0085-maximal-rectangle) |
 | [0087-scramble-string](https://github.com/adamtang5/leethub_adamtang5/tree/master/0087-scramble-string) |
 | [0091-decode-ways](https://github.com/adamtang5/leethub_adamtang5/tree/master/0091-decode-ways) |
+| [0096-unique-binary-search-trees](https://github.com/adamtang5/leethub_adamtang5/tree/master/0096-unique-binary-search-trees) |
 ## Memoization
 |  |
 | ------- |
@@ -134,8 +136,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0094-binary-tree-inorder-traversal](https://github.com/adamtang5/leethub_adamtang5/tree/master/0094-binary-tree-inorder-traversal) |
+| [0096-unique-binary-search-trees](https://github.com/adamtang5/leethub_adamtang5/tree/master/0096-unique-binary-search-trees) |
 ## Binary Tree
 |  |
 | ------- |
 | [0094-binary-tree-inorder-traversal](https://github.com/adamtang5/leethub_adamtang5/tree/master/0094-binary-tree-inorder-traversal) |
+| [0096-unique-binary-search-trees](https://github.com/adamtang5/leethub_adamtang5/tree/master/0096-unique-binary-search-trees) |
+## Binary Search Tree
+|  |
+| ------- |
+| [0096-unique-binary-search-trees](https://github.com/adamtang5/leethub_adamtang5/tree/master/0096-unique-binary-search-trees) |
 <!---LeetCode Topics End-->
