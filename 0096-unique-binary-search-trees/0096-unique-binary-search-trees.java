@@ -8,9 +8,9 @@ class Solution {
   }
   
   public int numTrees(int n) {
-    Map dp = new HashMap<Integer, Integer>();
+    Map<Integer, Integer> dp = new HashMap<Integer, Integer>();
     dp.put(0, 1);
     for (int i = 1; i <= n; i++) helper(i, dp);
-    return (int) dp.get(n);
+    return dp.get(n);
   }
 }
