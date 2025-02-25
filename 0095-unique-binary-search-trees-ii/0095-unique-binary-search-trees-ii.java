@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-  public void helper(int lb, int ub, Map dp) {
+  public void helper(int lb, int ub, Map<String, List<TreeNode>> dp) {
     List<TreeNode> trees = new ArrayList<TreeNode>();
     String key;
     if (lb == ub) {
@@ -28,9 +28,9 @@ class Solution {
         helper(lb, rootVal - 1, dp);
         helper(rootVal + 1, ub, dp);
         key = String.valueOf(lb) + "-" + String.valueOf(rootVal - 1);
-        List<TreeNode> leftTrees = (List<TreeNode>) dp.get(key);
+        List<TreeNode> leftTrees = dp.get(key);
         key = String.valueOf(rootVal + 1) + "-" + String.valueOf(ub);
-        List<TreeNode> rightTrees = (List<TreeNode>) dp.get(key);
+        List<TreeNode> rightTrees = dp.get(key);
         if (rootVal == ub) {
           for (TreeNode leftTree : leftTrees) {
             trees.add(new TreeNode(rootVal, leftTree, null));
@@ -55,9 +55,9 @@ class Solution {
   }
   
   public List<TreeNode> generateTrees(int n) {
-    Map<String, ArrayList<TreeNode>> dp = new HashMap<String, ArrayList<TreeNode>>();
+    Map<String, List<TreeNode>> dp = new HashMap<String, List<TreeNode>>();
     helper(1, n, dp);
     String key = "1-" + String.valueOf(n);
-    return (List<TreeNode>) dp.get(key);
+    return dp.get(key);
   }
 }
