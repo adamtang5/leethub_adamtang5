@@ -15,8 +15,8 @@ class Solution {
     
     while (!queue.isEmpty()) {
       List<Integer> firstPair = queue.remove(0);
-      int x = (int) firstPair.get(0);
-      int y = (int) firstPair.get(1);
+      int x = firstPair.get(0);
+      int y = firstPair.get(1);
       
       if (x + y == s3.length()) break;
       if (x < s1.length() && s3.charAt(x + y) == s1.charAt(x) && dp[x + 1][y] == 0) {
