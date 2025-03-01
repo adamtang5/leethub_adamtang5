@@ -29,8 +29,8 @@ class Solution {
       .collect(Collectors.toList());
     Collections.sort(vals);
     for (int i = 0; i < nodes.size(); i++) {
-      TreeNode node = (TreeNode) nodes.get(i);
-      node.val = (int) vals.get(i);
+      TreeNode node = nodes.get(i);
+      node.val = vals.get(i);
     }
   }
 }
