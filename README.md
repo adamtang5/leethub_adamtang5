@@ -125,6 +125,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0079-word-search](https://github.com/adamtang5/leethub_adamtang5/tree/master/0079-word-search) |
 | [0094-binary-tree-inorder-traversal](https://github.com/adamtang5/leethub_adamtang5/tree/master/0094-binary-tree-inorder-traversal) |
 | [0098-validate-binary-search-tree](https://github.com/adamtang5/leethub_adamtang5/tree/master/0098-validate-binary-search-tree) |
+| [0099-recover-binary-search-tree](https://github.com/adamtang5/leethub_adamtang5/tree/master/0099-recover-binary-search-tree) |
 ## Linked List
 |  |
 | ------- |
@@ -144,6 +145,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0095-unique-binary-search-trees-ii](https://github.com/adamtang5/leethub_adamtang5/tree/master/0095-unique-binary-search-trees-ii) |
 | [0096-unique-binary-search-trees](https://github.com/adamtang5/leethub_adamtang5/tree/master/0096-unique-binary-search-trees) |
 | [0098-validate-binary-search-tree](https://github.com/adamtang5/leethub_adamtang5/tree/master/0098-validate-binary-search-tree) |
+| [0099-recover-binary-search-tree](https://github.com/adamtang5/leethub_adamtang5/tree/master/0099-recover-binary-search-tree) |
 ## Binary Tree
 |  |
 | ------- |
@@ -151,10 +153,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0095-unique-binary-search-trees-ii](https://github.com/adamtang5/leethub_adamtang5/tree/master/0095-unique-binary-search-trees-ii) |
 | [0096-unique-binary-search-trees](https://github.com/adamtang5/leethub_adamtang5/tree/master/0096-unique-binary-search-trees) |
 | [0098-validate-binary-search-tree](https://github.com/adamtang5/leethub_adamtang5/tree/master/0098-validate-binary-search-tree) |
+| [0099-recover-binary-search-tree](https://github.com/adamtang5/leethub_adamtang5/tree/master/0099-recover-binary-search-tree) |
 ## Binary Search Tree
 |  |
 | ------- |
 | [0095-unique-binary-search-trees-ii](https://github.com/adamtang5/leethub_adamtang5/tree/master/0095-unique-binary-search-trees-ii) |
 | [0096-unique-binary-search-trees](https://github.com/adamtang5/leethub_adamtang5/tree/master/0096-unique-binary-search-trees) |
 | [0098-validate-binary-search-tree](https://github.com/adamtang5/leethub_adamtang5/tree/master/0098-validate-binary-search-tree) |
+| [0099-recover-binary-search-tree](https://github.com/adamtang5/leethub_adamtang5/tree/master/0099-recover-binary-search-tree) |
 <!---LeetCode Topics End-->
