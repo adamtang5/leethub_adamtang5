@@ -21,10 +21,10 @@ class Solution {
     List<TreeNode> initial = new ArrayList<TreeNode>();
     initial.add(root);
     levels.add(initial);
-    while (!((List<TreeNode>) levels.get(depth)).isEmpty()) {
+    while (!levels.get(depth).isEmpty()) {
       if (levels.size() < depth + 2) levels.add(new ArrayList<TreeNode>());
-      List<TreeNode> curr = (List<TreeNode>) levels.get(depth);
-      List<TreeNode> next = (List<TreeNode>) levels.get(depth + 1);
+      List<TreeNode> curr = levels.get(depth);
+      List<TreeNode> next = levels.get(depth + 1);
       curr.stream()
         .forEach(node -> {
           if (node.left != null) next.add(node.left);
