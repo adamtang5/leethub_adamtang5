@@ -44,7 +44,7 @@ class Solution {
       int level = curr.getLevel();
       TreeNode node = curr.getNode();
       if (level > ans.size() - 1) ans.add(new ArrayList());
-      List<Integer> inner = (List<Integer>) ans.get(level);
+      List<Integer> inner = ans.get(level);
       if (level % 2 == 0) {
         inner.add(node.val);
       } else {
