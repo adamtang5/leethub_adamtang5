@@ -7,24 +7,51 @@
  *   Next *Node
  * }
  */
+type AuxNode struct {
+  Level int
+  Node *Node
+}
 
 func connect(root *Node) *Node {
-	curr := root
-  var next *Node
+  queue := []*AuxNode{}
   if root != nil {
-    next = (*root).Left
-  } else {
-    next = nil
+    queue = append(queue, &AuxNode{
+      Level: 0,
+      Node: root,
+    })
   }
-  for curr != nil && next != nil {
-    (*(*curr).Left).Next = (*curr).Right
-    if (*curr).Next != nil {
-      (*(*curr).Right).Next = (*(*curr).Next).Left
+  levels := [][]*Node{}
+  for len(queue) > 0 {
+    curr := queue[0]
+    queue = queue[1:]
+    level, node := (*curr).Level, (*curr).Node
+    if level > len(levels) - 1 {
+      levels = append(levels, []*Node{})
     }
-    curr = (*curr).Next
-    if curr == nil {
-      curr = next
-      next = (*curr).Left
+    levels[level] = append(levels[level], node)
+    if (*node).Left != nil {
+      queue = append(queue, &AuxNode{
+        Level: level + 1,
+        Node: (*node).Left,
+      })
+    }
+    if (*node).Right != nil {
+      queue = append(queue, &AuxNode{
+        Level: level + 1,
+        Node: (*node).Right,
+      })
+    }
+  }
+  for len(levels) > 0 {
+    currLevel := levels[0]
+    var currNode *Node
+    levels = levels[1:]
+    var last *Node
+    for len(currLevel) > 0 {
+      last = currLevel[len(currLevel) - 1]
+      currLevel = currLevel[:len(currLevel) - 1]
+      (*last).Next = currNode
+      currNode = last
     }
   }
   return root
