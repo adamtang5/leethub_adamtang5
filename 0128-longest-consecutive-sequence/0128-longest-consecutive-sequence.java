@@ -5,7 +5,7 @@ class Solution {
     int ans = 0;
     for (int num : nums) {
       if (!edge.contains(num) && !occurred.containsKey(num)) {
-        if (!occurred.containsKey(num + 1) && !occurred.containsKey(num + 1)) {
+        if (!occurred.containsKey(num + 1) && !occurred.containsKey(num - 1)) {
           Map<String, Integer> newState = new HashMap();
           newState.put("lb", num);
           newState.put("ub", num);
