@@ -6,13 +6,12 @@
  * }
  */
 func hasCycle(head *ListNode) bool {
-  visited, curr := make(map[*ListNode]bool), head
-  for curr != nil {
-    if _, ok := visited[curr]; ok {
-      return true
+  curr := head
+  for n := 0; n <= 10000; n++ {
+    if curr == nil {
+      return false
     }
-    visited[curr] = true
     curr = (*curr).Next
   }
-  return false
+  return true
 }
