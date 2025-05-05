@@ -6,21 +6,26 @@
  * }
  */
 func reorderList(head *ListNode)  {
-  stack, curr := []*ListNode{}, head
-  for curr != nil {
-    stack = append(stack, curr)
-    curr = (*curr).Next
+  slow, fast := head, (*head).Next
+  for fast != nil && (*fast).Next != nil {
+    slow, fast = (*slow).Next, (*(*fast).Next).Next
   }
-  curr, stack = head, stack[1:]
-  for len(stack) > 0 {
-    (*curr).Next = stack[len(stack) - 1]
-    stack = stack[:len(stack) - 1]
-    curr = (*curr).Next
-    if len(stack) > 0 {
-      (*curr).Next = stack[0]
-      stack = stack[1:]
-      curr = (*curr).Next
-    }
+  second := (*slow).Next
+  (*slow).Next = nil
+  var prev, next *ListNode
+  for second != nil {
+    next = (*second).Next
+    (*second).Next = prev
+    prev = second
+    second = next
   }
-  (*curr).Next = nil
+  first := head
+  second = prev
+  var next1, next2 *ListNode
+  for second != nil {
+    next1, next2 = (*first).Next, (*second).Next
+    (*first).Next, (*second).Next = second, next1
+    first = next1
+    second = next2
+  }
 }
