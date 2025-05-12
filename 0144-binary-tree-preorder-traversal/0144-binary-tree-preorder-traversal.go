@@ -7,21 +7,16 @@
  * }
  */
 func preorderTraversal(root *TreeNode) []int {
-  ans, stack := []int{}, []*TreeNode{}
-  if root != nil {
-    stack = append(stack, root)
-  }
-  var popped *TreeNode
-  for len(stack) > 0 {
-    popped = stack[len(stack) - 1]
-    stack = stack[:len(stack) - 1]
-    ans = append(ans, (*popped).Val)
-    if (*popped).Right != nil {
-      stack = append(stack, (*popped).Right)
-    }
-    if (*popped).Left != nil {
-      stack = append(stack, (*popped).Left)
-    }
-  }
+  ans := []int{}
+  dfs(root, &ans)
   return ans
+}
+
+func dfs(node *TreeNode, ans *[]int)  {
+  if node == nil {
+    return
+  }
+  *ans = append(*ans, (*node).Val)
+  dfs((*node).Left, ans)
+  dfs((*node).Right, ans)
 }
